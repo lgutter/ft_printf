@@ -2,13 +2,13 @@ language: c
 os: osx
 
 env:
-	global:
-		- CODECOV_TOKEN="6b2be568-f634-4f85-8149-6c1728c85921"
+    global:
+        - CODECOV_TOKEN="6b2be568-f634-4f85-8149-6c1728c85921"
 
 before_script:
-	- make test
+    - make test
 script:
-	- ./test "hello"
+    - ./test "hello"
 after_succes:
-	- make gcov
-	- bash <(curl -s https://codecov.io/bash) -X gcov
+    - make gcov
+    - bash <(curl -s https://codecov.io/bash) -X gcov

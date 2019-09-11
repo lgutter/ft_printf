@@ -5,6 +5,5 @@ before_script:
     - make
 script:
     - ./hello
-    - bash test.sh
 after_succes:
     - echo "yeey het is gelukt! :D"

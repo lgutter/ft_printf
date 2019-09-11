@@ -1,0 +1,10 @@
+language: c
+os: osx
+before_script:
+    - echo "before script"
+    - make
+script:
+    - ./hello
+    - bash test.sh
+after_succes:
+    - echo "yeey het is gelukt! :D"

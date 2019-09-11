@@ -6,33 +6,43 @@
 #    By: lgutter <lgutter@student.codam.nl>           +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/09/11 13:40:17 by lgutter        #+#    #+#                 #
-#    Updated: 2019/09/11 13:49:08 by lgutter       ########   odam.nl          #
+#    Updated: 2019/09/11 14:59:25 by lgutter       ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
-FILES := test.c
+SOURCES := ft_printf
+
+TESTFILES := tests.c
+CSOURCES := $(SOURCES:%= %.c)
+OBJECTS := $(SOURCES:%= %.o)
 
 HEADER :=
 
-CC := gcc -g -Wall -Wextra -Werror
+FLAGS := -Wall -Wextra -Werror -g
 
-NAME := hello
+NAME := ft_printf
+TEST := test
 
 all: $(NAME)
 
-assemble:
-	@${CC} $(FILES) -o $(NAME)
-
 $(NAME):
-	@time make assemble
+	@gcc -c -coverage $(FLAGS) $(CSOURCES)
+	#@gcc $(FLAGS) $(OBJECTS) -o $(NAME)
 	@echo "\033[0;32m$(NAME) successfully assembled!\033[0;00m\n"
 
+$(TEST): $(NAME)
+	@gcc -coverage $(FLAGS) $(TESTFILES) $(OBJECTS) -o $(TEST)
+	@echo "\033[0;32m$(TEST) successfully assembled!\033[0;00m\n"
+
+gcov:
+	@gcov $(CSOURCES)
+
 clean:
-	@rm -rf *~ \#*\# .DS_Store
+	@rm -rf $(OBJECTS) *.gcov *.gcno *.gcda *~ \#*\# .DS_Store
 	@echo "\033[0;31mClean succesful!\033[0;00m\n"
 
 fclean: clean
-	@rm -rf $(NAME)
-	@echo "\033[0;31mObituary of $(NAME): Deceased on $(shell date).\033[0;00m\n"
+	@rm -rf $(NAME) $(TEST)
+	@echo "\033[0;31mFinished deleting $(NAME), $(TEST) and other junk on $(shell date).\033[0;00m\n"
 
 re: fclean all

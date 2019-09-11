@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   test.c                                             :+:    :+:            */
+/*   ft_printf.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/11 13:40:08 by lgutter        #+#    #+#                */
-/*   Updated: 2019/09/11 13:49:21 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/09/11 14:46:29 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 
-int main(void)
+int ft_printf(char *str)
 {
-	printf("yeey it worked!\n");
+	printf("%s\n", str);
 	return (0);
 }

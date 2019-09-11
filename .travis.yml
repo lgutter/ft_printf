@@ -1,9 +1,14 @@
 language: c
 os: osx
+
+env:
+	global:
+		- CODECOV_TOKEN="6b2be568-f634-4f85-8149-6c1728c85921"
+
 before_script:
-    - echo "before script"
-    - make
+	- make test
 script:
-    - ./hello
+	- ./test "hello"
 after_succes:
-    - echo "yeey het is gelukt! :D"
+	- make gcov
+	- bash <(curl -s https://codecov.io/bash) -X gcov

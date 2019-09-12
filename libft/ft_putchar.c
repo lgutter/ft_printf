@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_printf.c                                        :+:    :+:            */
+/*   ft_putchar.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/09/11 13:40:08 by lgutter        #+#    #+#                */
-/*   Updated: 2019/09/11 18:28:19 by lgutter       ########   odam.nl         */
+/*   Created: 2019/01/14 16:33:12 by lgutter       #+#    #+#                 */
+/*   Updated: 2019/02/03 11:31:26 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "libft.h"
 
-int ft_printf(char *str)
+void	ft_putchar(char character)
 {
-	printf("%s", str);
-	return (0);
+	write(1, &character, 1);
 }

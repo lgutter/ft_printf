@@ -1,19 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_printf.c                                        :+:    :+:            */
+/*   ft_memcpy.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/09/11 13:40:08 by lgutter        #+#    #+#                */
-/*   Updated: 2019/09/11 18:28:19 by lgutter       ########   odam.nl         */
+/*   Created: 2019/01/25 19:00:57 by lgutter       #+#    #+#                 */
+/*   Updated: 2019/01/25 19:01:02 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "libft.h"
 
-int ft_printf(char *str)
+void	*ft_memcpy(void *dst, const void *src, size_t len)
 {
-	printf("%s", str);
-	return (0);
+	size_t				index;
+	unsigned char		*output;
+	unsigned const char	*input;
+
+	output = dst;
+	input = src;
+	index = 0;
+	while (index < len)
+	{
+		output[index] = input[index];
+		index++;
+	}
+	return (dst);
 }

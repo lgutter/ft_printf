@@ -1,19 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_printf.c                                        :+:    :+:            */
+/*   ft_strnew.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/09/11 13:40:08 by lgutter        #+#    #+#                */
-/*   Updated: 2019/09/11 18:28:19 by lgutter       ########   odam.nl         */
+/*   Created: 2019/01/13 20:40:25 by lgutter       #+#    #+#                 */
+/*   Updated: 2019/01/13 21:34:19 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "libft.h"
 
-int ft_printf(char *str)
+char	*ft_strnew(size_t size)
 {
-	printf("%s", str);
-	return (0);
+	char *string;
+
+	size++;
+	string = (char *)malloc(sizeof(char) * (size));
+	if (!string)
+		return (NULL);
+	if (size > 0)
+		size++;
+	while (size > 0)
+	{
+		size--;
+		string[size] = '\0';
+	}
+	return (string);
 }

@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_printf.c                                        :+:    :+:            */
+/*   ft_isalpha.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/09/11 13:40:08 by lgutter        #+#    #+#                */
-/*   Updated: 2019/09/11 18:28:19 by lgutter       ########   odam.nl         */
+/*   Created: 2019/01/31 21:56:26 by lgutter       #+#    #+#                 */
+/*   Updated: 2019/01/31 21:56:26 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-
-int ft_printf(char *str)
+int		ft_isalpha(int character)
 {
-	printf("%s", str);
+	if (character <= 'Z' && character >= 'A')
+	{
+		return (1);
+	}
+	else if (character <= 'z' && character >= 'a')
+	{
+		return (1);
+	}
 	return (0);
 }

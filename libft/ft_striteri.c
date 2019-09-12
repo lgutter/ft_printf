@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_printf.c                                        :+:    :+:            */
+/*   ft_striteri.c                                      :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/09/11 13:40:08 by lgutter        #+#    #+#                */
-/*   Updated: 2019/09/11 18:28:19 by lgutter       ########   odam.nl         */
+/*   Created: 2019/01/16 14:56:13 by lgutter       #+#    #+#                 */
+/*   Updated: 2019/01/16 14:56:15 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-
-int ft_printf(char *str)
+void	ft_striteri(char *string, void (*function)(unsigned int, char *))
 {
-	printf("%s", str);
-	return (0);
+	unsigned int index;
+
+	index = 0;
+	while (string[index] != '\0')
+	{
+		((*function)(index, &string[index]));
+		index++;
+	}
 }

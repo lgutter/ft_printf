@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   tests.c                                            :+:    :+:            */
+/*   ft_isprint.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/09/11 14:40:03 by lgutter        #+#    #+#                */
-/*   Updated: 2019/09/11 14:47:01 by lgutter       ########   odam.nl         */
+/*   Created: 2019/01/31 22:25:07 by lgutter       #+#    #+#                 */
+/*   Updated: 2019/01/31 22:25:08 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_printf(char *str);
-
-int main (int argc, char **argv)
+int		ft_isprint(int character)
 {
-    if (argc != 2)
-        return (0);
-    ft_printf(argv[1]);
-    return (0);
+	if (character <= '~' && character >= ' ')
+	{
+		return (1);
+	}
+	return (0);
 }

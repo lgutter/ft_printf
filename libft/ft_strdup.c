@@ -1,19 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_printf.c                                        :+:    :+:            */
+/*   ft_strdup.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/09/11 13:40:08 by lgutter        #+#    #+#                */
-/*   Updated: 2019/09/11 18:28:19 by lgutter       ########   odam.nl         */
+/*   Created: 2019/01/29 21:17:53 by lgutter       #+#    #+#                 */
+/*   Updated: 2019/01/29 21:17:54 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "libft.h"
 
-int ft_printf(char *str)
+char	*ft_strdup(const char *string)
 {
-	printf("%s", str);
-	return (0);
+	char	*ret;
+	size_t	index;
+
+	index = 0;
+	ret = (char *)malloc(sizeof(char) * (ft_strlen(string) + 1));
+	if (ret == NULL)
+		return (NULL);
+	while (string[index] != '\0')
+	{
+		ret[index] = string[index];
+		index++;
+	}
+	ret[index] = '\0';
+	return (ret);
 }

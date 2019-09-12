@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_printf.c                                        :+:    :+:            */
+/*   ft_absneg.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/09/11 13:40:08 by lgutter        #+#    #+#                */
-/*   Updated: 2019/09/11 18:28:19 by lgutter       ########   odam.nl         */
+/*   Created: 2019/01/31 19:35:02 by lgutter       #+#    #+#                 */
+/*   Updated: 2019/01/31 19:35:03 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-
-int ft_printf(char *str)
+long	ft_absneg(long integer)
 {
-	printf("%s", str);
-	return (0);
+	if (integer > 0)
+	{
+		return (integer * -1);
+	}
+	return (integer);
 }

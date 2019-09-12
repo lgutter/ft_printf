@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_printf.c                                        :+:    :+:            */
+/*   ft_tolower.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/09/11 13:40:08 by lgutter        #+#    #+#                */
-/*   Updated: 2019/09/11 18:28:19 by lgutter       ########   odam.nl         */
+/*   Created: 2019/01/31 22:32:17 by lgutter       #+#    #+#                 */
+/*   Updated: 2019/01/31 22:32:18 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-
-int ft_printf(char *str)
+int		ft_tolower(int character)
 {
-	printf("%s", str);
-	return (0);
+	if (character >= 'A' && character <= 'Z')
+	{
+		character = character + 32;
+	}
+	return (character);
 }

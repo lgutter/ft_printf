@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_printf.c                                        :+:    :+:            */
+/*   ft_strlenc.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/09/11 13:40:08 by lgutter        #+#    #+#                */
-/*   Updated: 2019/09/11 18:28:19 by lgutter       ########   odam.nl         */
+/*   Created: 2019/02/14 12:25:27 by lgutter       #+#    #+#                 */
+/*   Updated: 2019/02/14 12:25:28 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "libft.h"
 
-int ft_printf(char *str)
+size_t	ft_strlenc(const char *string, int delim, size_t size)
 {
-	printf("%s", str);
-	return (0);
+	size_t len;
+
+	len = 0;
+	while (string[len] != (char)delim && len < size)
+		len++;
+	return (len);
 }

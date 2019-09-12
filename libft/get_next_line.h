@@ -1,19 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_printf.c                                        :+:    :+:            */
+/*   get_next_line.h                                    :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/09/11 13:40:08 by lgutter        #+#    #+#                */
-/*   Updated: 2019/09/11 18:28:19 by lgutter       ########   odam.nl         */
+/*   Created: 2019/02/14 14:37:43 by lgutter       #+#    #+#                 */
+/*   Updated: 2019/02/14 14:37:44 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-int ft_printf(char *str)
+# include "libft.h"
+
+# define BUFF_SIZE	32
+
+typedef struct		s_cache
 {
-	printf("%s", str);
-	return (0);
-}
+	int				fd;
+	char			*content;
+	size_t			size;
+	struct s_cache	*next;
+}					t_cache;
+
+int					get_next_line(const int fd, char **line);
+
+#endif

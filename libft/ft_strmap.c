@@ -1,19 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_printf.c                                        :+:    :+:            */
+/*   ft_strmap.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/09/11 13:40:08 by lgutter        #+#    #+#                */
-/*   Updated: 2019/09/11 18:28:19 by lgutter       ########   odam.nl         */
+/*   Created: 2019/01/16 15:32:17 by lgutter       #+#    #+#                 */
+/*   Updated: 2019/01/16 15:32:18 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "libft.h"
 
-int ft_printf(char *str)
+char	*ft_strmap(char const *string, char (*function)(char))
 {
-	printf("%s", str);
-	return (0);
+	int		index;
+	char	*ret;
+
+	ret = (char *)malloc(sizeof(char) * ft_strlen(string) + 1);
+	if (!ret)
+		return (NULL);
+	index = 0;
+	while (string[index] != '\0')
+	{
+		ret[index] = (*function)(string[index]);
+		index++;
+	}
+	ret[index] = '\0';
+	return (ret);
 }

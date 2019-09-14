@@ -6,7 +6,7 @@
 #    By: lgutter <lgutter@student.codam.nl>           +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/09/11 13:40:17 by lgutter        #+#    #+#                 #
-#    Updated: 2019/09/14 14:10:29 by lgutter       ########   odam.nl          #
+#    Updated: 2019/09/14 16:20:20 by ivan-tey      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,20 +27,27 @@ NAME := libftprintf.a
 
 TEST := test
 
+C_RESET = \033[0;00m
+C_CLEAN = \033[38;5;194m
+C_FCLEAN = \033[38;5;156m
+C_LIB = \033[38;5;34m
+C_TEST = \033[38;5;28m
+C_LINES = \033[38;5;250m
+
 all: $(NAME)
 
 $(NAME):
-	@echo "- - - - - - - - - -\n\033[0;33mMaking libft object files:\033[0;00m"
 	@make objects -C libft/
-	@echo "- - - - - - - - - -"
+	@echo "$(C_LINES)- - - - - - - - - -$(C_RESET)"
 	@gcc -c -coverage -I ./libft $(FLAGS) $(CSOURCES)
 	@ar rc $(NAME) $(OBJECTS) $(LFTOBJECTS)
 	@ranlib $(NAME)
-	@echo "\033[0;32m$(NAME) successfully assembled!\033[0;00m"
+	@echo "$(C_LIB)Libftprintf.a has been compiled$(C_RESET)"
+	@echo "$(C_LINES)- - - - - - - - - -$(C_RESET)"
 
 $(TEST): $(NAME)
-	gcc -coverage -lcriterion -I ./ -I ./libft -I ./tests -L ./ -lftprintf $(FLAGS) $(TESTSOURCES) -o $(TEST)
-	@echo "\033[0;32mTest program successfully assembled!\033[0;00m"
+	@gcc -coverage -lcriterion -I ./ -I ./libft -I ./tests -L ./ -lftprintf $(FLAGS) $(TESTSOURCES) -o $(TEST)
+	@echo "$(C_TEST)Test program has been compiled$(C_RESET)"
 
 retest: fclean $(TEST)
 
@@ -48,13 +55,13 @@ gcov:
 	@gcov $(CSOURCES)
 
 clean:
-	@make clean -C libft/
 	@rm -rf $(OBJECTS) *.gcov *.gcno *.gcda *~ \#*\# .DS_Store
-	@echo "\033[0;31mClean succesful!\033[0;00m"
+	@echo "$(C_CLEAN)Libftprintf object files removed$(C_RESET)"
 
 fclean: clean
-	@make fclean -C libft/
 	@rm -rf $(NAME) $(TEST)
-	@echo "\033[0;31mFinished deleting $(NAME), $(TEST) and other junk on $(shell date).\033[0;00m"
+	@echo "$(C_FCLEAN)Libftprintf.a & test program removed$(C_RESET)"
+	@echo "$(C_LINES)- - - - - - - - - -$(C_RESET)"
+	@make fclean -C libft/
 
 re: fclean all

@@ -1,1 +1,2 @@
-SOURCES := ft_printf
+SOURCES := ft_printf \
+ft_strexpand

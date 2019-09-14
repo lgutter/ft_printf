@@ -1,2 +1,3 @@
 TESTNAMES := basic_std_arg_test \
-simplecall
+simplecall \
+strexpand_tests

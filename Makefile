@@ -6,7 +6,7 @@
 #    By: lgutter <lgutter@student.codam.nl>           +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/09/11 13:40:17 by lgutter        #+#    #+#                 #
-#    Updated: 2019/09/13 14:41:49 by ivan-tey      ########   odam.nl          #
+#    Updated: 2019/09/14 14:10:29 by lgutter       ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,13 +33,13 @@ $(NAME):
 	@echo "- - - - - - - - - -\n\033[0;33mMaking libft object files:\033[0;00m"
 	@make objects -C libft/
 	@echo "- - - - - - - - - -"
-	@gcc -c -coverage $(FLAGS) $(CSOURCES)
+	@gcc -c -coverage -I ./libft $(FLAGS) $(CSOURCES)
 	@ar rc $(NAME) $(OBJECTS) $(LFTOBJECTS)
 	@ranlib $(NAME)
 	@echo "\033[0;32m$(NAME) successfully assembled!\033[0;00m"
 
 $(TEST): $(NAME)
-	@gcc -coverage -lcriterion -L ./ -lftprintf $(FLAGS) $(TESTSOURCES) -o $(TEST)
+	gcc -coverage -lcriterion -I ./ -I ./libft -I ./tests -L ./ -lftprintf $(FLAGS) $(TESTSOURCES) -o $(TEST)
 	@echo "\033[0;32mTest program successfully assembled!\033[0;00m"
 
 retest: fclean $(TEST)

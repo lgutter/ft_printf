@@ -1,0 +1,2 @@
+TESTNAMES := basic_std_arg_test \
+simplecall

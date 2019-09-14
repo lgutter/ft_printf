@@ -6,17 +6,18 @@
 #    By: lgutter <lgutter@student.codam.nl>           +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/09/11 13:40:17 by lgutter        #+#    #+#                 #
-#    Updated: 2019/09/13 13:30:17 by lgutter       ########   odam.nl          #
+#    Updated: 2019/09/13 14:41:49 by ivan-tey      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 include Sources
 include libft/Sources
+include tests/testsources
 
-TESTFILES := tests/pass.c tests/simplecall.c
 CSOURCES := $(SOURCES:%= %.c)
 OBJECTS := $(SOURCES:%= %.o)
 LFTOBJECTS := $(LFTSOURCES:%= libft/%.o)
+TESTSOURCES := $(TESTNAMES:%= tests/%.c)
 
 HEADER :=
 
@@ -38,8 +39,10 @@ $(NAME):
 	@echo "\033[0;32m$(NAME) successfully assembled!\033[0;00m"
 
 $(TEST): $(NAME)
-	@gcc -coverage -lcriterion -L ./ -lftprintf $(FLAGS) $(TESTFILES) -o $(TEST)
+	@gcc -coverage -lcriterion -L ./ -lftprintf $(FLAGS) $(TESTSOURCES) -o $(TEST)
 	@echo "\033[0;32mTest program successfully assembled!\033[0;00m"
+
+retest: fclean $(TEST)
 
 gcov:
 	@gcov $(CSOURCES)

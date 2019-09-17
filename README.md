@@ -89,6 +89,10 @@ git merge master
 
 ### 4. Push your branch when everything is ready
 Before pushing, make sure you've pulled the most recent version of the online repository, and you've merged master into your branch.
+For new branches, use this command to push, so git creates the brand on the remote repository:
+```
+git push -u origin <your/branch>
+```
 
 ### 5. Create a pull request on github
 Provide a clear description of all the changes in the pull request,

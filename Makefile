@@ -6,10 +6,11 @@
 #    By: lgutter <lgutter@student.codam.nl>           +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/09/11 13:40:17 by lgutter        #+#    #+#                 #
-#    Updated: 2019/09/17 17:58:02 by lgutter       ########   odam.nl          #
+#    Updated: 2019/09/17 18:01:54 by lgutter       ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
+# THIS IS A TEST SENTENCE TO MAKE SURE TRAVIS FAILS ON NORM, SO THIS SENTENCE HAS TO BE TOO LONG.
 include Sources
 include libft/Sources
 include tests/testsources

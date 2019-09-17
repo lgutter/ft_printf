@@ -6,7 +6,7 @@
 #    By: lgutter <lgutter@student.codam.nl>           +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/09/11 13:40:17 by lgutter        #+#    #+#                 #
-#    Updated: 2019/09/16 19:08:58 by lgutter       ########   odam.nl          #
+#    Updated: 2019/09/17 17:58:02 by lgutter       ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,10 +48,14 @@ $(NAME):
 	@echo "$(C_LINES)- - - - - - - - - -$(C_RESET)"
 
 $(TEST): $(NAME)
+	@make norm
 	@gcc $(INCLUDES) -L ./ $(LIBRARIES) $(FLAGS) $(TESTSOURCES) -o $(TEST)
 	@echo "$(C_TEST)Test program has been compiled$(C_RESET)"
 
 retest: fclean $(TEST)
+
+norm:
+	@sh checkNorm.sh "$(CSOURCES) $(HEADER)"
 
 gcov:
 	@gcov $(CSOURCES)

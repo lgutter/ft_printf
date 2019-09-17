@@ -6,7 +6,7 @@
 #    By: lgutter <lgutter@student.codam.nl>           +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/09/11 13:40:17 by lgutter        #+#    #+#                 #
-#    Updated: 2019/09/14 16:20:20 by ivan-tey      ########   odam.nl          #
+#    Updated: 2019/09/16 19:08:58 by lgutter       ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,9 +19,11 @@ OBJECTS := $(SOURCES:%= %.o)
 LFTOBJECTS := $(LFTSOURCES:%= libft/%.o)
 TESTSOURCES := $(TESTNAMES:%= tests/%.c)
 
-HEADER :=
+LIBRARIES := -lftprintf -lcriterion
+INCLUDES := -I ./ -I ./libft -I ./tests
+HEADER := ft_printf.h
 
-FLAGS := -Wall -Wextra -Werror -g
+FLAGS := -coverage -Wall -Wextra -Werror -g
 
 NAME := libftprintf.a
 
@@ -39,14 +41,14 @@ all: $(NAME)
 $(NAME):
 	@make objects -C libft/
 	@echo "$(C_LINES)- - - - - - - - - -$(C_RESET)"
-	@gcc -c -coverage -I ./libft $(FLAGS) $(CSOURCES)
+	@gcc -c $(INCLUDES) $(FLAGS) $(CSOURCES)
 	@ar rc $(NAME) $(OBJECTS) $(LFTOBJECTS)
 	@ranlib $(NAME)
 	@echo "$(C_LIB)Libftprintf.a has been compiled$(C_RESET)"
 	@echo "$(C_LINES)- - - - - - - - - -$(C_RESET)"
 
 $(TEST): $(NAME)
-	@gcc -coverage -lcriterion -I ./ -I ./libft -I ./tests -L ./ -lftprintf $(FLAGS) $(TESTSOURCES) -o $(TEST)
+	@gcc $(INCLUDES) -L ./ $(LIBRARIES) $(FLAGS) $(TESTSOURCES) -o $(TEST)
 	@echo "$(C_TEST)Test program has been compiled$(C_RESET)"
 
 retest: fclean $(TEST)

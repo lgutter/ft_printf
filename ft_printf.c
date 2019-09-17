@@ -6,20 +6,20 @@
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/11 13:40:08 by lgutter        #+#    #+#                */
-/*   Updated: 2019/09/13 14:33:02 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/09/17 09:47:52 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_printf(const char * restrict format, ...)
+int	ft_printf(const char *restrict format, ...)
 {
 	va_list	arg;
-	int i;
+	int		i;
 
 	va_start(arg, format);
 	i = 0;
-	while(format[i] != '\0')
+	while (format[i] != '\0')
 	{
 		if (format[i] == '%' && format[i + 1] == 'c')
 		{

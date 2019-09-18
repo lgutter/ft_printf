@@ -1,5 +1,5 @@
 #!/bin/bash
-NORMOUTPUT=$(norminette $1 | grep -B 1 'Error\|Warning')
+NORMOUTPUT=$($(which norminette) $1 | grep -B 1 'Error\|Warning')
 NORMPLUSOUTPUT=$(python ~/norminette+/run.py $1 Makefile | grep -B 1 'Error')
 
 if [ -n "$NORMOUTPUT" ] || [ -n "$NORMPLUSOUTPUT" ]; then

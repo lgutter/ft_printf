@@ -12,6 +12,7 @@ branches:
         - master
 install:
     - brew install snaipe/soft/criterion
+    - bash <(curl -s https://raw.githubusercontent.com/Gegel85/norminette/master/install.sh)
     - git clone https://github.com/thijsdejong/codam-norminette-plus ~/norminette+
 before_script:
     - make test

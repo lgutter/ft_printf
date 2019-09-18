@@ -6,7 +6,7 @@
 #    By: lgutter <lgutter@student.codam.nl>           +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/09/11 13:40:17 by lgutter        #+#    #+#                 #
-#    Updated: 2019/09/17 18:13:31 by lgutter       ########   odam.nl          #
+#    Updated: 2019/09/18 17:15:38 by lgutter       ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ C_LINES = \033[38;5;250m
 all: $(NAME)
 
 $(NAME):
+	@make norm
 	@make objects -C libft/
 	@echo "$(C_LINES)- - - - - - - - - -$(C_RESET)"
 	@gcc -c $(INCLUDES) $(FLAGS) $(CSOURCES)

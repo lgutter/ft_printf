@@ -6,19 +6,26 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/25 15:44:36 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/09/30 15:48:23 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/09/30 17:18:59 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include <stdio.h>
 
-static char		*ft_please(signed long long n, int base, char *str, int i)
+static char		*ft_please(signed long long n, int base, char *str, size_t i)
 {
 	int			res;
 	char		*bstr;
 
-	bstr = "0123456789abcdef";
+	bstr = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	while (base == 1 && i <= ft_nbrlenbase(n, base))
+	{
+		str[i] = '1';
+		i++;
+		if (i == ft_nbrlenbase(n, base))
+			return (str);
+	}
 	if (n > 0)
 	{
 		res = n % base;
@@ -41,7 +48,9 @@ char			*ft_itoa_base(signed long long nb, int base)
 		str[0] = '-';
 		nb = nb * -1;
 		str = ft_please(nb, base, str, 1);
+		printf("str = %s\n", str);
 		str[nb_len] = '\0';
+		//ft_swap(&str[0], &str[nb_len - 1]);
 	}
 	else
 	{
@@ -57,10 +66,10 @@ int						main(void)
 	int 				base;
 	char 				*str;
 
-	nb = 124;
-	base = 8;
+	nb = -124;
+	base = 2;
 	str = ft_itoa_base(nb, base);
 	str = ft_strrev(str, 0);
-	printf("str = %s, nb = %lld\n", str, nb);
+	printf("str = %s\nnb = %lld\n", str, nb);
 	return (0);
 }

@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/02/02 12:11:46 by lgutter       #+#    #+#                 */
-/*   Updated: 2019/02/02 12:11:47 by lgutter       ########   odam.nl         */
+/*   Created: 2019/02/02 12:11:46 by lgutter        #+#    #+#                */
+/*   Updated: 2019/09/30 15:48:59 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,9 @@ size_t		ft_nbrlenbase(long number, int base)
 
 	len = 1;
 	if (base == 1)
-	{
 		return ((size_t)number);
-	}
 	if (number < 0)
-	{
 		len++;
-	}
 	while (number / base != 0)
 	{
 		len++;

@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/10 17:29:34 by lgutter       #+#    #+#                 */
-/*   Updated: 2019/09/11 16:37:34 by lgutter       ########   odam.nl         */
+/*   Created: 2019/01/10 17:29:34 by lgutter        #+#    #+#                */
+/*   Updated: 2019/09/27 13:51:02 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,5 +109,9 @@ size_t				ft_nbrlenbase(long number, int base);
 size_t				ft_lstlen(t_list **start);
 void				ft_lstaddback(t_list **start, t_list *new);
 t_list				*ft_lstaddnext(t_list *current, t_list *new);
+
+void				ft_strexpand(char **source, const char *addition);
+void    			ft_swap(char *a, char *b);
+char				*ft_strrev(char *str, int start);
 
 #endif

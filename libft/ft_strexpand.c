@@ -1,21 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_printf.h                                        :+:    :+:            */
+/*   ft_strexpand.c                                     :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
+/*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/09/13 14:10:30 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/09/27 13:36:21 by ivan-tey      ########   odam.nl         */
+/*   Created: 2019/09/13 16:04:59 by lgutter        #+#    #+#                */
+/*   Updated: 2019/09/27 13:37:00 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
 
-# include "libft.h"
-# include <stdarg.h>
+void	ft_strexpand(char **source, const char *addition)
+{
+	void *temp;
 
-int		ft_printf(const char *restrict format, ...);
-
-#endif
+	temp = *source;
+	if (*source == NULL)
+	{
+		*source = ft_strdup(addition);
+	}
+	else
+	{
+		*source = ft_strjoin(*source, addition);
+		free(temp);
+	}
+}

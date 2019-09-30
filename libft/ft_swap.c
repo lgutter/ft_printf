@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_printf.h                                        :+:    :+:            */
+/*   ft_swap.c                                          :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/09/13 14:10:30 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/09/27 13:36:21 by ivan-tey      ########   odam.nl         */
+/*   Created: 2019/09/27 13:47:21 by ivan-tey       #+#    #+#                */
+/*   Updated: 2019/09/27 14:02:50 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
 
-# include "libft.h"
-# include <stdarg.h>
+void	ft_swap(char *a, char *b)
+{
+	int c;
 
-int		ft_printf(const char *restrict format, ...);
-
-#endif
+	c = *a;
+	*a = *b;
+	*b = c;
+}

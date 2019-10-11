@@ -6,12 +6,11 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/25 15:44:36 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/10/11 12:38:13 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/10/11 12:53:22 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
-#include <stdio.h> //remove
+#include "ft_printf.h"
 
 static char		*ft_please(signed long long n,\
 					int base,\
@@ -62,17 +61,4 @@ char			*ft_itoa_base(signed long long nb, int base)
 	str[nb_len] = '\0';
 	str = ft_strrev(str, (str[0] == '-' ? 1 : 0));
 	return (str);
-}
-
-int						main(void)
-{
-	signed long long	nb;
-	int					base;
-	char				*str;
-
-	nb = 5;
-	base = 0;
-	str = ft_itoa_base(nb, base);	
-	printf("str = %s\nnb = %lld\n", str, nb);
-	return (0);
 }

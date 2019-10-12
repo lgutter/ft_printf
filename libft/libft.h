@@ -6,7 +6,7 @@
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/01/10 17:29:34 by lgutter        #+#    #+#                */
-/*   Updated: 2019/10/11 13:59:58 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/10/12 11:45:43 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ void				ft_lstaddback(t_list **start, t_list *new);
 t_list				*ft_lstaddnext(t_list *current, t_list *new);
 
 void				ft_strexpand(char **source, const char *addition);
-void    			ft_swap(char *a, char *b);
+void				ft_swap(char *a, char *b);
 char				*ft_strrev(char *str, int start);
 char				*ft_itoa_base(signed long long nb, int base);
 

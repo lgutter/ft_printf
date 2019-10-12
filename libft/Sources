@@ -69,8 +69,4 @@ ft_memdelsize \
 ft_nbrlenbase \
 ft_lstlen \
 ft_lstaddback \
-ft_lstaddnext \
-ft_strexpand \
-ft_strrev \
-ft_swap \
-ft_itoa_base
+ft_lstaddnext

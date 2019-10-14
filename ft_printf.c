@@ -6,7 +6,7 @@
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/11 13:40:08 by lgutter        #+#    #+#                */
-/*   Updated: 2019/09/17 09:47:52 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/10/14 17:16:03 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,21 @@
 
 int	ft_printf(const char *restrict format, ...)
 {
-	va_list	arg;
-	int		i;
+	int			i;
+	t_info		info;
+	t_formatter	formatter;
 
-	va_start(arg, format);
+	va_start(info.arguments, format);
 	i = 0;
 	while (format[i] != '\0')
 	{
-		if (format[i] == '%' && format[i + 1] == 'c')
+		if (format[i] == '%')
 		{
-			i = i + 2;
-			ft_putchar(va_arg(arg, int));
+			i += ft_init_info(&format[i], &info);
+			formatter = ft_dispatcher(format[i]);
+			if (formatter != NULL)
+				formatter(&info);
+			i++;
 		}
 		else
 		{
@@ -32,6 +36,6 @@ int	ft_printf(const char *restrict format, ...)
 			i++;
 		}
 	}
-	va_end(arg);
+	va_end(info.arguments);
 	return (0);
 }

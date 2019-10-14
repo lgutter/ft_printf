@@ -1,2 +1,6 @@
 SOURCES := ft_printf \
-ft_strexpand
+ft_strexpand \
+ft_dispatcher \
+ft_init_info \
+ft_formatchar \
+ft_formatstring

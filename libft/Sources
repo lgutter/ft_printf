@@ -72,4 +72,5 @@ ft_lstaddback \
 ft_lstaddnext \
 ft_strexpand \
 ft_strrev \
-ft_swap
+ft_swap \
+ft_ulitoa_base

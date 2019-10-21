@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_strexpand.c                                     :+:    :+:            */
+/*   itoa_base_test.c                                   :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
+/*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/09/13 16:04:59 by lgutter        #+#    #+#                */
-/*   Updated: 2019/09/16 17:40:50 by lgutter       ########   odam.nl         */
+/*   Created: 2019/10/12 12:07:23 by ivan-tey       #+#    #+#                */
+/*   Updated: 2019/10/12 12:13:18 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <criterion/criterion.h>
 #include "ft_printf.h"
 
-void	ft_strexpand(char **source, const char *addition)
+Test (valid_itoa_base, zero)
 {
-	void *temp;
-
-	temp = *source;
-	if (*source == NULL)
-	{
-		*source = ft_strdup(addition);
-	}
-	else
-	{
-		*source = ft_strjoin(*source, addition);
-		free(temp);
-	}
+	cr_assert_str_eq(ft_itoa_base(0, 10), "0");
 }

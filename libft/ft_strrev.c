@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_nbrlenbase.c                                    :+:    :+:            */
+/*   ft_strrev.c                                        :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
+/*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/02/02 12:11:46 by lgutter        #+#    #+#                */
-/*   Updated: 2019/09/30 18:05:24 by ivan-tey      ########   odam.nl         */
+/*   Created: 2019/09/27 13:40:07 by ivan-tey       #+#    #+#                */
+/*   Updated: 2019/09/27 15:56:29 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t		ft_nbrlenbase(long number, int base)
+char			*ft_strrev(char *str, int start)
 {
-	size_t len;
+	int i;
+	int len;
 
-	len = 1;
-	if (number < 0)
-		len++;
-	if (base == 1)
+	i = start;
+	len = ft_strlen(str) - 1;
+	while (i < len)
 	{
-		if (number < 0)
-			number = number * -1;
-		return ((size_t)number + len);
+		ft_swap(&str[i], &str[len]);
+		i++;
+		len--;
 	}
-	while (number / base != 0)
-	{
-		len++;
-		number /= base;
-	}
-	return (len);
-}
+	return (str);
+}  

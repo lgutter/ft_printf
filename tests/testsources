@@ -1,3 +1,4 @@
 TESTNAMES := basic_std_arg_test \
 simplecall \
-strexpand_tests
+strexpand_tests \
+itoa_base_test

@@ -6,11 +6,11 @@
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/13 16:04:59 by lgutter        #+#    #+#                */
-/*   Updated: 2019/09/16 17:40:50 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/09/27 13:37:00 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
 void	ft_strexpand(char **source, const char *addition)
 {

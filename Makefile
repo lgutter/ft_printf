@@ -6,17 +6,20 @@
 #    By: lgutter <lgutter@student.codam.nl>           +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/09/11 13:40:17 by lgutter        #+#    #+#                 #
-#    Updated: 2019/09/18 17:15:38 by lgutter       ########   odam.nl          #
+#    Updated: 2019/10/12 11:54:15 by lgutter       ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 include Sources
 include libft/Sources
+include libft/CovSources
 include tests/testsources
 
 CSOURCES := $(SOURCES:%= %.c)
 OBJECTS := $(SOURCES:%= %.o)
 LFTOBJECTS := $(LFTSOURCES:%= libft/%.o)
+COVOBJECTS := $(COVSOURCES:%= libft/%.o)
+COVSOURCES := $(COVSOURCES:%= libft/%.c)
 TESTSOURCES := $(TESTNAMES:%= tests/%.c)
 
 LIBRARIES := -lftprintf -lcriterion
@@ -43,7 +46,7 @@ $(NAME):
 	@make objects -C libft/
 	@echo "$(C_LINES)- - - - - - - - - -$(C_RESET)"
 	@gcc -c $(INCLUDES) $(FLAGS) $(CSOURCES)
-	@ar rc $(NAME) $(OBJECTS) $(LFTOBJECTS)
+	@ar rc $(NAME) $(OBJECTS) $(LFTOBJECTS) $(COVOBJECTS)
 	@ranlib $(NAME)
 	@echo "$(C_LIB)Libftprintf.a has been compiled$(C_RESET)"
 	@echo "$(C_LINES)- - - - - - - - - -$(C_RESET)"
@@ -59,7 +62,7 @@ norm:
 	@sh checkNorm.sh "$(CSOURCES) $(HEADER)"
 
 gcov:
-	@gcov $(CSOURCES)
+	@gcov $(CSOURCES) $(COVSOURCES)
 
 clean:
 	@rm -rf $(OBJECTS) *.gcov *.gcno *.gcda *~ \#*\# .DS_Store

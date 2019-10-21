@@ -1,0 +1,4 @@
+COVSOURCES := ft_strexpand \
+ft_strrev \
+ft_swap \
+ft_itoa_base

@@ -1,21 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_printf.h                                        :+:    :+:            */
+/*   ft_strrev.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/09/13 14:10:30 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/10/21 17:08:46 by lgutter       ########   odam.nl         */
+/*   Created: 2019/09/27 13:40:07 by ivan-tey       #+#    #+#                */
+/*   Updated: 2019/09/27 15:56:29 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
 
-# include "libft.h"
-# include <stdarg.h>
+char			*ft_strrev(char *str, int start)
+{
+	int i;
+	int len;
 
-int		ft_printf(const char *restrict format, ...);
-
-#endif
+	i = start;
+	len = ft_strlen(str) - 1;
+	while (i < len)
+	{
+		ft_swap(&str[i], &str[len]);
+		i++;
+		len--;
+	}
+	return (str);
+}  

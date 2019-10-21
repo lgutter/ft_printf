@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/12 12:07:23 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/10/21 13:46:20 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/10/21 15:00:28 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,28 @@ Test (valid_itoa_base, large_hex)
 Test (valid_itoa_base, min_large_hex)
 {
 	cr_assert_str_eq(ft_itoa_base(-124, 16), "-7C");
+}
+
+Test (valid_itoa_base, max_long_binary)
+{
+	cr_assert_str_eq(ft_itoa_base(9223372036854775807, 2), \
+	"111111111111111111111111111111111111111111111111111111111111111");
+}
+
+Test (valid_itoa_base, max_long_hex)
+{
+	cr_assert_str_eq(ft_itoa_base(9223372036854775807, 16), "7FFFFFFFFFFFFFFF");
+}
+
+Test (valid_itoa_base, min_long_binary)
+{
+	cr_assert_str_eq(ft_itoa_base(-9223372036854775807, 2), \
+	"-111111111111111111111111111111111111111111111111111111111111111");
+}
+
+Test (valid_itoa_base, min_long_hex)
+{
+	cr_assert_str_eq(ft_itoa_base(-9223372036854775807, 16), "-7FFFFFFFFFFFFFFF");
 }
 
 Test (invalid_itoa_base, ten_zero)

@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/21 15:14:42 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/10/22 12:00:12 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/10/22 13:08:46 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static char		*ft_convert(unsigned long long n, \
 	return (str);
 }
 
-char			*ft_ulitoa_base(unsigned long long nb, const unsigned base)
+char			*ft_ulltoa_base(unsigned long long nb, const unsigned base)
 {
 	int			nb_len;
 	char		*str;

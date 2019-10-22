@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/22 11:14:23 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/10/22 11:37:36 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/10/22 11:44:11 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,4 +83,9 @@ Test (valid_ulitoa_base, max_ulong_octal)
 Test (valid_ulitoa_base, max_ulong_hex)
 {
 	cr_assert_str_eq(ft_ulitoa_base(ULLONG_MAX, 16), "FFFFFFFFFFFFFFFF");
+}
+
+Test (invalid_ulitoa_base, ten_zero)
+{
+	cr_assert_eq(ft_ulitoa_base(10, 0), NULL);
 }

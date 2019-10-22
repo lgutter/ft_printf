@@ -6,13 +6,18 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/22 11:14:23 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/10/22 11:44:11 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/10/22 11:54:08 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <criterion/criterion.h>
 #include "ft_printf.h"
 #include <limits.h>
+
+Test (valid_ulitoa_base, five_one)
+{
+	cr_assert_str_eq(ft_ulitoa_base(5, 1), "11111");
+}
 
 Test (valid_ulitoa_base, zero_decimal)
 {

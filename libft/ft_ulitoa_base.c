@@ -6,15 +6,15 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/21 15:14:42 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/10/22 11:11:09 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/10/22 12:00:12 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char     *ft_convert(unsigned long long n, \
-                            const unsigned base, \
-                            char *str, size_t i)
+static char		*ft_convert(unsigned long long n, \
+							const unsigned base, \
+							char *str, size_t i)
 {
 	int			res;
 	char		*bstr;

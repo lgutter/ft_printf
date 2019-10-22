@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/27 13:40:07 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/09/27 15:56:29 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/10/22 12:00:46 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,4 @@ char			*ft_strrev(char *str, int start)
 		len--;
 	}
 	return (str);
-}  
+}

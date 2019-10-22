@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/12 12:07:23 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/10/21 15:00:28 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/10/22 11:26:29 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,6 @@ Test (valid_itoa_base, zero_ten)
 Test (valid_itoa_base, five_one)
 {
 	cr_assert_str_eq(ft_itoa_base(5, 1), "11111");
-}
-
-Test (valid_itoa_base, ten_one)
-{
-	cr_assert_str_eq(ft_itoa_base(10, 1), "1111111111");
 }
 
 Test (valid_itoa_base, ten_binary)

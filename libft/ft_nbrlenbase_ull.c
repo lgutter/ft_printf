@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_strrev.c                                        :+:    :+:            */
+/*   ft_nbrlenbase_ull.c                                :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/09/27 13:40:07 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/10/22 12:00:46 by ivan-tey      ########   odam.nl         */
+/*   Created: 2019/10/21 16:36:58 by ivan-tey       #+#    #+#                */
+/*   Updated: 2019/10/22 12:00:37 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char			*ft_strrev(char *str, int start)
+size_t		ft_nbrlenbase_ull(unsigned long long number, int base)
 {
-	int i;
-	int len;
+	size_t len;
 
-	i = start;
-	len = ft_strlen(str) - 1;
-	while (i < len)
+	len = 1;
+	if (base == 1)
+		return ((size_t)number + len);
+	while (number / base != 0)
 	{
-		ft_swap(&str[i], &str[len]);
-		i++;
-		len--;
+		len++;
+		number /= base;
 	}
-	return (str);
+	return (len);
 }

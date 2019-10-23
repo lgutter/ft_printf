@@ -2,7 +2,7 @@
 [![Build Status](https://travis-ci.com/lgutter/ft_printf.svg?token=1XqUmANNphr1YCadgPKp&branch=master)](https://travis-ci.com/lgutter/ft_printf)
 [![codecov](https://codecov.io/gh/lgutter/ft_printf/branch/master/graph/badge.svg?token=mIYsxaVIbL)](https://codecov.io/gh/lgutter/ft_printf)
 
-[The project board for ft_printf](https://github.com/users/lgutter/projects/1)
+[The project board for ft_printf](https://github.com/lgutter/ft_printf/projects/3)
 
 ## Make commands
 ### make (all)

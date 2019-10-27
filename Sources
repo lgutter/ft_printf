@@ -1,6 +1,8 @@
 SOURCES := ft_printf \
 ft_dispatcher \
+ft_process_conversion \
 ft_init_info \
 ft_formatchar \
-ft_formatstring
+ft_formatstring \
+ft_formatunknown
 

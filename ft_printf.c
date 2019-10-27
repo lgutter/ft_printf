@@ -6,17 +6,16 @@
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/11 13:40:08 by lgutter        #+#    #+#                */
-/*   Updated: 2019/10/14 17:16:03 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/10/27 17:35:06 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printf(const char *restrict format, ...)
+int		ft_printf(const char *restrict format, ...)
 {
 	int			i;
 	t_info		info;
-	t_formatter	formatter;
 
 	va_start(info.arguments, format);
 	i = 0;
@@ -24,11 +23,7 @@ int	ft_printf(const char *restrict format, ...)
 	{
 		if (format[i] == '%')
 		{
-			i += ft_init_info(&format[i], &info);
-			formatter = ft_dispatcher(format[i]);
-			if (formatter != NULL)
-				formatter(&info);
-			i++;
+			i += ft_process_conversion(&format[i], &info);
 		}
 		else
 		{

@@ -6,7 +6,7 @@
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/27 12:13:40 by lgutter        #+#    #+#                */
-/*   Updated: 2019/10/27 12:22:04 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/10/27 18:06:19 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	*ft_strcharjoin(char *str, char c)
 {
 	char	*strnew;
-	int		i;
+	size_t		i;
 
 	i = 0;
 	strnew = ft_strnew(ft_strlen(str) + 2);
@@ -26,7 +26,7 @@ char	*ft_strcharjoin(char *str, char c)
 		strnew[i] = str[i];
 		i++;
 	}
-	str[i] = c;
-	str[i + 1] = '\0';
+	strnew[i] = c;
+	strnew[i + 1] = '\0';
 	return (strnew);
 }

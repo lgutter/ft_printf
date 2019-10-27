@@ -4,3 +4,5 @@ ft_swap \
 ft_itoa_base \
 ft_ulltoa_base \
 ft_nbrlenbase_ull
+ft_strcharjoin \
+ft_strcharexpand

@@ -6,7 +6,7 @@
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/01/10 17:29:34 by lgutter        #+#    #+#                */
-/*   Updated: 2019/10/22 13:08:51 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/10/27 12:51:14 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,5 +116,7 @@ char				*ft_strrev(char *str, int start);
 char				*ft_itoa_base(signed long long nb, const unsigned int base);
 char				*ft_ulltoa_base(unsigned long long nb, const unsigned base);
 size_t				ft_nbrlenbase_ull(unsigned long long number, int base);
+char				*ft_strcharjoin(char *str, char c);
+void				ft_strcharexpand(char **source, const char addition);
 
 #endif

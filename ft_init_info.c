@@ -6,7 +6,7 @@
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/14 14:50:09 by lgutter        #+#    #+#                */
-/*   Updated: 2019/10/14 18:07:10 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/10/27 17:59:54 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,12 @@ int	ft_init_info(const char *format, t_info *info)
 	info->width = 0;
 	info->precision = 0;
 	info->writer = &ft_putstr;
-	while (format[i] == ' ' && format[i] != '\0')
+	while (format[i] != '\0' && format[i] != 'c' && format[i] != 's')
 	{
-		(info->options) = 128;
+		if (format[i] == '\0')
+			return (i);
+		if (format[i] == ' ')
+			(info->options) |= e_space;
 		i++;
 	}
 	return (i);

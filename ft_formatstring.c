@@ -6,7 +6,7 @@
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/14 16:45:31 by lgutter        #+#    #+#                */
-/*   Updated: 2019/10/14 16:51:42 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/10/27 17:33:24 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,14 @@ int		ft_formatstring(t_info *info)
 {
 	char *string;
 
-	if (info->options & 128)
+	string = NULL;
+	if ((info->options & e_space) != 0)
 	{
-		ft_putchar(' ');
+		ft_strcharexpand(&string, ' ');
 	}
-	string = va_arg(info->arguments, char *);
-	ft_putstr(string);
+	ft_strexpand(&string, va_arg(info->arguments, char *));
+	if (string == NULL)
+		return (1);
+	info->writer(string);
 	return (0);
 }

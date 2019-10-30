@@ -4,5 +4,5 @@ ft_process_conversion \
 ft_init_info \
 ft_formatchar \
 ft_formatstring \
-ft_formatunknown
-
+ft_formatunknown \
+ft_is_conv

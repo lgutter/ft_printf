@@ -1,37 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_printf.c                                        :+:    :+:            */
+/*   ft_formatstring.c                                  :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/09/11 13:40:08 by lgutter        #+#    #+#                */
-/*   Updated: 2019/10/30 13:01:19 by lgutter       ########   odam.nl         */
+/*   Created: 2019/10/14 16:45:31 by lgutter        #+#    #+#                */
+/*   Updated: 2019/10/30 13:31:41 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_printf(const char *restrict format, ...)
+int		ft_formatstring(t_info *info)
 {
-	int			i;
-	t_info		info;
+	char *string;
 
-	info.writer = &ft_putstr;
-	va_start(info.arguments, format);
-	i = 0;
-	while (format[i] != '\0')
+	string = NULL;
+	if ((info->options & e_space) != 0)
 	{
-		if (format[i] == '%')
-		{
-			i += ft_process_conversion(&format[i], &info);
-		}
-		else
-		{
-			ft_putchar(format[i]);
-			i++;
-		}
+		info->writer(" ");
 	}
-	va_end(info.arguments);
+	ft_strexpand(&string, va_arg(info->arguments, char *));
+	if (string == NULL)
+		return (1);
+	info->writer(string);
 	return (0);
 }

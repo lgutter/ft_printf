@@ -1,37 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_printf.c                                        :+:    :+:            */
+/*   ft_strcharjoin.c                                   :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/09/11 13:40:08 by lgutter        #+#    #+#                */
-/*   Updated: 2019/10/30 13:01:19 by lgutter       ########   odam.nl         */
+/*   Created: 2019/10/27 12:13:40 by lgutter        #+#    #+#                */
+/*   Updated: 2019/10/27 18:06:19 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int		ft_printf(const char *restrict format, ...)
+char	*ft_strcharjoin(char *str, char c)
 {
-	int			i;
-	t_info		info;
+	char	*strnew;
+	size_t		i;
 
-	info.writer = &ft_putstr;
-	va_start(info.arguments, format);
 	i = 0;
-	while (format[i] != '\0')
+	strnew = ft_strnew(ft_strlen(str) + 2);
+	if (strnew == NULL)
+		return (NULL);
+	while (i < ft_strlen(str))
 	{
-		if (format[i] == '%')
-		{
-			i += ft_process_conversion(&format[i], &info);
-		}
-		else
-		{
-			ft_putchar(format[i]);
-			i++;
-		}
+		strnew[i] = str[i];
+		i++;
 	}
-	va_end(info.arguments);
-	return (0);
+	strnew[i] = c;
+	strnew[i + 1] = '\0';
+	return (strnew);
 }

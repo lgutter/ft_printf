@@ -1,37 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_printf.c                                        :+:    :+:            */
+/*   ft_init_info.c                                     :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/09/11 13:40:08 by lgutter        #+#    #+#                */
-/*   Updated: 2019/10/30 13:01:19 by lgutter       ########   odam.nl         */
+/*   Created: 2019/10/14 14:50:09 by lgutter        #+#    #+#                */
+/*   Updated: 2019/10/30 13:14:18 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_printf(const char *restrict format, ...)
+int	ft_init_info(const char *format, t_info *info)
 {
-	int			i;
-	t_info		info;
+	int i;
 
-	info.writer = &ft_putstr;
-	va_start(info.arguments, format);
-	i = 0;
-	while (format[i] != '\0')
+	i = 1;
+	info->options = 0;
+	info->width = 0;
+	info->precision = 0;
+	while (format[i] != '\0' && format[i] != 'c' && format[i] != 's')
 	{
-		if (format[i] == '%')
-		{
-			i += ft_process_conversion(&format[i], &info);
-		}
-		else
-		{
-			ft_putchar(format[i]);
-			i++;
-		}
+		if (format[i] == '\0')
+			return (i);
+		if (format[i] == ' ')
+			(info->options) |= e_space;
+		i++;
 	}
-	va_end(info.arguments);
-	return (0);
+	return (i);
 }

@@ -1,37 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_printf.c                                        :+:    :+:            */
+/*   ft_strcharexpand.c                                 :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/09/11 13:40:08 by lgutter        #+#    #+#                */
-/*   Updated: 2019/10/30 13:01:19 by lgutter       ########   odam.nl         */
+/*   Created: 2019/10/27 12:30:20 by lgutter        #+#    #+#                */
+/*   Updated: 2019/10/27 17:49:46 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int		ft_printf(const char *restrict format, ...)
+void	ft_strcharexpand(char **source, const char addition)
 {
-	int			i;
-	t_info		info;
+	void *temp;
 
-	info.writer = &ft_putstr;
-	va_start(info.arguments, format);
-	i = 0;
-	while (format[i] != '\0')
+	temp = *source;
+	if (*source == NULL)
 	{
-		if (format[i] == '%')
+		*source = ft_strnew(1);
+		if (*source != NULL)
 		{
-			i += ft_process_conversion(&format[i], &info);
-		}
-		else
-		{
-			ft_putchar(format[i]);
-			i++;
+			*source[0] = addition;
 		}
 	}
-	va_end(info.arguments);
-	return (0);
+	else
+	{
+		*source = ft_strcharjoin(*source, addition);
+		free(temp);
+	}
 }

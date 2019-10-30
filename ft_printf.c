@@ -6,7 +6,7 @@
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/11 13:40:08 by lgutter        #+#    #+#                */
-/*   Updated: 2019/10/27 17:35:06 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/10/30 13:01:19 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int		ft_printf(const char *restrict format, ...)
 	int			i;
 	t_info		info;
 
+	info.writer = &ft_putstr;
 	va_start(info.arguments, format);
 	i = 0;
 	while (format[i] != '\0')

@@ -6,7 +6,7 @@
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/14 16:25:46 by lgutter        #+#    #+#                */
-/*   Updated: 2019/10/14 16:47:23 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/10/30 13:07:06 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,5 @@ t_formatter	ft_dispatcher(char conv_flag)
 		['s'] = &ft_formatstring,
 	};
 
-	return (formatter[(int)conv_flag]);
+	return (formatter[(unsigned int)conv_flag]);
 }

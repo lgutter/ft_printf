@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/13 14:10:30 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/10/30 14:55:56 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/10/31 18:46:29 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,7 @@ int						ft_formatstring(t_info *info);
 int						ft_formatunknown(t_info *info, char c);
 
 int						ft_is_conv(const char ch);
+int						ft_find_options\
+						(const char *format, t_info *info, int i);
 
 #endif

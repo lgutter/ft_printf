@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/13 14:10:30 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/01 14:14:31 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/01 15:40:00 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,7 @@ int						ft_is_conv(const char ch);
 int						ft_find_flags\
 						(const char *format, t_info *info, int i);
 int						ft_find_width(const char *format, t_info *info, int i);
+int						ft_find_precision\
+						(const char *format, t_info *info, int i);
 
 #endif

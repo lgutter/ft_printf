@@ -7,4 +7,5 @@ ft_formatstring \
 ft_formatunknown \
 ft_is_conv \
 ft_find_flags \
-ft_find_width
+ft_find_width \
+ft_find_precision

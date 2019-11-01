@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_init_info.c                                     :+:    :+:            */
+/*   ft_find_width.c                                    :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
+/*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/10/14 14:50:09 by lgutter        #+#    #+#                */
-/*   Updated: 2019/11/01 15:26:18 by ivan-tey      ########   odam.nl         */
+/*   Created: 2019/11/01 13:57:09 by ivan-tey       #+#    #+#                */
+/*   Updated: 2019/11/01 15:17:28 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_init_info(const char *format, t_info *info)
+int			ft_find_width(const char *format, t_info *info, int i)
 {
-	int i;
+	size_t	nb;
 
-	i = 1;
-	info->flags = 0;
-	info->width = 0;
-	info->precision = 0;
-	info->lenmod = 0;
-	i = ft_find_flags(format, info, i);
-	i = ft_find_width(format, info, i);
+	nb = 0;
+	nb = ft_atoi(&format[i]);
+	i += ft_nbrlenbase(nb, 10);
+	(info->width) = nb;
 	return (i);
 }

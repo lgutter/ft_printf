@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_find_options.c                                  :+:    :+:            */
+/*   ft_find_flags.c                                    :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/10/30 17:40:28 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/10/31 16:58:55 by ivan-tey      ########   odam.nl         */
+/*   Created: 2019/11/01 12:25:51 by ivan-tey       #+#    #+#                */
+/*   Updated: 2019/11/01 12:25:53 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_find_options(const char *format, t_info *info, int i)
+int		ft_find_flags(const char *format, t_info *info, int i)
 {
 	while (format[i] != '\0' && ft_is_conv(format[i]) == 0)
 	{
-		if (ft_isdigit(format[i] == 1 || format[i] == '.'))
+		if (ft_isdigit(format[i]) == 1 || format[i] == '.')
 			return (i);
 		if (format[i] == '+')
-			(info->options) |= e_plus;
+			(info->flags) |= e_plus;
 		if (format[i] == '-')
-			(info->options) |= e_minus;
+			(info->flags) |= e_minus;
 		if (format[i] == ' ')
-			(info->options) |= e_space;
+			(info->flags) |= e_space;
 		if (format[i] == '0')
-			(info->options) |= e_zero;
+			(info->flags) |= e_zero;
 		if (format[i] == '#')
-			(info->options) |= e_hash;
+			(info->flags) |= e_hash;
 		i++;
 	}
 	return (i);

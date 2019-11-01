@@ -6,14 +6,14 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/13 14:10:30 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/10/31 18:46:29 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/01 12:24:00 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include "libft.h"
+# include "libft/libft.h"
 # include <stdarg.h>
 
 typedef void				(*t_writer)(const char *string);
@@ -40,7 +40,8 @@ enum					e_options
 
 typedef struct			s_info
 {
-	unsigned short		options;
+	unsigned char		flags;
+	unsigned char		lenmod;
 	va_list				arguments;
 	size_t				width;
 	size_t				precision;
@@ -57,7 +58,7 @@ int						ft_formatstring(t_info *info);
 int						ft_formatunknown(t_info *info, char c);
 
 int						ft_is_conv(const char ch);
-int						ft_find_options\
+int						ft_find_flags\
 						(const char *format, t_info *info, int i);
 
 #endif

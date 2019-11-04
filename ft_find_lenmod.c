@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/04 10:06:39 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/04 16:50:24 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/04 16:52:18 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int				ft_find_lenmod(const char *format, t_info *info, int i)
 			i += 2;
 			return (i);
 		}
-		else 
+		else
 			return (i);
 		i++;
 	}

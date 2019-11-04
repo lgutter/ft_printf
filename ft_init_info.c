@@ -6,7 +6,7 @@
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/14 14:50:09 by lgutter        #+#    #+#                */
-/*   Updated: 2019/11/01 15:30:56 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/04 10:42:16 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ int	ft_init_info(const char *format, t_info *info)
 	i = ft_find_flags(format, info, i);
 	i = ft_find_width(format, info, i);
 	i = ft_find_precision(format, info, i);
+	i = ft_find_lenmod(format, info, i);
 	return (i);
 }

@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_formatunknown.c                                 :+:    :+:            */
+/*   ft_is_conv.c                                       :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
+/*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/10/27 17:35:37 by lgutter        #+#    #+#                */
-/*   Updated: 2019/11/04 17:21:18 by lgutter       ########   odam.nl         */
+/*   Created: 2019/10/30 14:29:53 by ivan-tey       #+#    #+#                */
+/*   Updated: 2019/10/31 16:56:51 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_formatunknown(t_info *info, char c)
+int		ft_is_conv(const char ch)
 {
-	if ((info->flags & e_space) != 0)
-	{
-		info->writer(" ", 1);
-	}
-	if (c != '\0')
-	{
-		info->writer(&c, 1);
-	}
+	if (ch == 'c' || ch == 's' || ch == 'p')
+		return (1);
+	if (ch == 'd' || ch == 'i' || ch == 'u')
+		return (1);
+	if (ch == 'o' || ch == 'x' || ch == 'X' || ch == 'f')
+		return (1);
 	return (0);
 }

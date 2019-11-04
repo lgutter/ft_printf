@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_formatunknown.c                                 :+:    :+:            */
+/*   ft_find_precision.c                                :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
+/*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/10/27 17:35:37 by lgutter        #+#    #+#                */
-/*   Updated: 2019/11/04 17:21:18 by lgutter       ########   odam.nl         */
+/*   Created: 2019/11/01 15:31:26 by ivan-tey       #+#    #+#                */
+/*   Updated: 2019/11/01 15:41:45 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_formatunknown(t_info *info, char c)
+int		ft_find_precision(const char *format, t_info *info, int i)
 {
-	if ((info->flags & e_space) != 0)
+	size_t nb;
+
+	nb = 0;
+	if (format[i] == '.')
 	{
-		info->writer(" ", 1);
+		i++;
+		nb = ft_atoi(&format[i]);
+		info->precision = nb;
+		i += ft_nbrlenbase(nb, 10);
 	}
-	if (c != '\0')
-	{
-		info->writer(&c, 1);
-	}
-	return (0);
+	return (i);
 }

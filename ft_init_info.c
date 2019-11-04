@@ -6,7 +6,7 @@
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/14 14:50:09 by lgutter        #+#    #+#                */
-/*   Updated: 2019/10/30 13:14:18 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/04 10:42:16 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,13 @@ int	ft_init_info(const char *format, t_info *info)
 	int i;
 
 	i = 1;
-	info->options = 0;
+	info->flags = 0;
 	info->width = 0;
 	info->precision = 0;
-	while (format[i] != '\0' && format[i] != 'c' && format[i] != 's')
-	{
-		if (format[i] == '\0')
-			return (i);
-		if (format[i] == ' ')
-			(info->options) |= e_space;
-		i++;
-	}
+	info->lenmod = 0;
+	i = ft_find_flags(format, info, i);
+	i = ft_find_width(format, info, i);
+	i = ft_find_precision(format, info, i);
+	i = ft_find_lenmod(format, info, i);
 	return (i);
 }

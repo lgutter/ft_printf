@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/01 12:25:51 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/01 15:46:46 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/04 14:46:55 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		ft_find_flags(const char *format, t_info *info, int i)
 {
-	while (format[i] != '\0' && ft_is_conv(format[i]) == 0)
+	while (format[i] != '\0' && ft_isalpha(format[i]) == 0)
 	{
 		if (format[i] == '+')
 			info->flags |= e_plus;

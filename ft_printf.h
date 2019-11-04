@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/13 14:10:30 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/04 10:27:56 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/04 11:51:20 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,27 @@
 typedef void				(*t_writer)(const char *string);
 
 /*
-**	enumerations for the flags and modifiers stored in options.
+**	enumerations for the flags and modifiers stored in lenmod and flags.
 **	these are written down here as bitshifts, but in essence the exact number
 **	linked to an enum is not relevant, just that we can uniquely store and fetch
 **	any option (flag or modifier)
 */
-enum					e_options
+enum					e_lenmod
 {
 	e_L = 1 << 0,
 	e_l = 1 << 1,
 	e_h = 1 << 2,
 	e_ll = 1 << 3,
-	e_hh = 1 << 4,
-	e_hash = 1 << 5,
-	e_zero = 1 << 6,
-	e_space = 1 << 7,
-	e_minus = 1 << 8,
-	e_plus = 1 << 9
+	e_hh = 1 << 4
+};
+
+enum					e_flags
+{
+	e_hash = 1 << 0,
+	e_zero = 1 << 1,
+	e_space = 1 << 2,
+	e_minus = 1 << 3,
+	e_plus = 1 << 4
 };
 
 typedef struct			s_info

@@ -3,6 +3,4 @@ simplecall \
 strexpand_tests \
 itoa_base_test \
 ulltoa_base_test \
-strcharjoin_tests \
-strcharexpand_tests \
 options_test

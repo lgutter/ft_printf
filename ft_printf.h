@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/13 14:10:30 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/04 11:51:20 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/04 17:05:54 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "libft/libft.h"
 # include <stdarg.h>
 
-typedef void				(*t_writer)(const char *string);
+typedef void				(*t_writer)(const char *string, size_t len);
 
 /*
 **	enumerations for the flags and modifiers stored in lenmod and flags.
@@ -68,5 +68,6 @@ int						ft_find_width(const char *format, t_info *info, int i);
 int						ft_find_precision\
 						(const char *format, t_info *info, int i);
 int						ft_find_lenmod(const char *format, t_info *info, int i);
+void					ft_writer(const char *string, size_t len);
 
 #endif

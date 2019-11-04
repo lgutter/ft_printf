@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/31 16:37:09 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/04 15:18:11 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/04 15:29:51 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,3 +106,22 @@ Test(init_info_test, presicion_lenmod_ll)
 	cr_assert_eq(info.precision, (size_t)5, "info.lenmod contains %zu instead of %zu!", info.precision, (size_t)5);
 }
 
+Test(init_info_test, presicion_lenmod_hh)
+{
+	t_info info;
+
+	char *format = "%#0hhf";
+	ft_init_info(format, &info);
+	cr_assert_eq(info.flags, 0b00000011, "info.lenmod contains %i instead of %i!", info.flags, 0b00000011);
+	cr_assert_eq(info.lenmod, 0b00010000, "info.lenmod contains %i instead of %i!", info.lenmod, 0b00010000);
+}
+
+Test(init_info_test, width_lenmod_h)
+{
+	t_info info;
+
+	char *format = "%5hf";
+	ft_init_info(format, &info);
+	cr_assert_eq(info.width, (size_t)5, "info.lenmod contains %zu instead of %zu!", info.width, (size_t)5);
+	cr_assert_eq(info.lenmod, 0b00000100, "info.lenmod contains %i instead of %i!", info.lenmod, 0b00000100);
+}

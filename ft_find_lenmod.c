@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/04 10:06:39 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/04 14:56:50 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/04 15:23:17 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int				ft_find_lenmod(const char *format, t_info *info, int i)
 		else if (format[i] == 'l' && format[i + 1] == 'l')
 		{
 			info->lenmod |= e_ll;
+			i += 2;
 			return (i);
 		}
 		else if (format[i] == 'h' && format[i + 1] != 'h')
@@ -30,6 +31,7 @@ int				ft_find_lenmod(const char *format, t_info *info, int i)
 		else if (format[i] == 'h' && format[i + 1] == 'h')
 		{
 			info->lenmod |= e_hh;
+			i += 2;
 			return (i);
 		}
 		i++;

@@ -6,19 +6,20 @@
 
 ## Make commands
 ### make (all)
-compiles libft to .o files (unless already compiled), and compiles the **ft_printf.a** library.
+compiles any .c files that have changed to .o files, and compiles the **ft_printf.a** library.
 
 ### make test
 Calls *all* and then it compiles the criterion tests into the **test** executable.
 
+### make gcov
+Generates *gcov* reports for all .c files of ft_printf and .c files in libft that are in the CovSources file.
+
+### ONLY USE THE FOLLOWING MAKE RULES WHEN ABSOLUTELY NEEDED
+### make clean & make fclean
+*Clean* cleans the repository of generated files and junk, and *fclean* additionally removes compiled .o files, libraries, and executables.
+
 ### make re
 Calls *fclean* and then *all*
-
-### make clean & make fclean
-*Clean* cleans the repository of generated files, and *fclean* additionally removes compiled libraries and executables.
-
-### make gcov
-Generates *gcov* reports for all .c files of ft_printf.
 
 ## Git workflow
 

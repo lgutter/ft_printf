@@ -6,7 +6,7 @@
 #    By: lgutter <lgutter@student.codam.nl>           +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/09/11 13:40:17 by lgutter        #+#    #+#                 #
-#    Updated: 2019/11/04 16:29:40 by lgutter       ########   odam.nl          #
+#    Updated: 2019/11/05 15:24:37 by lgutter       ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,10 +26,10 @@ TESTSOURCES := $(TESTNAMES:%= tests/%.c)
 TESTOBJECTS := $(TESTNAMES:%= tests/%.o)
 
 LIBRARIES := -lftprintf -lcriterion
-INCLUDES := -I ./ -I ./libft -I ./tests
+LIBRARY_PATH := :$(PWD):$(LIBRARY_PATH)
+CPATH := :$(PWD):$(PWD)/libft:$(PWD)/tests:$(CPATH)
 HEADER := ft_printf.h
 
-CC := gcc
 CFLAGS := -coverage -Wall -Wextra -Werror -Wunreachable-code -g
 
 NAME := libftprintf.a
@@ -46,7 +46,7 @@ C_LINES = \033[38;5;250m
 
 all: $(NAME)
 
-$(NAME): $(LFTOBJECTS) $(COVOBJECTS) $(OBJECTS)
+$(NAME): $(LFTOBJECTS) $(COVOBJECTS) $(OBJECTS) $(HEADER)
 	@$(MAKE) norm
 	@echo "$(C_LINES)- - - - - - - - - -$(C_RESET)"
 	@ar rc $@ $^
@@ -55,13 +55,13 @@ $(NAME): $(LFTOBJECTS) $(COVOBJECTS) $(OBJECTS)
 
 
 %.o: %.c
-	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 	@echo "$(C_OBJECTS)$@ compiled$(C_RESET)"
 
 $(TEST): $(NAME) $(TESTOBJECTS)
 	@$(MAKE) norm
 	@echo "$(C_LINES)- - - - - - - - - -$(C_RESET)"
-	@gcc $(CFLAGS) $(INCLUDES) -L ./ $(LIBRARIES) $(TESTOBJECTS) -o $@
+	@$(CC) $(CFLAGS) $(LIBRARIES) $(TESTOBJECTS) -o $@
 	@echo "$(C_TEST)Test program has been compiled$(C_RESET)"
 
 norm:

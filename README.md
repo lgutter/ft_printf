@@ -9,14 +9,18 @@
 compiles any .c files that have changed to .o files, and compiles the **ft_printf.a** library.
 
 ### make test
-Calls *all* and then it compiles the criterion tests into the **test** executable.
+Calls *norm* and *clean* and then it compiles the criterion tests into the **test** executable.
 
 ### make gcov
 Generates *gcov* reports for all .c files of ft_printf and .c files in libft that are in the CovSources file.
 
+### make clean
+Removes junk files and coverage files.
+
+
 ### ONLY USE THE FOLLOWING MAKE RULES WHEN ABSOLUTELY NEEDED
-### make clean & make fclean
-*Clean* cleans the repository of generated files and junk, and *fclean* additionally removes compiled .o files, libraries, and executables.
+### make oclean & make fclean
+*Oclean* calls *clean* and then removes object files, and *fclean* additionally removes the compiled library and test executable.
 
 ### make re
 Calls *fclean* and then *all*

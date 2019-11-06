@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/06 18:36:06 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/06 19:12:19 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/06 19:18:32 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ void			ft_check_width(t_info *info, t_convinfo *convinfo, \
 	size_t		len;
 
 	len = 0;
-	if (info->width > 0 && info->width > src_len && convinfo->type == 'c')
+	convinfo->type = 'K';
+	if (info->width > 0 && info->width > src_len)
 	{
 		len = info->width - src_len;
 		while (len > 0)

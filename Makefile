@@ -6,7 +6,7 @@
 #    By: lgutter <lgutter@student.codam.nl>           +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/09/11 13:40:17 by lgutter        #+#    #+#                 #
-#    Updated: 2019/11/05 15:24:37 by lgutter       ########   odam.nl          #
+#    Updated: 2019/11/06 14:10:18 by lgutter       ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,14 +15,14 @@ include libft/Sources
 include libft/CovSources
 include tests/testsources
 
-JUNK := *.gcov *.gcno *.gcda *~ \#*\# .DS_Store
+JUNK := *~ \#*\# .DS_Store
+COVJUNK := *.gcov *.gcno *.gcda
 
 CSOURCES := $(SOURCES:%= %.c)
 OBJECTS := $(SOURCES:%= %.o)
 LFTOBJECTS := $(LFTSOURCES:%= libft/%.o)
 COVOBJECTS := $(COVSOURCES:%= libft/%.o)
 COVSOURCES := $(COVSOURCES:%= libft/%.c)
-TESTSOURCES := $(TESTNAMES:%= tests/%.c)
 TESTOBJECTS := $(TESTNAMES:%= tests/%.o)
 
 LIBRARIES := -lftprintf -lcriterion
@@ -60,6 +60,7 @@ $(NAME): $(LFTOBJECTS) $(COVOBJECTS) $(OBJECTS) $(HEADER)
 
 $(TEST): $(NAME) $(TESTOBJECTS)
 	@$(MAKE) norm
+	@$(MAKE) clean
 	@echo "$(C_LINES)- - - - - - - - - -$(C_RESET)"
 	@$(CC) $(CFLAGS) $(LIBRARIES) $(TESTOBJECTS) -o $@
 	@echo "$(C_TEST)Test program has been compiled$(C_RESET)"
@@ -71,15 +72,19 @@ gcov:
 	@gcov $(CSOURCES) $(COVSOURCES)
 
 clean:
-	@rm -rf $(OBJECTS) $(TESTOBJECTS) $(COVOBJECTS) $(JUNK)
-	@echo "$(C_CLEAN)Libftprintf object files removed$(C_RESET)"
+	@rm -rf $(COVJUNK) $(JUNK)
+	@echo "$(C_CLEAN)Junk & coverage files removed$(C_RESET)"
 
-fclean: clean
+oclean: clean
+	@rm -rf $(OBJECTS) $(TESTOBJECTS) $(COVOBJECTS)
+	@echo "$(C_CLEAN)Object files removed$(C_RESET)"
+
+fclean: oclean
 	@rm -rf $(NAME) $(TEST)
-	@echo "$(C_FCLEAN)Libftprintf.a & test program removed$(C_RESET)"
+	@echo "$(C_FCLEAN)$(NAME) & $(TEST) removed$(C_RESET)"
 	@echo "$(C_LINES)- - - - - - - - - -$(C_RESET)"
 	@make fclean -C libft/
 
 re: fclean all
 
-.PHONY: all norm gcov clean fclean re
+.PHONY: all norm gcov clean oclean fclean re

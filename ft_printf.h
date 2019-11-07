@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/13 14:10:30 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/06 18:39:46 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/07 12:12:54 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,6 @@ int						ft_find_precision\
 int						ft_find_lenmod(const char *format, t_info *info, int i);
 
 void					ft_check_width\
-						(t_info *info, t_convinfo *convinfo, size_t len);
+						(t_info *info, size_t len);
 
 #endif

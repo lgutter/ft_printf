@@ -6,7 +6,7 @@
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/14 16:40:16 by lgutter        #+#    #+#                */
-/*   Updated: 2019/11/06 19:18:53 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/07 11:39:13 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,12 @@ int		ft_formatchar(t_info *info, t_convinfo *convinfo)
 
 	convinfo->type = 'c';
 	c = va_arg(info->arguments, int);
+	if ((info->flags & e_minus) != 0)
+	{
+		info->writer(&c, 1);
+		ft_check_width(info, convinfo, 1);
+		return (0);
+	}
 	ft_check_width(info, convinfo, 1);
 	info->writer(&c, 1);
 	return (0);

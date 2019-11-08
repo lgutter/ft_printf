@@ -6,7 +6,7 @@
 #    By: lgutter <lgutter@student.codam.nl>           +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/09/11 13:40:17 by lgutter        #+#    #+#                 #
-#    Updated: 2019/11/08 13:41:00 by ivan-tey      ########   odam.nl          #
+#    Updated: 2019/11/08 14:33:23 by lgutter       ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,14 +16,18 @@ include libft/CovSources
 include tests/testsources
 
 JUNK := **/*~ **/\#*\# **/.DS_Store
-COVJUNK := **/*.gcov **/*.gcno **/*.gcda
+COVJUNK := **/*.gcov **/*.gcda *.gcov *.gcda
 
 CSOURCES := $(SOURCES:%= %.c)
 OBJECTS := $(SOURCES:%= %.o)
+GCNOFILES += $(SOURCES:%= *.gcno)
 LFTOBJECTS := $(LFTSOURCES:%= libft/%.o)
 COVOBJECTS := $(COVSOURCES:%= libft/%.o)
+GCNOFILES += $(COVSOURCES:%= libft/*.gcno)
 COVSOURCES := $(COVSOURCES:%= libft/%.c)
 TESTOBJECTS := $(TESTNAMES:%= tests/%.o)
+COVJUNK += $(LFTSOURCES:%= libft/%.gcno)
+COVJUNK += $(TESTNAMES:%= tests/%.gcno)
 
 LIBRARIES := -lftprintf -lcriterion
 LIBRARY_PATH := :$(PWD):$(LIBRARY_PATH)
@@ -76,7 +80,7 @@ clean:
 	@echo "$(C_CLEAN)Junk & coverage files removed$(C_RESET)"
 
 oclean: clean
-	@rm -rf $(OBJECTS) $(TESTOBJECTS) $(COVOBJECTS)
+	@rm -rf $(OBJECTS) $(TESTOBJECTS) $(COVOBJECTS) $(GCNOFILES)
 	@echo "$(C_CLEAN)Object files removed$(C_RESET)"
 
 fclean: oclean

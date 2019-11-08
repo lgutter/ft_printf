@@ -6,7 +6,7 @@
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/25 15:46:25 by lgutter        #+#    #+#                */
-/*   Updated: 2019/10/27 18:00:34 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/06 18:33:53 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,13 @@ int		ft_process_conversion(const char *format, t_info *info)
 {
 	int			i;
 	t_formatter	formatter;
+	t_convinfo	convinfo;
 
 	i = ft_init_info(format, info);
 	formatter = ft_dispatcher(format[i]);
 	if (formatter != NULL)
 	{
-		formatter(info);
+		formatter(info, &convinfo);
 	}
 	else
 	{

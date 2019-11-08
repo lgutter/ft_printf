@@ -6,14 +6,14 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/13 14:10:30 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/05 15:25:19 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/07 12:12:54 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include "libft.h"
+# include "libft/libft.h"
 # include <stdarg.h>
 
 typedef void				(*t_writer)(const char *string, size_t len);
@@ -52,13 +52,21 @@ typedef struct			s_info
 	t_writer			writer;
 }						t_info;
 
-typedef int				(*t_formatter)(t_info *info);
+typedef struct			s_convinfo
+{
+	size_t				positive;
+	char				type;
+}						t_convinfo;
+
+typedef int				(*t_formatter)(t_info *info, t_convinfo *convinfo);
 int						ft_printf(const char *restrict format, ...);
 int						ft_process_conversion(const char *format, t_info *info);
 int						ft_init_info(const char *format, t_info *info);
 t_formatter				ft_dispatcher(char conv_flag);
-int						ft_formatchar(t_info *info);
-int						ft_formatstring(t_info *info);
+void					ft_writer(const char *string, size_t len);
+
+int						ft_formatchar(t_info *info, t_convinfo *convinfo);
+int						ft_formatstring(t_info *info, t_convinfo *convinfo);
 int						ft_formatunknown(t_info *info, char c);
 
 int						ft_is_conv(const char ch);
@@ -68,6 +76,8 @@ int						ft_find_width(const char *format, t_info *info, int i);
 int						ft_find_precision\
 						(const char *format, t_info *info, int i);
 int						ft_find_lenmod(const char *format, t_info *info, int i);
-void					ft_writer(const char *string, size_t len);
+
+void					ft_check_width\
+						(t_info *info, size_t len);
 
 #endif

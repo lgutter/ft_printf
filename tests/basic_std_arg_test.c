@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/13 14:28:17 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/05 15:27:30 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/07 11:41:10 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ Test(redirect, test_char_space, .init = redirect_std_out) {
     ft_printf("ha% clo!", 'l');
     fflush(stdout);
 
-    cr_assert_stdout_eq_str("ha llo!");
+    cr_assert_stdout_eq_str("hallo!");
 }
 
 Test(redirect, test_string, .init = redirect_std_out) {
@@ -44,7 +44,7 @@ Test(redirect, test_space, .init = redirect_std_out) {
     ft_printf("ha%  s!", "llo");
     fflush(stdout);
 
-    cr_assert_stdout_eq_str("ha llo!");
+    cr_assert_stdout_eq_str("hallo!");
 }
 
 Test(redirect, test_unknown, .init = redirect_std_out) {

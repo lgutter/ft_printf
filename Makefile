@@ -6,7 +6,7 @@
 #    By: lgutter <lgutter@student.codam.nl>           +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/09/11 13:40:17 by lgutter        #+#    #+#                 #
-#    Updated: 2019/11/08 13:39:19 by ivan-tey      ########   odam.nl          #
+#    Updated: 2019/11/08 13:41:00 by ivan-tey      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,7 +72,7 @@ gcov:
 	@gcov $(CSOURCES) $(COVSOURCES)
 
 clean:
-	rm -rf $(COVJUNK) $(JUNK)
+	@rm -rf $(COVJUNK) $(JUNK)
 	@echo "$(C_CLEAN)Junk & coverage files removed$(C_RESET)"
 
 oclean: clean

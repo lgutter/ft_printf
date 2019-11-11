@@ -9,5 +9,5 @@ ft_find_flags \
 ft_find_width \
 ft_find_precision \
 ft_find_lenmod \
-ft_writer \
+ft_writer_fd \
 ft_check_width

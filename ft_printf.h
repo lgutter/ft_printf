@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/13 14:10:30 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/07 12:12:54 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/11 12:23:48 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ typedef struct			s_info
 
 typedef struct			s_convinfo
 {
-	size_t				positive;
+	size_t				negative;
+	size_t				len;
 	char				type;
 }						t_convinfo;
 
@@ -68,6 +69,10 @@ void					ft_writer(const char *string, size_t len);
 int						ft_formatchar(t_info *info, t_convinfo *convinfo);
 int						ft_formatstring(t_info *info, t_convinfo *convinfo);
 int						ft_formatunknown(t_info *info, char c);
+
+int						ft_formatint(t_info *info, t_convinfo *convinfo);
+int						ft_handle_negint\
+						(int n, t_info *info, t_convinfo *convinfo);
 
 int						ft_is_conv(const char ch);
 int						ft_find_flags\

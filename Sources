@@ -11,4 +11,6 @@ ft_find_width \
 ft_find_precision \
 ft_find_lenmod \
 ft_writer \
-ft_check_width
+ft_check_width \
+ft_formatint \
+ft_handle_negint

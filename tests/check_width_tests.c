@@ -6,13 +6,13 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/07 11:32:15 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/07 12:07:46 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/10 17:52:49 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <criterion/criterion.h>
 #include <criterion/redirect.h>
-#include "../ft_printf.h"
+#include "ft_printf.h"
 
 void redirect_stdout(void)
 {

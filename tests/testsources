@@ -4,4 +4,5 @@ strexpand_tests \
 itoa_base_test \
 ulltoa_base_test \
 options_test \
-check_width_tests
+check_width_tests \
+formatchar_tests

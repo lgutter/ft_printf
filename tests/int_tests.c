@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/11 12:31:48 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/11 17:16:32 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/11 17:38:27 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,4 +119,21 @@ Test(test_format_int, int_zero_flag_nb, .init = redirect_std_out_format_int)
     fflush(stdout);
 
     cr_assert_stdout_eq_str("00024");
+}
+
+Test(test_format_int, int_zero_minus_nb, .init = redirect_std_out_format_int) 
+{
+    t_info info;
+    t_convinfo convinfo;
+    int d;
+
+    d = -24;
+    init_va_list(&info, d);
+    info.writer = &simplewriter;
+    info.flags = e_zero;
+    info.width = 5;
+    ft_formatint(&info, &convinfo);
+    fflush(stdout);
+
+    cr_assert_stdout_eq_str("-0024");
 }

@@ -45,7 +45,7 @@ Test(test_format_int, int_simple_nb, .init = redirect_std_out_format_int)
 	int d;
 	int fd;
 
-	fd = stdout;
+	fd = 1;
 	d = 24;
 	init_va_list(&info, d);
 	info.writer = &simplewriter;
@@ -64,7 +64,7 @@ Test(test_format_int, int_simple_minus_nb, .init = redirect_std_out_format_int)
 	int d;
 	int fd;
 
-	fd = stdout;
+	fd = 1;
 	d = -24;
 	init_va_list(&info, d);
 	info.writer = &simplewriter;
@@ -83,7 +83,7 @@ Test(test_format_int, int_width_nb, .init = redirect_std_out_format_int)
 	int d;
 	int fd;
 
-	fd = stdout;
+	fd = 1;
 	d = 24;
 	init_va_list(&info, d);
 	info.writer = &simplewriter;
@@ -102,7 +102,7 @@ Test(test_format_int, int_minus_flag_nb, .init = redirect_std_out_format_int)
 	int d;
 	int fd;
 
-	fd = stdout;
+	fd = 1;
 	d = 24;
 	init_va_list(&info, d);
 	info.writer = &simplewriter;
@@ -121,7 +121,7 @@ Test(test_format_int, int_zero_flag_nb, .init = redirect_std_out_format_int)
 	int d;
 	int fd;
 
-	fd = stdout;
+	fd = 1;
 	d = 24;
 	init_va_list(&info, d);
 	info.writer = &simplewriter;
@@ -140,7 +140,7 @@ Test(test_format_int, int_zero_minus_nb, .init = redirect_std_out_format_int)
 	int d;
 	int fd;
 
-	fd = stdout;
+	fd = 1;
 	d = -24;
 	init_va_list(&info, d);
 	info.writer = &simplewriter;

@@ -6,13 +6,13 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/11 12:31:48 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/12 11:03:19 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/12 18:41:57 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <criterion/criterion.h>
 #include <criterion/redirect.h>
-#include "../ft_printf.h"
+#include "ft_printf.h"
 
 void redirect_std_out_format_int(void)
 {
@@ -39,7 +39,7 @@ void init_va_list(t_info *info, ...)
     va_start(info->arguments, info);
 }
 
-Test(test_format_int, int_simple_nb, .init = redirect_std_out_format_int) 
+Test(test_format_int, int_simple_nb, .init = redirect_std_out_format_int)
 {
     t_info info;
     int d;
@@ -55,7 +55,7 @@ Test(test_format_int, int_simple_nb, .init = redirect_std_out_format_int)
     cr_assert_stdout_eq_str("24");
 }
 
-Test(test_format_int, int_simple_minus_nb, .init = redirect_std_out_format_int) 
+Test(test_format_int, int_simple_minus_nb, .init = redirect_std_out_format_int)
 {
     t_info info;
     int d;
@@ -71,7 +71,7 @@ Test(test_format_int, int_simple_minus_nb, .init = redirect_std_out_format_int)
     cr_assert_stdout_eq_str("-24");
 }
 
-Test(test_format_int, int_width_nb, .init = redirect_std_out_format_int) 
+Test(test_format_int, int_width_nb, .init = redirect_std_out_format_int)
 {
     t_info info;
     int d;
@@ -87,7 +87,7 @@ Test(test_format_int, int_width_nb, .init = redirect_std_out_format_int)
     cr_assert_stdout_eq_str("   24");
 }
 
-Test(test_format_int, int_minus_flag_nb, .init = redirect_std_out_format_int) 
+Test(test_format_int, int_minus_flag_nb, .init = redirect_std_out_format_int)
 {
     t_info info;
     int d;
@@ -103,7 +103,7 @@ Test(test_format_int, int_minus_flag_nb, .init = redirect_std_out_format_int)
     cr_assert_stdout_eq_str("24   ");
 }
 
-Test(test_format_int, int_zero_flag_nb, .init = redirect_std_out_format_int) 
+Test(test_format_int, int_zero_flag_nb, .init = redirect_std_out_format_int)
 {
     t_info info;
     int d;
@@ -119,7 +119,7 @@ Test(test_format_int, int_zero_flag_nb, .init = redirect_std_out_format_int)
     cr_assert_stdout_eq_str("00024");
 }
 
-Test(test_format_int, int_zero_minus_nb, .init = redirect_std_out_format_int) 
+Test(test_format_int, int_zero_minus_nb, .init = redirect_std_out_format_int)
 {
     t_info info;
     int d;

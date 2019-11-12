@@ -6,11 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/13 14:10:30 by ivan-tey       #+#    #+#                */
-<<<<<<< HEAD
-/*   Updated: 2019/11/11 12:23:48 by ivan-tey      ########   odam.nl         */
-=======
-/*   Updated: 2019/11/11 18:33:13 by lgutter       ########   odam.nl         */
->>>>>>> master
+/*   Updated: 2019/11/12 10:50:31 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

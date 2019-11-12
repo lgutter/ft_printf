@@ -6,7 +6,7 @@
 #    By: lgutter <lgutter@student.codam.nl>           +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/09/11 13:40:17 by lgutter        #+#    #+#                 #
-#    Updated: 2019/11/08 14:33:23 by lgutter       ########   odam.nl          #
+#    Updated: 2019/11/12 18:37:09 by lgutter       ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,14 +59,14 @@ $(NAME): $(LFTOBJECTS) $(COVOBJECTS) $(OBJECTS) $(HEADER)
 
 
 %.o: %.c
-	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) -c $< $(CFLAGS) -o $@
 	@echo "$(C_OBJECTS)$@ compiled$(C_RESET)"
 
 $(TEST): $(NAME) $(TESTOBJECTS)
 	@$(MAKE) norm
 	@$(MAKE) clean
 	@echo "$(C_LINES)- - - - - - - - - -$(C_RESET)"
-	@$(CC) $(CFLAGS) $(LIBRARIES) $(TESTOBJECTS) -o $@
+	@$(CC) $(TESTOBJECTS) $(CFLAGS) $(LIBRARIES) -o $@
 	@echo "$(C_TEST)Test program has been compiled$(C_RESET)"
 
 norm:

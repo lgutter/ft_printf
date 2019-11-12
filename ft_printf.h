@@ -6,14 +6,14 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/13 14:10:30 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/11 18:33:13 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/12 18:41:37 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include "libft/libft.h"
+# include "libft.h"
 # include <stdarg.h>
 
 typedef void			(*t_writer)\
@@ -60,7 +60,8 @@ typedef struct			s_info
 	unsigned char		flags;
 	unsigned char		lenmod;
 	unsigned char		conv;
-	char				sign;
+	int					sign;
+	size_t				len;
 	va_list				arguments;
 	size_t				width;
 	size_t				precision;
@@ -79,6 +80,8 @@ void					ft_writer_fd\
 int						ft_formatchar(t_info *info);
 int						ft_formatstring(t_info *info);
 int						ft_formatunknown(t_info *info, char c);
+int						ft_formatint(t_info *info);
+int						ft_handle_negint(int n, t_info *info);
 
 int						ft_find_flags(const char *format, t_info *info, int i);
 int						ft_find_width(const char *format, t_info *info, int i);

@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/04 10:06:39 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/04 16:52:18 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/11 18:19:03 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int				ft_find_lenmod(const char *format, t_info *info, int i)
 {
-	while (format[i] != '\0' && ft_is_conv(format[i]) == 0)
+	while (format[i] != '\0')
 	{
 		if (format[i] == 'L')
 			info->lenmod |= e_L;

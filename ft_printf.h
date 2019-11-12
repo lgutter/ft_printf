@@ -6,7 +6,11 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/13 14:10:30 by ivan-tey       #+#    #+#                */
+<<<<<<< HEAD
 /*   Updated: 2019/11/11 12:23:48 by ivan-tey      ########   odam.nl         */
+=======
+/*   Updated: 2019/11/11 18:33:13 by lgutter       ########   odam.nl         */
+>>>>>>> master
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +20,8 @@
 # include "libft/libft.h"
 # include <stdarg.h>
 
-typedef void				(*t_writer)(const char *string, size_t len);
+typedef void			(*t_writer)\
+						(void *target, const char *string, size_t len);
 
 /*
 **	enumerations for the flags and modifiers stored in lenmod and flags.
@@ -42,47 +47,49 @@ enum					e_flags
 	e_plus = 1 << 4
 };
 
+/*
+**	the info struct! this contains anything that we might need.
+**	A short explanation of every variable in the struct:
+**	flags & lenmod:	Uses the above mentioned enums to store flags / lenmods.
+**	conv:			Contains the char representing the conversion specifier.
+**	sign:			Used to specify if a number is positive or negative.
+**	arguments:		Va_list with all the arguments that printf received.
+**	width:			Simple value representing the width provided.
+**	precision:		Simple value representing the precision provided.
+**	writer:			A function pointer to the writer function.
+**	target:			Where to write to. * to FILE *, filedescriptor, or char *.
+*/
 typedef struct			s_info
 {
 	unsigned char		flags;
 	unsigned char		lenmod;
+	unsigned char		conv;
+	char				sign;
 	va_list				arguments;
 	size_t				width;
 	size_t				precision;
 	t_writer			writer;
+	void				*target;
 }						t_info;
 
-typedef struct			s_convinfo
-{
-	size_t				negative;
-	size_t				len;
-	char				type;
-}						t_convinfo;
-
-typedef int				(*t_formatter)(t_info *info, t_convinfo *convinfo);
+typedef int				(*t_formatter)(t_info *info);
 int						ft_printf(const char *restrict format, ...);
 int						ft_process_conversion(const char *format, t_info *info);
 int						ft_init_info(const char *format, t_info *info);
 t_formatter				ft_dispatcher(char conv_flag);
-void					ft_writer(const char *string, size_t len);
+void					ft_writer_fd\
+						(void *target, const char *string, size_t len);
 
-int						ft_formatchar(t_info *info, t_convinfo *convinfo);
-int						ft_formatstring(t_info *info, t_convinfo *convinfo);
+int						ft_formatchar(t_info *info);
+int						ft_formatstring(t_info *info);
 int						ft_formatunknown(t_info *info, char c);
 
-int						ft_formatint(t_info *info, t_convinfo *convinfo);
-int						ft_handle_negint\
-						(int n, t_info *info, t_convinfo *convinfo);
-
-int						ft_is_conv(const char ch);
-int						ft_find_flags\
-						(const char *format, t_info *info, int i);
+int						ft_find_flags(const char *format, t_info *info, int i);
 int						ft_find_width(const char *format, t_info *info, int i);
 int						ft_find_precision\
 						(const char *format, t_info *info, int i);
 int						ft_find_lenmod(const char *format, t_info *info, int i);
 
-void					ft_check_width\
-						(t_info *info, size_t len);
+void					ft_check_width(t_info *info, size_t len);
 
 #endif

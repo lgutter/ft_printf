@@ -6,7 +6,7 @@
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/11 13:40:08 by lgutter        #+#    #+#                */
-/*   Updated: 2019/11/04 17:05:21 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/11 18:41:49 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,11 @@ int		ft_printf(const char *restrict format, ...)
 {
 	int			i;
 	t_info		info;
+	int			fd;
 
-	info.writer = &ft_writer;
+	fd = STDOUT_FILENO;
+	info.target = &fd;
+	info.writer = &ft_writer_fd;
 	va_start(info.arguments, format);
 	i = 0;
 	while (format[i] != '\0')

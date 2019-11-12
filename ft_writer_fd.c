@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_is_conv.c                                       :+:    :+:            */
+/*   ft_writer_fd.c                                     :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
+/*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/10/30 14:29:53 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/10/31 16:56:51 by ivan-tey      ########   odam.nl         */
+/*   Created: 2019/11/04 17:03:28 by lgutter        #+#    #+#                */
+/*   Updated: 2019/11/11 18:38:57 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_is_conv(const char ch)
+void	ft_writer_fd(void *target, const char *string, size_t len)
 {
-	if (ch == 'c' || ch == 's' || ch == 'p')
-		return (1);
-	if (ch == 'd' || ch == 'i' || ch == 'u')
-		return (1);
-	if (ch == 'o' || ch == 'x' || ch == 'X' || ch == 'f')
-		return (1);
-	return (0);
+	int fd;
+
+	fd = *((int *)target);
+	if (len > 0)
+	{
+		write(fd, string, len);
+	}
+	else
+	{
+		write(fd, string, ft_strlen(string));
+	}
 }

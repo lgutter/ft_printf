@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/13 14:10:30 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/12 10:50:31 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/12 10:59:02 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ typedef struct			s_info
 	unsigned char		lenmod;
 	unsigned char		conv;
 	char				sign;
+	size_t				len;
 	va_list				arguments;
 	size_t				width;
 	size_t				precision;
@@ -79,6 +80,8 @@ void					ft_writer_fd\
 int						ft_formatchar(t_info *info);
 int						ft_formatstring(t_info *info);
 int						ft_formatunknown(t_info *info, char c);
+int						ft_formatint(t_info *info);
+int						ft_handle_negint(int n, t_info *info);
 
 int						ft_find_flags(const char *format, t_info *info, int i);
 int						ft_find_width(const char *format, t_info *info, int i);

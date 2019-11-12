@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/11 12:31:48 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/11 17:38:27 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/12 11:03:19 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,12 @@ void redirect_std_out_format_int(void)
     cr_redirect_stdout();
 }
 
-void simplewriter(const char *str, unsigned long len)
+static void simplewriter(void *target, const char *str, unsigned long len)
 {
-    	if (len > 0)
+	int fd;
+
+	fd = *((int *)target);
+	if (len > 0)
 	{
 		write(1, str, len);
 	}
@@ -39,7 +42,6 @@ void init_va_list(t_info *info, ...)
 Test(test_format_int, int_simple_nb, .init = redirect_std_out_format_int) 
 {
     t_info info;
-    t_convinfo convinfo;
     int d;
 
     d = 24;
@@ -47,7 +49,7 @@ Test(test_format_int, int_simple_nb, .init = redirect_std_out_format_int)
     info.writer = &simplewriter;
     info.flags = 0;
     info.width = 0;
-    ft_formatint(&info, &convinfo);
+    ft_formatint(&info);
     fflush(stdout);
 
     cr_assert_stdout_eq_str("24");
@@ -56,7 +58,6 @@ Test(test_format_int, int_simple_nb, .init = redirect_std_out_format_int)
 Test(test_format_int, int_simple_minus_nb, .init = redirect_std_out_format_int) 
 {
     t_info info;
-    t_convinfo convinfo;
     int d;
 
     d = -24;
@@ -64,7 +65,7 @@ Test(test_format_int, int_simple_minus_nb, .init = redirect_std_out_format_int)
     info.writer = &simplewriter;
     info.flags = 0;
     info.width = 0;
-    ft_formatint(&info, &convinfo);
+    ft_formatint(&info);
     fflush(stdout);
 
     cr_assert_stdout_eq_str("-24");
@@ -73,7 +74,6 @@ Test(test_format_int, int_simple_minus_nb, .init = redirect_std_out_format_int)
 Test(test_format_int, int_width_nb, .init = redirect_std_out_format_int) 
 {
     t_info info;
-    t_convinfo convinfo;
     int d;
 
     d = 24;
@@ -81,7 +81,7 @@ Test(test_format_int, int_width_nb, .init = redirect_std_out_format_int)
     info.writer = &simplewriter;
     info.flags = 0;
     info.width = 5;
-    ft_formatint(&info, &convinfo);
+    ft_formatint(&info);
     fflush(stdout);
 
     cr_assert_stdout_eq_str("   24");
@@ -90,7 +90,6 @@ Test(test_format_int, int_width_nb, .init = redirect_std_out_format_int)
 Test(test_format_int, int_minus_flag_nb, .init = redirect_std_out_format_int) 
 {
     t_info info;
-    t_convinfo convinfo;
     int d;
 
     d = 24;
@@ -98,7 +97,7 @@ Test(test_format_int, int_minus_flag_nb, .init = redirect_std_out_format_int)
     info.writer = &simplewriter;
     info.flags = e_minus;
     info.width = 5;
-    ft_formatint(&info, &convinfo);
+    ft_formatint(&info);
     fflush(stdout);
 
     cr_assert_stdout_eq_str("24   ");
@@ -107,7 +106,6 @@ Test(test_format_int, int_minus_flag_nb, .init = redirect_std_out_format_int)
 Test(test_format_int, int_zero_flag_nb, .init = redirect_std_out_format_int) 
 {
     t_info info;
-    t_convinfo convinfo;
     int d;
 
     d = 24;
@@ -115,7 +113,7 @@ Test(test_format_int, int_zero_flag_nb, .init = redirect_std_out_format_int)
     info.writer = &simplewriter;
     info.flags = e_zero;
     info.width = 5;
-    ft_formatint(&info, &convinfo);
+    ft_formatint(&info);
     fflush(stdout);
 
     cr_assert_stdout_eq_str("00024");
@@ -124,7 +122,6 @@ Test(test_format_int, int_zero_flag_nb, .init = redirect_std_out_format_int)
 Test(test_format_int, int_zero_minus_nb, .init = redirect_std_out_format_int) 
 {
     t_info info;
-    t_convinfo convinfo;
     int d;
 
     d = -24;
@@ -132,7 +129,7 @@ Test(test_format_int, int_zero_minus_nb, .init = redirect_std_out_format_int)
     info.writer = &simplewriter;
     info.flags = e_zero;
     info.width = 5;
-    ft_formatint(&info, &convinfo);
+    ft_formatint(&info);
     fflush(stdout);
 
     cr_assert_stdout_eq_str("-0024");

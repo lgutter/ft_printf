@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/11 12:16:15 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/12 10:57:19 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/12 14:38:47 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int			ft_handle_negint(int n, t_info *info)
 {
 	if (n < 0)
 	{
-		info->sign = 1;
+		info->sign = -1;
 		if ((info->flags & e_zero) != 0)
 		{
 			info->writer(info->target, "-", 1);

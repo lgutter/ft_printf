@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/13 14:10:30 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/12 10:59:02 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/12 14:39:15 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ typedef struct			s_info
 	unsigned char		flags;
 	unsigned char		lenmod;
 	unsigned char		conv;
-	char				sign;
+	int					sign;
 	size_t				len;
 	va_list				arguments;
 	size_t				width;

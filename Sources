@@ -14,4 +14,5 @@ ft_formatint \
 ft_handle_negint \
 ft_writer_fd \
 ft_check_width \
-ft_formatoctal
+ft_formatoctal \
+ft_formatpointer

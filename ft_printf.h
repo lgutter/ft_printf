@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/13 14:10:30 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/13 12:19:43 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/13 14:42:36 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ int						ft_formatstring(t_info *info);
 int						ft_formatunknown(t_info *info, char c);
 int						ft_formatint(t_info *info);
 int						ft_formatoctal(t_info *info);
+int						ft_formatpointer(t_info *info);
 
 int						ft_handle_negint(int n, t_info *info);
 

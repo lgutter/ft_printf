@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/11 12:31:48 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/13 14:46:35 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/13 15:15:13 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,7 @@ Test(test_format_int, int_zero_flag_nb, .init = redirect_std_out_format_int)
 	cr_assert_stdout_eq_str("00024");
 }
 
-Test(test_format_int, int_zero_minus_nb, .init = redirect_std_out_format_int)
+Test(test_format_int, int_zero_negative_nb, .init = redirect_std_out_format_int)
 {
 	t_info info;
 	int d;
@@ -244,6 +244,18 @@ Test(test_printf_format_int, int_space_negative_nb_d, .init = redirect_std_out_f
 	fflush(stdout);
 
 	asprintf(&result, "% 5d", d);
+	cr_assert_stdout_eq_str(result);
+}
+
+Test(test_printf_format_int, int_minus_negative_nb_d, .init = redirect_std_out_format_int)
+{
+	int d;
+	char *result = NULL;
+	d = -24;
+	ft_printf("%-05d", d);
+	fflush(stdout);
+
+	asprintf(&result, "%-5d", d);
 	cr_assert_stdout_eq_str(result);
 }
 

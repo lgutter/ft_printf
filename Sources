@@ -19,5 +19,5 @@ ft_format_decimal \
 ft_formatbyteint \
 ft_formatshort \
 ft_formatlong \
-ft_formatlonglong
+ft_formatlonglong \
 ft_formatoctal

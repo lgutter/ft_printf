@@ -6,4 +6,5 @@ ulltoa_base_test \
 options_test \
 check_width_tests \
 int_tests \
-formatchar_tests
+formatchar_tests \
+octal_tests 

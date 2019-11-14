@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_dispatcher.c                                    :+:    :+:            */
+/*   ft_formatlong.c                                    :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/10/14 16:25:46 by lgutter        #+#    #+#                */
-/*   Updated: 2019/11/14 14:14:31 by ivan-tey      ########   odam.nl         */
+/*   Created: 2019/11/13 14:35:42 by lgutter        #+#    #+#                */
+/*   Updated: 2019/11/13 14:39:10 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-t_formatter	ft_dispatcher(char conv_flag)
+int			ft_formatlong(t_info *info)
 {
-	const t_formatter formatter[255] = {
-		['c'] = &ft_formatchar,
-		['s'] = &ft_formatstring,
-		['d'] = &ft_formatdecimal,
-		['i'] = &ft_formatdecimal,
-		['o'] = &ft_formatoctal,
-		['p'] = &ft_formatpointer,
-	};
-
-	return (formatter[(unsigned int)conv_flag]);
+	if (info)
+		return (0);
+	return (0);
 }

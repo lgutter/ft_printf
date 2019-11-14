@@ -1,41 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_formatint.c                                     :+:    :+:            */
+/*   ft_format_negint.c                                 :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/11 11:48:34 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/13 14:24:10 by lgutter       ########   odam.nl         */
+/*   Created: 2019/11/11 12:16:15 by ivan-tey       #+#    #+#                */
+/*   Updated: 2019/11/13 14:24:54 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int			ft_formatint(t_info *info)
+int		ft_format_negint(int n, t_info *info)
 {
-	int		n;
-	char	*nb;
+	char *nb;
 
-	n = va_arg(info->arguments, int);
-	info->len = ft_nbrlenbase(n, 10);
-	if (n < 0)
-		return (ft_format_negint(n, info));
-	info->sign = 1;
+	info->sign = -1;
+	if ((info->flags & e_zero) != 0)
+	{
+		info->writer(info->target, "-", 1);
+		info->len = ft_nbrlenbase(n, 10);
+		n = n * -1;
+	}
+	else
+		info->len = ft_nbrlenbase(n, 10);
 	nb = ft_itoa_base(n, 10);
+	if (nb == NULL)
+		return (-1);
 	if ((info->flags & e_minus) != 0)
 	{
-		ft_write_flags(info);
 		info->writer(info->target, nb, 0);
 		ft_check_width(info, info->len);
 	}
 	else
 	{
-		if ((info->flags & e_zero) != 0)
-			ft_write_flags(info);
 		ft_check_width(info, info->len);
-		if ((info->flags & e_zero) == 0)
-			ft_write_flags(info);
 		info->writer(info->target, nb, 0);
 	}
 	return (0);

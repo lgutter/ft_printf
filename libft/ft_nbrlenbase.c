@@ -6,13 +6,13 @@
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/02/02 12:11:46 by lgutter        #+#    #+#                */
-/*   Updated: 2019/09/30 18:05:24 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/13 13:10:30 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t		ft_nbrlenbase(long number, int base)
+size_t		ft_nbrlenbase(long long number, int base)
 {
 	size_t len;
 

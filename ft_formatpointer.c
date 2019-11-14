@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/13 14:33:13 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/14 14:32:52 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/14 16:55:55 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,11 @@ int			ft_formatpointer(t_info *info)
 		ft_check_width(info, info->len);
 		return (0);
 	}
+	if ((info->flags & e_zero) != 0)
+		info->writer(info->target, "0x", 0);
 	ft_check_width(info, info->len);
-	info->writer(info->target, "0x", 0);
+	if ((info->flags & e_zero) == 0)
+		info->writer(info->target, "0x", 0);
 	info->writer(info->target, pt, 0);
 	return (0);
 }

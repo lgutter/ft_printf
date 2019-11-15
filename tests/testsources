@@ -8,4 +8,5 @@ options_test \
 check_width_tests \
 int_tests \
 formatchar_tests \
-octal_tests 
+octal_tests \
+pointer_tests

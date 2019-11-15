@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/13 14:33:13 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/14 16:55:55 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/15 13:46:36 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int			ft_formatpointer(t_info *info)
 
 	info->conv = 'p';
 	p = va_arg(info->arguments, unsigned long long);
-	info->len = ft_nbrlenbase(p, 16) + 2;
+	info->len = ft_nbrlenbase_ull(p, 16) + 2;
 	pt = ft_ulltoa_base_low(p, 16);
 	if ((info->flags & e_minus) != 0)
 	{

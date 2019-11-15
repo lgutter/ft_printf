@@ -2,9 +2,11 @@ TESTNAMES := basic_std_arg_test \
 simplecall \
 strexpand_tests \
 itoa_base_test \
-ulltoa_base_test \
+ulltoa_base_upp_test \
+ulltoa_base_low_test \
 options_test \
 check_width_tests \
 int_tests \
 formatchar_tests \
-octal_tests 
+octal_tests \
+pointer_tests

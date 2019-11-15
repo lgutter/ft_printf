@@ -6,13 +6,13 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/14 17:00:19 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/15 16:42:29 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/15 18:12:52 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <criterion/criterion.h>
 #include <criterion/redirect.h>
-#include "../ft_printf.h"
+#include "ft_printf.h"
 
 void redirect_std_out_format_pointer(void)
 {
@@ -154,6 +154,47 @@ Test(test_printf_format_pointer, pointer_zero_smaller_width, .init = redirect_st
 	fflush(stdout);
 
 	cr_assert_stdout_eq_str("0x00abfc421ffa2b3342");
+}
+
+Test(test_printf_format_pointer, pointer_space_width, .init = redirect_std_out_format_pointer)
+{
+	t_info info;
+	int fd;
+	int *p;
+
+	p = (int *)0xabfc421ffa2b3342;
+	fd = 1;
+	init_va_list_pointer(&info, p);
+	info.writer = &simplewriter;
+	info.flags = e_space;
+	info.width = 20;
+	info.target = &fd;
+	info.conv = 'p';
+	ft_formatpointer(&info);
+	fflush(stdout);
+
+	cr_assert_stdout_eq_str("  0xabfc421ffa2b3342");
+}
+
+Test(test_printf_format_pointer, pointer_space_minus_width, .init = redirect_std_out_format_pointer)
+{
+	t_info info;
+	int fd;
+	int *p;
+
+	p = (int *)0xabfc421ffa2b3342;
+	fd = 1;
+	init_va_list_pointer(&info, p);
+	info.writer = &simplewriter;
+	info.flags = e_space;
+	info.flags |= e_minus;
+	info.width = 20;
+	info.target = &fd;
+	info.conv = 'p';
+	ft_formatpointer(&info);
+	fflush(stdout);
+
+	cr_assert_stdout_eq_str("0xabfc421ffa2b3342  ");
 }
 
 Test(test_printf_format_pointer, pointer_minus_large_width, .init = redirect_std_out_format_pointer)

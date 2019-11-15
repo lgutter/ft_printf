@@ -10,4 +10,5 @@ int_tests \
 formatchar_tests \
 octal_tests \
 pointer_tests \
-find_flags_tests
+find_flags_tests \
+pointer_tests

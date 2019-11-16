@@ -11,4 +11,5 @@ formatchar_tests \
 octal_tests \
 pointer_tests \
 find_flags_tests \
-byteint_tests
+byteint_tests \
+short_tests

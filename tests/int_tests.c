@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/11 12:31:48 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/13 15:15:13 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/16 15:52:24 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -295,6 +295,18 @@ Test(test_printf_format_int, int_space_nb_i, .init = redirect_std_out_format_int
 	cr_assert_stdout_eq_str(result);
 }
 
+Test(test_printf_format_int, int_space_nb_i_larger_width, .init = redirect_std_out_format_int)
+{
+	int d;
+	char *result = NULL;
+	d = 42;
+	ft_printf("% 5i", d);
+	fflush(stdout);
+
+	asprintf(&result, "% 5i", d);
+	cr_assert_stdout_eq_str(result);
+}
+
 Test(test_printf_format_int, int_plus_large_nb_i, .init = redirect_std_out_format_int)
 {
 	long d;
@@ -304,6 +316,18 @@ Test(test_printf_format_int, int_plus_large_nb_i, .init = redirect_std_out_forma
 	fflush(stdout);
 
 	asprintf(&result, "%+5li", d);
+	cr_assert_stdout_eq_str(result);
+}
+
+Test(test_printf_format_int, int_plus_large_nb_largewidth_d, .init = redirect_std_out_format_int)
+{
+	long d;
+	char *result = NULL;
+	d = 2123456987;
+	ft_printf("%+ 30d", d);
+	fflush(stdout);
+
+	asprintf(&result, "%+30ld", d);
 	cr_assert_stdout_eq_str(result);
 }
 

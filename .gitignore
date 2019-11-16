@@ -35,6 +35,8 @@
 *.i*86
 *.x86_64
 *.hex
+test
+ftest
 
 # Debug files
 *.dSYM/
@@ -59,3 +61,9 @@ dkms.conf
 # config stuff
 .travis.yml
 .vscode/
+
+# local testing stuff
+*.bash
+*.sh
+testmain.c
+main.c

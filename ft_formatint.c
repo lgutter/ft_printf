@@ -6,11 +6,38 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/11 11:48:34 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/13 14:24:10 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/16 16:36:45 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+static int	ft_format_negint(int n, t_info *info)
+{
+	char *nb;
+
+	info->sign = -1;
+	if ((info->flags & e_zero) != 0)
+	{
+		info->writer(info->target, "-", 1);
+		info->len = ft_nbrlenbase(n, 10);
+		n = n * -1;
+	}
+	else
+		info->len = ft_nbrlenbase(n, 10);
+	nb = ft_itoa_base(n, 10);
+	if (nb == NULL)
+		return (-1);
+	if ((info->flags & e_minus) != 0)
+	{
+		ft_write_order(info, nb, "rw");
+	}
+	else
+	{
+		ft_write_order(info, nb, "wr");
+	}
+	return (0);
+}
 
 int			ft_formatint(t_info *info)
 {
@@ -23,20 +50,20 @@ int			ft_formatint(t_info *info)
 		return (ft_format_negint(n, info));
 	info->sign = 1;
 	nb = ft_itoa_base(n, 10);
+	if ((info->flags & e_plus) != 0 || (info->flags & e_space) != 0)
+	{
+		info->len++;
+	}
 	if ((info->flags & e_minus) != 0)
 	{
-		ft_write_flags(info);
-		info->writer(info->target, nb, 0);
-		ft_check_width(info, info->len);
+		ft_write_order(info, nb, "frw");
 	}
 	else
 	{
 		if ((info->flags & e_zero) != 0)
-			ft_write_flags(info);
-		ft_check_width(info, info->len);
-		if ((info->flags & e_zero) == 0)
-			ft_write_flags(info);
-		info->writer(info->target, nb, 0);
+			ft_write_order(info, nb, "fwr");
+		else
+			ft_write_order(info, nb, "wfr");
 	}
 	return (0);
 }

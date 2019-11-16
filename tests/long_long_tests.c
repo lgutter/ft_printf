@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   int_tests.c                                        :+:    :+:            */
+/*   long_long_tests.c                                    :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/11 12:31:48 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/16 15:52:24 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/16 16:47:58 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <criterion/redirect.h>
 #include "ft_printf.h"
 
-void redirect_std_out_format_int(void)
+static void redirect_std_out_long_long(void)
 {
 	cr_redirect_stdout();
 }
@@ -34,15 +34,15 @@ static void simplewriter(void *target, const char *str, size_t len)
 	}
 }
 
-void init_va_list(t_info *info, ...)
+static void init_va_list(t_info *info, ...)
 {
 	va_start(info->arguments, info);
 }
 
-Test(test_format_int, int_simple_nb, .init = redirect_std_out_format_int)
+Test(test_format_long_long, long_long_simple_nb, .init = redirect_std_out_long_long)
 {
 	t_info info;
-	int d;
+	long long d;
 	int fd;
 
 	fd = 1;
@@ -53,16 +53,16 @@ Test(test_format_int, int_simple_nb, .init = redirect_std_out_format_int)
 	info.width = 0;
 	info.target = &fd;
 	info.conv = 'd';
-	ft_formatint(&info);
+	ft_formatlonglong(&info);
 	fflush(stdout);
 
 	cr_assert_stdout_eq_str("24");
 }
 
-Test(test_format_int, int_simple_minus_nb, .init = redirect_std_out_format_int)
+Test(test_format_long_long, long_long_simple_minus_nb, .init = redirect_std_out_long_long)
 {
 	t_info info;
-	int d;
+	long long d;
 	int fd;
 
 	fd = 1;
@@ -73,16 +73,16 @@ Test(test_format_int, int_simple_minus_nb, .init = redirect_std_out_format_int)
 	info.width = 0;
 	info.target = &fd;
 	info.conv = 'd';
-	ft_formatint(&info);
+	ft_formatlonglong(&info);
 	fflush(stdout);
 
 	cr_assert_stdout_eq_str("-24");
 }
 
-Test(test_format_int, int_width_nb, .init = redirect_std_out_format_int)
+Test(test_format_long_long, long_long_width_nb, .init = redirect_std_out_long_long)
 {
 	t_info info;
-	int d;
+	long long d;
 	int fd;
 
 	fd = 1;
@@ -93,16 +93,16 @@ Test(test_format_int, int_width_nb, .init = redirect_std_out_format_int)
 	info.width = 5;
 	info.target = &fd;
 	info.conv = 'd';
-	ft_formatint(&info);
+	ft_formatlonglong(&info);
 	fflush(stdout);
 
 	cr_assert_stdout_eq_str("   24");
 }
 
-Test(test_format_int, int_minus_flag_nb, .init = redirect_std_out_format_int)
+Test(test_format_long_long, long_long_minus_flag_nb, .init = redirect_std_out_long_long)
 {
 	t_info info;
-	int d;
+	long long d;
 	int fd;
 
 	fd = 1;
@@ -113,16 +113,16 @@ Test(test_format_int, int_minus_flag_nb, .init = redirect_std_out_format_int)
 	info.width = 5;
 	info.target = &fd;
 	info.conv = 'd';
-	ft_formatint(&info);
+	ft_formatlonglong(&info);
 	fflush(stdout);
 
 	cr_assert_stdout_eq_str("24   ");
 }
 
-Test(test_format_int, int_zero_flag_nb, .init = redirect_std_out_format_int)
+Test(test_format_long_long, long_long_zero_flag_nb, .init = redirect_std_out_long_long)
 {
 	t_info info;
-	int d;
+	long long d;
 	int fd;
 
 	fd = 1;
@@ -133,16 +133,16 @@ Test(test_format_int, int_zero_flag_nb, .init = redirect_std_out_format_int)
 	info.width = 5;
 	info.target = &fd;
 	info.conv = 'd';
-	ft_formatint(&info);
+	ft_formatlonglong(&info);
 	fflush(stdout);
 
 	cr_assert_stdout_eq_str("00024");
 }
 
-Test(test_format_int, int_zero_negative_nb, .init = redirect_std_out_format_int)
+Test(test_format_long_long, long_long_zero_negative_nb, .init = redirect_std_out_long_long)
 {
 	t_info info;
-	int d;
+	long long d;
 	int fd;
 
 	fd = 1;
@@ -153,16 +153,16 @@ Test(test_format_int, int_zero_negative_nb, .init = redirect_std_out_format_int)
 	info.width = 5;
 	info.target = &fd;
 	info.conv = 'd';
-	ft_formatint(&info);
+	ft_formatlonglong(&info);
 	fflush(stdout);
 
 	cr_assert_stdout_eq_str("-0024");
 }
 
-Test(test_format_int, int_space_negative_nb, .init = redirect_std_out_format_int)
+Test(test_format_long_long, long_long_space_negative_nb, .init = redirect_std_out_long_long)
 {
 	t_info info;
-	int d;
+	long long d;
 	int fd;
 
 	fd = 1;
@@ -173,16 +173,16 @@ Test(test_format_int, int_space_negative_nb, .init = redirect_std_out_format_int
 	info.width = 0;
 	info.target = &fd;
 	info.conv = 'd';
-	ft_formatint(&info);
+	ft_formatlonglong(&info);
 	fflush(stdout);
 
 	cr_assert_stdout_eq_str("-24");
 }
 
-Test(test_format_int, int_space_nb, .init = redirect_std_out_format_int)
+Test(test_format_long_long, long_long_space_nb, .init = redirect_std_out_long_long)
 {
 	t_info info;
-	int d;
+	long long d;
 	int fd;
 
 	fd = 1;
@@ -193,111 +193,124 @@ Test(test_format_int, int_space_nb, .init = redirect_std_out_format_int)
 	info.width = 0;
 	info.target = &fd;
 	info.conv = 'd';
-	ft_formatint(&info);
+	ft_formatlonglong(&info);
 	fflush(stdout);
 
 	cr_assert_stdout_eq_str(" 24");
 }
 
-Test(test_printf_format_int, int_zero_negative_nb_d, .init = redirect_std_out_format_int)
+Test(test_printf_format_int, long_long_zero_negative_nb_d, .init = redirect_std_out_long_long)
 {
-	int d;
+	long long d;
 	char *result = NULL;
 	d = -24;
-	ft_printf("%05d", d);
+	ft_printf("%05lld", d);
 	fflush(stdout);
 
-	asprintf(&result, "%05d", d);
+	asprintf(&result, "%05lld", d);
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_int, int_zero_negative_nb_i, .init = redirect_std_out_format_int)
+Test(test_printf_format_int, long_long_outside_char_range_d, .init = redirect_std_out_long_long)
 {
-	int d;
+	unsigned long long d;
 	char *result = NULL;
-	d = -24;
-	ft_printf("%05i", d);
+	d = 9223372036854775807;
+	ft_printf("%05lld", d);
 	fflush(stdout);
 
-	asprintf(&result, "%05i", d);
+	asprintf(&result, "%05lld", d);
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_int, int_space_negative_nb_i, .init = redirect_std_out_format_int)
+Test(test_printf_format_int, long_long_zero_negative_nb_i, .init = redirect_std_out_long_long)
 {
-	int d;
+	long long d;
 	char *result = NULL;
 	d = -24;
-	ft_printf("% 5i", d);
+	ft_printf("%05lli", d);
 	fflush(stdout);
 
-	asprintf(&result, "% 5i", d);
+	asprintf(&result, "%05lli", d);
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_int, int_space_negative_nb_d, .init = redirect_std_out_format_int)
+Test(test_printf_format_int, long_long_space_negative_nb_i, .init = redirect_std_out_long_long)
 {
-	int d;
+	long long d;
 	char *result = NULL;
 	d = -24;
-	ft_printf("% 5d", d);
+	ft_printf("% 5lli", d);
 	fflush(stdout);
 
-	asprintf(&result, "% 5d", d);
+	asprintf(&result, "% 5lli", d);
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_int, int_minus_negative_nb_d, .init = redirect_std_out_format_int)
+Test(test_printf_format_int, long_long_space_negative_nb_d, .init = redirect_std_out_long_long)
 {
-	int d;
+	long long d;
 	char *result = NULL;
 	d = -24;
-	ft_printf("%-05d", d);
+	ft_printf("% 5lld", d);
 	fflush(stdout);
 
-	asprintf(&result, "%-5d", d);
+	asprintf(&result, "% 5lld", d);
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_int, int_zero_minus_nb_d, .init = redirect_std_out_format_int)
+Test(test_printf_format_int, long_long_minus_negative_nb_d, .init = redirect_std_out_long_long)
 {
-	int d;
+	long long d;
+	char *result = NULL;
+	d = -24;
+	ft_printf("%-05lld", d);
+	fflush(stdout);
+
+	asprintf(&result, "%-5lld", d);
+	cr_assert_stdout_eq_str(result);
+}
+
+Test(test_printf_format_int, long_long_zero_minus_nb_d, .init = redirect_std_out_long_long)
+{
+	long long d;
 	char *result = NULL;
 	d = 23;
-	ft_printf("%0-5d", d);
+	ft_printf("%0-5lld", d);
 	fflush(stdout);
 
-	asprintf(&result, "%-5d", d);
+	asprintf(&result, "%-5lld", d);
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_int, int_zero_minus_nb_i, .init = redirect_std_out_format_int)
+Test(test_printf_format_int, long_long_zero_minus_nb_i, .init = redirect_std_out_long_long)
 {
-	int d;
+	long long d;
 	char *result = NULL;
 	d = 42;
-	ft_printf("%0-5i", d);
+	ft_printf("%0-5lli", d);
 	fflush(stdout);
 
-	asprintf(&result, "%-5i", d);
+	asprintf(&result, "%-5lli", d);
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_int, int_space_nb_i, .init = redirect_std_out_format_int)
+Test(test_printf_format_int, long_long_space_nb_i, .init = redirect_std_out_long_long)
 {
-	int d;
+	long long d;
 	char *result = NULL;
 	d = 42;
-	ft_printf("% i", d);
+	ft_printf("% lli", d);
 	fflush(stdout);
 
-	asprintf(&result, "% i", d);
+	asprintf(&result, "% lli", d);
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_int, int_space_nb_i_larger_width, .init = redirect_std_out_format_int)
+
+Test(test_printf_format_int, long_long_space_nb_i_larger_width, .init = redirect_std_out_long_long)
 {
-	int d;
+	char d;
 	char *result = NULL;
 	d = 42;
 	ft_printf("% 5i", d);
@@ -307,38 +320,26 @@ Test(test_printf_format_int, int_space_nb_i_larger_width, .init = redirect_std_o
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_int, int_plus_large_nb_i, .init = redirect_std_out_format_int)
+Test(test_printf_format_int, long_long_plus_large_nb_i, .init = redirect_std_out_long_long)
 {
-	long d;
+	long long d;
 	char *result = NULL;
 	d = 2123456987;
-	ft_printf("%+ 5i", d);
+	ft_printf("%+ 5lli", d);
 	fflush(stdout);
 
-	asprintf(&result, "%+5li", d);
+	asprintf(&result, "%+5lli", d);
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_int, int_plus_large_nb_largewidth_d, .init = redirect_std_out_format_int)
+Test(test_printf_format_int, long_long_plus_large_neg_nb_i, .init = redirect_std_out_long_long)
 {
-	long d;
-	char *result = NULL;
-	d = 2123456987;
-	ft_printf("%+ 30d", d);
-	fflush(stdout);
-
-	asprintf(&result, "%+30ld", d);
-	cr_assert_stdout_eq_str(result);
-}
-
-Test(test_printf_format_int, int_plus_large_neg_nb_i, .init = redirect_std_out_format_int)
-{
-	long d;
+	long long d;
 	char *result = NULL;
 	d = -2123456987;
-	ft_printf("%+ 5i", d);
+	ft_printf("%+ 5lli", d);
 	fflush(stdout);
 
-	asprintf(&result, "%+5li", d);
+	asprintf(&result, "%+5lli", d);
 	cr_assert_stdout_eq_str(result);
 }

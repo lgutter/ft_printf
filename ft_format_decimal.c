@@ -6,7 +6,7 @@
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/13 13:13:13 by lgutter        #+#    #+#                */
-/*   Updated: 2019/11/13 14:37:54 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/16 17:20:52 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int		ft_formatdecimal(t_info *info)
 	}
 	if ((info->lenmod & e_l) != 0)
 	{
-		return (ft_formatlong(info));
+		return (ft_formatlonglong(info));
 	}
 	if ((info->lenmod & e_ll) != 0)
 	{

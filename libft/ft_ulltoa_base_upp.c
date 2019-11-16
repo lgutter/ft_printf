@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_ulltoa_base.c                                   :+:    :+:            */
+/*   ft_ulltoa_base_upp.c                               :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/21 15:14:42 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/05 17:34:53 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/14 14:28:01 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static char		*ft_convert(unsigned long long n, \
 	return (str);
 }
 
-char			*ft_ulltoa_base(unsigned long long nb, const unsigned base)
+char			*ft_ulltoa_base_upp(unsigned long long nb, const unsigned base)
 {
 	int			nb_len;
 	char		*str;

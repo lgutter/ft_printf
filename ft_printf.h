@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/13 14:10:30 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/13 14:56:19 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/16 15:42:50 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ int						ft_formatshort(t_info *info);
 int						ft_formatlong(t_info *info);
 int						ft_formatlonglong(t_info *info);
 int						ft_formatoctal(t_info *info);
+int						ft_formatpointer(t_info *info);
 
 int						ft_find_flags(const char *format, t_info *info, int i);
 int						ft_find_width(const char *format, t_info *info, int i);

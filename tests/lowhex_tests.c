@@ -6,13 +6,13 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/18 15:18:37 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/18 17:07:35 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/18 19:46:17 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <criterion/criterion.h>
 #include <criterion/redirect.h>
-#include "../ft_printf.h"
+#include "ft_printf.h"
 
 void redirect_std_out_format_lowhex(void)
 {

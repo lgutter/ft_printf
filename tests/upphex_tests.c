@@ -6,14 +6,14 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/18 18:04:23 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/18 18:08:04 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/18 19:45:09 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include <criterion/criterion.h>
 #include <criterion/redirect.h>
-#include "../ft_printf.h"
+#include "ft_printf.h"
 
 void redirect_std_out_format_upphex(void)
 {

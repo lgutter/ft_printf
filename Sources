@@ -21,4 +21,5 @@ ft_formatshort \
 ft_formatlonglong \
 ft_formatoctal \
 ft_write_order \
-ft_precision_int
+ft_precision_int \
+ft_formatupphex

@@ -15,4 +15,5 @@ byteint_tests \
 short_tests \
 long_tests \
 long_long_tests \
-int_precision_tests
+int_precision_tests \
+upphex_tests

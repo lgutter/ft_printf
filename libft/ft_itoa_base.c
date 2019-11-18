@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/25 15:44:36 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/05 17:47:31 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/18 16:03:43 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char			*ft_itoa_base(signed long long nb, const unsigned int base)
 	}
 	if (nb == 0)
 	{
-		return ("0");
+		return (ft_strdup("0"));
 	}
 	nb_len = ft_nbrlenbase(nb, base);
 	str = (char *)ft_strnew(sizeof(char) * nb_len + 1);

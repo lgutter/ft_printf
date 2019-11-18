@@ -90,6 +90,7 @@ int						ft_formatlonglong(t_info *info);
 int						ft_formatoctal(t_info *info);
 int						ft_formatpointer(t_info *info);
 int						ft_formatupphex(t_info *info);
+int						ft_formatlowhex(t_info *info);
 
 int						ft_find_flags(const char *format, t_info *info, int i);
 int						ft_find_width(const char *format, t_info *info, int i);

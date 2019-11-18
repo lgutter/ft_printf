@@ -22,6 +22,7 @@ t_formatter	ft_dispatcher(char conv_flag)
 		['o'] = &ft_formatoctal,
 		['p'] = &ft_formatpointer,
 		['X'] = &ft_formatupphex,
+		['x'] = &ft_formatlowhex,
 	};
 
 	return (formatter[(unsigned int)conv_flag]);

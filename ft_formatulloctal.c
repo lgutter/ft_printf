@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_formatoctal.c                                   :+:    :+:            */
+/*   ft_formatulloctal.c                                :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/13 12:02:41 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/13 12:18:56 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/19 17:29:38 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int			ft_formatoctal(t_info *info)
+int			ft_formatulloctal(unsigned long long n, t_info *info)
 {
-	int		n;
 	char	*nb;
 
-	info->conv = 'o';
-	n = va_arg(info->arguments, int);
+	info->sign = 1;
 	info->len = ft_nbrlenbase(n, 8);
 	nb = ft_itoa_base(n, 8);
+	if (nb == NULL)
+		return (-1);
 	if ((info->flags & e_minus) != 0)
 	{
 		info->writer(info->target, nb, 0);

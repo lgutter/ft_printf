@@ -6,7 +6,7 @@
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/13 14:35:42 by lgutter        #+#    #+#                */
-/*   Updated: 2019/11/18 19:33:20 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/19 12:47:15 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,15 @@ static int	ft_format_neglonglong(long long n, t_info *info)
 	else
 		info->len = 0;
 	nb = ft_itoa_base(n, 10);
-	nb = ft_precision_int(info, nb);
+	if (info->precfound > 0)
+		nb = ft_precision_int(info, nb);
 	if (nb == NULL)
 		return (-1);
 	info->len += ft_strlen(nb);
 	if ((info->flags & e_minus) != 0)
-	{
 		ft_write_order(info, nb, "rw");
-	}
 	else
-	{
 		ft_write_order(info, nb, "wr");
-	}
 	return (0);
 }
 
@@ -49,7 +46,8 @@ int			ft_formatlonglong(long long n, t_info *info)
 		return (ft_format_neglonglong(n, info));
 	info->sign = 1;
 	nb = ft_itoa_base(n, 10);
-	nb = ft_precision_int(info, nb);
+	if (info->precfound > 0)
+		nb = ft_precision_int(info, nb);
 	if (nb == NULL)
 		return (-1);
 	info->len = ft_strlen(nb);

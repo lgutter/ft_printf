@@ -6,14 +6,14 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/19 12:09:56 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/19 12:11:04 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/19 15:38:22 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include <criterion/criterion.h>
 #include <criterion/redirect.h>
-#include "../ft_printf.h"
+#include "ft_printf.h"
 
 static void redirect_std_out_byteint_lowhex(void)
 {

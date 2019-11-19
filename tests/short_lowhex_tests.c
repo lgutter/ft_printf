@@ -12,7 +12,7 @@
 
 #include <criterion/criterion.h>
 #include <criterion/redirect.h>
-#include "../ft_printf.h"
+#include "ft_printf.h"
 
 static void redirect_std_out_short_lowhex(void)
 {

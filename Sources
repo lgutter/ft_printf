@@ -21,5 +21,7 @@ ft_write_order \
 ft_formatupphex \
 ft_formatlowhex \
 ft_formatunsigneddecimal \
-ft_formatunsignedint
-ft_precision_int
+ft_formatunsignedint \
+ft_precision_int \
+ft_formatullupphex \
+ft_format_upphex

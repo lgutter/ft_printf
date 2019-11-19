@@ -18,7 +18,11 @@ ft_format_decimal \
 ft_formatlonglong \
 ft_formatoctal \
 ft_write_order \
-ft_formatlowhex \
+ft_formatupphex \
+ft_formatulllowhex \
+ft_format_lowhex \
+ft_precision_int \
+ft_precision_int \
 ft_formatunsigneddecimal \
 ft_formatunsignedint \
 ft_precision_int \

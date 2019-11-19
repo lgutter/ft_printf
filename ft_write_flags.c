@@ -6,7 +6,7 @@
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/13 13:52:57 by lgutter        #+#    #+#                */
-/*   Updated: 2019/11/19 16:55:51 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/19 17:22:28 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,12 @@ void	ft_write_flags(t_info *info)
 		else if (info->flags & e_space)
 			info->writer(info->target, " ", 1);
 	}
-	if (info->conv == 'x' || info->conv == 'X')
+	if (info->conv == 'x' || info->conv == 'X' || info->conv == 'p')
 	{
 		if ((info->flags & e_hash) && info->conv == 'X')
 			info->writer(info->target, "0X", 0);
-		else if ((info->flags & e_hash) && info->conv == 'x')
+		else if (info->conv == 'p' ||
+				((info->flags & e_hash) && info->conv == 'x'))
 			info->writer(info->target, "0x", 0);
 	}
 }

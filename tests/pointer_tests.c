@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/14 17:00:19 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/15 18:12:52 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/19 17:35:42 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -215,4 +215,48 @@ Test(test_printf_format_pointer, pointer_minus_large_width, .init = redirect_std
 	fflush(stdout);
 
 	cr_assert_stdout_eq_str("0xabfc421ffa2b3342  ");
+}
+
+Test(test_printf_format_pointer, pointer_minus_large_width_precision_0, .init = redirect_std_out_format_pointer)
+{
+	t_info info;
+	int fd;
+	int *p;
+
+	p = (int *)0xabfc421ffa2b3342;
+	fd = 1;
+	init_va_list_pointer(&info, p);
+	info.writer = &simplewriter;
+	info.flags = e_minus;
+	info.width = 20;
+	info.target = &fd;
+	info.conv = 'p';
+	info.precfound = 1;
+	info.precision = 0;
+	ft_formatpointer(&info);
+	fflush(stdout);
+
+	cr_assert_stdout_eq_str("0xabfc421ffa2b3342  ");
+}
+
+Test(test_printf_format_pointer, pointer_minus_large_width_precision_18, .init = redirect_std_out_format_pointer)
+{
+	t_info info;
+	int fd;
+	int *p;
+
+	p = (int *)0xabfc421ffa2b3342;
+	fd = 1;
+	init_va_list_pointer(&info, p);
+	info.writer = &simplewriter;
+	info.flags = e_minus;
+	info.width = 30;
+	info.target = &fd;
+	info.conv = 'p';
+	info.precfound = 1;
+	info.precision = 18;
+	ft_formatpointer(&info);
+	fflush(stdout);
+
+	cr_assert_stdout_eq_str("0x00abfc421ffa2b3342          ");
 }

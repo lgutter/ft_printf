@@ -10,14 +10,11 @@ ft_find_width \
 ft_find_precision \
 ft_find_lenmod \
 ft_check_width \
-ft_formatint \
 ft_writer_fd \
 ft_check_width \
 ft_formatpointer \
 ft_write_flags \
 ft_format_decimal \
-ft_formatbyteint \
-ft_formatshort \
 ft_formatlonglong \
 ft_formatoctal \
 ft_write_order \

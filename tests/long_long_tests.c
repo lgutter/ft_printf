@@ -34,11 +34,6 @@ static void simplewriter(void *target, const char *str, size_t len)
 	}
 }
 
-static void init_va_list(t_info *info, ...)
-{
-	va_start(info->arguments, info);
-}
-
 Test(test_format_long_long, long_long_simple_nb, .init = redirect_std_out_long_long)
 {
 	t_info info;
@@ -47,13 +42,12 @@ Test(test_format_long_long, long_long_simple_nb, .init = redirect_std_out_long_l
 
 	fd = 1;
 	d = 24;
-	init_va_list(&info, d);
 	info.writer = &simplewriter;
 	info.flags = 0;
 	info.width = 0;
 	info.target = &fd;
 	info.conv = 'd';
-	ft_formatlonglong(&info);
+	ft_formatlonglong(d, &info);
 	fflush(stdout);
 
 	cr_assert_stdout_eq_str("24");
@@ -67,13 +61,12 @@ Test(test_format_long_long, long_long_simple_minus_nb, .init = redirect_std_out_
 
 	fd = 1;
 	d = -24;
-	init_va_list(&info, d);
 	info.writer = &simplewriter;
 	info.flags = 0;
 	info.width = 0;
 	info.target = &fd;
 	info.conv = 'd';
-	ft_formatlonglong(&info);
+	ft_formatlonglong(d, &info);
 	fflush(stdout);
 
 	cr_assert_stdout_eq_str("-24");
@@ -87,13 +80,12 @@ Test(test_format_long_long, long_long_width_nb, .init = redirect_std_out_long_lo
 
 	fd = 1;
 	d = 24;
-	init_va_list(&info, d);
 	info.writer = &simplewriter;
 	info.flags = 0;
 	info.width = 5;
 	info.target = &fd;
 	info.conv = 'd';
-	ft_formatlonglong(&info);
+	ft_formatlonglong(d, &info);
 	fflush(stdout);
 
 	cr_assert_stdout_eq_str("   24");
@@ -107,13 +99,12 @@ Test(test_format_long_long, long_long_minus_flag_nb, .init = redirect_std_out_lo
 
 	fd = 1;
 	d = 24;
-	init_va_list(&info, d);
 	info.writer = &simplewriter;
 	info.flags = e_minus;
 	info.width = 5;
 	info.target = &fd;
 	info.conv = 'd';
-	ft_formatlonglong(&info);
+	ft_formatlonglong(d, &info);
 	fflush(stdout);
 
 	cr_assert_stdout_eq_str("24   ");
@@ -127,13 +118,12 @@ Test(test_format_long_long, long_long_zero_flag_nb, .init = redirect_std_out_lon
 
 	fd = 1;
 	d = 24;
-	init_va_list(&info, d);
 	info.writer = &simplewriter;
 	info.flags = e_zero;
 	info.width = 5;
 	info.target = &fd;
 	info.conv = 'd';
-	ft_formatlonglong(&info);
+	ft_formatlonglong(d, &info);
 	fflush(stdout);
 
 	cr_assert_stdout_eq_str("00024");
@@ -147,13 +137,12 @@ Test(test_format_long_long, long_long_zero_negative_nb, .init = redirect_std_out
 
 	fd = 1;
 	d = -24;
-	init_va_list(&info, d);
 	info.writer = &simplewriter;
 	info.flags = e_zero;
 	info.width = 5;
 	info.target = &fd;
 	info.conv = 'd';
-	ft_formatlonglong(&info);
+	ft_formatlonglong(d, &info);
 	fflush(stdout);
 
 	cr_assert_stdout_eq_str("-0024");
@@ -167,13 +156,12 @@ Test(test_format_long_long, long_long_space_negative_nb, .init = redirect_std_ou
 
 	fd = 1;
 	d = -24;
-	init_va_list(&info, d);
 	info.writer = &simplewriter;
 	info.flags = e_space;
 	info.width = 0;
 	info.target = &fd;
 	info.conv = 'd';
-	ft_formatlonglong(&info);
+	ft_formatlonglong(d, &info);
 	fflush(stdout);
 
 	cr_assert_stdout_eq_str("-24");
@@ -187,13 +175,12 @@ Test(test_format_long_long, long_long_space_nb, .init = redirect_std_out_long_lo
 
 	fd = 1;
 	d = 24;
-	init_va_list(&info, d);
 	info.writer = &simplewriter;
 	info.flags = e_space;
 	info.width = 0;
 	info.target = &fd;
 	info.conv = 'd';
-	ft_formatlonglong(&info);
+	ft_formatlonglong(d, &info);
 	fflush(stdout);
 
 	cr_assert_stdout_eq_str(" 24");

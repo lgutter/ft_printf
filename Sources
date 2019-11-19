@@ -22,4 +22,5 @@ ft_formatupphex \
 ft_formatlowhex \
 ft_precision_int \
 ft_formatunsigneddecimal \
-ft_formatunsignedint
+ft_formatunsignedint \
+ft_precision_string

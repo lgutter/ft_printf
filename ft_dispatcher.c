@@ -6,7 +6,7 @@
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/14 16:25:46 by lgutter        #+#    #+#                */
-/*   Updated: 2019/11/18 18:08:58 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/19 10:04:18 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ t_formatter	ft_dispatcher(char conv_flag)
 		['p'] = &ft_formatpointer,
 		['X'] = &ft_formatupphex,
 		['x'] = &ft_formatlowhex,
+		['u'] = &ft_formatunsigneddecimal,
 	};
 
 	return (formatter[(unsigned int)conv_flag]);

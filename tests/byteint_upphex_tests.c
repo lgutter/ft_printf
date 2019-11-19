@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/19 16:08:36 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/19 16:09:16 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/19 17:01:18 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void redirect_std_out_byteint_upphex(void)
 	cr_redirect_stdout();
 }
 
-Test(test_printf_format_int, byteint_large_hex, .init = redirect_std_out_byteint_upphex)
+Test(test_printf_formatupphex, byteint_large_upphex, .init = redirect_std_out_byteint_upphex)
 {
 	unsigned short d;
 	char *result = NULL;
@@ -31,7 +31,7 @@ Test(test_printf_format_int, byteint_large_hex, .init = redirect_std_out_byteint
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_int, byteint_medium, .init = redirect_std_out_byteint_upphex)
+Test(test_printf_formatupphex, byteint_medium_upphex, .init = redirect_std_out_byteint_upphex)
 {
 	int d;
 	char *result = NULL;
@@ -43,7 +43,7 @@ Test(test_printf_format_int, byteint_medium, .init = redirect_std_out_byteint_up
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_int, byteint_fortytwo, .init = redirect_std_out_byteint_upphex)
+Test(test_printf_formatupphex, byteint_fortytwo_upphex, .init = redirect_std_out_byteint_upphex)
 {
 	int d;
 	char *result = NULL;
@@ -55,7 +55,7 @@ Test(test_printf_format_int, byteint_fortytwo, .init = redirect_std_out_byteint_
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_int, byteint_space, .init = redirect_std_out_byteint_upphex)
+Test(test_printf_formatupphex, byteint_space_upphex, .init = redirect_std_out_byteint_upphex)
 {
 	int d;
 	char *result = NULL;
@@ -67,7 +67,7 @@ Test(test_printf_format_int, byteint_space, .init = redirect_std_out_byteint_upp
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_int, byteint_width, .init = redirect_std_out_byteint_upphex)
+Test(test_printf_formatupphex, byteint_width_upphex, .init = redirect_std_out_byteint_upphex)
 {
 	long long d;
 	char *result = NULL;
@@ -79,7 +79,7 @@ Test(test_printf_format_int, byteint_width, .init = redirect_std_out_byteint_upp
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_int, byteint_large_nb_width, .init = redirect_std_out_byteint_upphex)
+Test(test_printf_formatupphex, byteint_large_nb_width_upphex, .init = redirect_std_out_byteint_upphex)
 {
 	long d;
 	char *result = NULL;
@@ -91,7 +91,7 @@ Test(test_printf_format_int, byteint_large_nb_width, .init = redirect_std_out_by
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_int, byteint_hash, .init = redirect_std_out_byteint_upphex)
+Test(test_printf_formatupphex, byteint_hash_upphex, .init = redirect_std_out_byteint_upphex)
 {
 	long d;
 	char *result = NULL;

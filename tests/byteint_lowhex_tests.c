@@ -6,10 +6,9 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/19 12:09:56 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/19 17:00:57 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/19 17:37:53 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include <criterion/criterion.h>
 #include <criterion/redirect.h>

@@ -18,7 +18,6 @@ ft_format_decimal \
 ft_formatlonglong \
 ft_formatoctal \
 ft_write_order \
-ft_formatupphex \
 ft_formatlowhex \
 ft_formatunsigneddecimal \
 ft_formatunsignedint \

@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/18 18:04:23 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/18 19:45:09 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/19 16:49:28 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ Test(test_format_upphex, simple_nb, .init = redirect_std_out_format_upphex)
 	info.width = 0;
 	info.target = &fd;
 	info.conv = 'X';
-	ft_formatupphex(&info);
+	ft_formatullupphex(X, &info);
 	fflush(stdout);
 
 	cr_assert_stdout_eq_str("7C");
@@ -74,7 +74,7 @@ Test(test_format_upphex, nb_large_width, .init = redirect_std_out_format_upphex)
 	info.width = 25;
 	info.target = &fd;
 	info.conv = 'X';
-	ft_formatupphex(&info);
+	ft_formatullupphex(X, &info);
 	fflush(stdout);
 
 	cr_assert_stdout_eq_str("                       7C");
@@ -94,7 +94,7 @@ Test(test_format_upphex, nb_zero_width, .init = redirect_std_out_format_upphex)
 	info.width = 25;
 	info.target = &fd;
 	info.conv = 'X';
-	ft_formatupphex(&info);
+	ft_formatullupphex(X, &info);
 	fflush(stdout);
 
 	cr_assert_stdout_eq_str("000000000000000000000007C");
@@ -114,7 +114,7 @@ Test(test_format_upphex, nb_hash_width, .init = redirect_std_out_format_upphex)
 	info.width = 25;
 	info.target = &fd;
 	info.conv = 'X';
-	ft_formatupphex(&info);
+	ft_formatullupphex(X, &info);
 	fflush(stdout);
 
 	cr_assert_stdout_eq_str("                     0X7C");
@@ -134,7 +134,7 @@ Test(test_format_upphex, nb_hash_minus_width, .init = redirect_std_out_format_up
 	info.width = 25;
 	info.target = &fd;
 	info.conv = 'X';
-	ft_formatupphex(&info);
+	ft_formatullupphex(X, &info);
 	fflush(stdout);
 
 	cr_assert_stdout_eq_str("0X7C                     ");
@@ -154,7 +154,7 @@ Test(test_format_upphex, nb_hash_zero_width, .init = redirect_std_out_format_upp
 	info.width = 25;
 	info.target = &fd;
 	info.conv = 'X';
-	ft_formatupphex(&info);
+	ft_formatullupphex(X, &info);
 	fflush(stdout);
 
 	cr_assert_stdout_eq_str("0X0000000000000000000007C");
@@ -274,7 +274,7 @@ Test(test_printf_format_upphex, zero_zero, .init = redirect_std_out_format_upphe
 
 Test(test_printf_format_upphex, zero_hash, .init = redirect_std_out_format_upphex)
 {
-	int X;
+	unsigned int X;
 	char *result;
 
 	X = 0;

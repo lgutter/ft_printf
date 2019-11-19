@@ -6,7 +6,7 @@
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/13 14:35:42 by lgutter        #+#    #+#                */
-/*   Updated: 2019/11/16 17:20:33 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/18 19:33:20 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,16 @@ static int	ft_format_neglonglong(long long n, t_info *info)
 	if ((info->flags & e_zero) != 0)
 	{
 		info->writer(info->target, "-", 1);
-		info->len = ft_nbrlenbase(n, 10);
+		info->len = 1;
 		n = n * -1;
 	}
 	else
-		info->len = ft_nbrlenbase(n, 10);
+		info->len = 0;
 	nb = ft_itoa_base(n, 10);
+	nb = ft_precision_int(info, nb);
 	if (nb == NULL)
 		return (-1);
+	info->len += ft_strlen(nb);
 	if ((info->flags & e_minus) != 0)
 	{
 		ft_write_order(info, nb, "rw");
@@ -39,25 +41,22 @@ static int	ft_format_neglonglong(long long n, t_info *info)
 	return (0);
 }
 
-int			ft_formatlonglong(t_info *info)
+int			ft_formatlonglong(long long n, t_info *info)
 {
-	long long	n;
-	char		*nb;
+	char	*nb;
 
-	n = va_arg(info->arguments, long long);
-	info->len = ft_nbrlenbase(n, 10);
 	if (n < 0)
 		return (ft_format_neglonglong(n, info));
 	info->sign = 1;
 	nb = ft_itoa_base(n, 10);
+	nb = ft_precision_int(info, nb);
+	if (nb == NULL)
+		return (-1);
+	info->len = ft_strlen(nb);
 	if ((info->flags & e_plus) != 0 || (info->flags & e_space) != 0)
-	{
 		info->len++;
-	}
 	if ((info->flags & e_minus) != 0)
-	{
 		ft_write_order(info, nb, "frw");
-	}
 	else
 	{
 		if ((info->flags & e_zero) != 0)

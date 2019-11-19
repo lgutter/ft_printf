@@ -6,7 +6,7 @@
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/18 15:44:54 by lgutter        #+#    #+#                */
-/*   Updated: 2019/11/18 16:51:46 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/18 20:24:57 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -340,5 +340,137 @@ Test(test_printf_precision_int, int_minus_neg_5_width_4242_3_precision_d, .init 
 	fflush(stdout);
 
 	asprintf(&result, "%-3.5d", d);
+	cr_assert_stdout_eq_str(result);
+}
+
+Test(test_printf_precision_int, int_minus_5_width_4242_3_precision_hh_d, .init = redirect_std_out)
+{
+	char d;
+	char *result = NULL;
+	d = (char)4242;
+	ft_printf("%-3.5hhd", d);
+	fflush(stdout);
+
+	asprintf(&result, "%-3.5hhd", d);
+	cr_assert_stdout_eq_str(result);
+}
+
+Test(test_printf_precision_int, int_minus_neg_5_width_4242_3_precision_hh_d, .init = redirect_std_out)
+{
+	char d;
+	char *result = NULL;
+	d = (char)-4242;
+	ft_printf("%-3.5hhd", d);
+	fflush(stdout);
+
+	asprintf(&result, "%-3.5hhd", d);
+	cr_assert_stdout_eq_str(result);
+}
+
+Test(test_printf_precision_int, int_minus_5_width_4242_3_precision_h_d, .init = redirect_std_out)
+{
+	short d;
+	char *result = NULL;
+	d = 4242;
+	ft_printf("%-3.5hd", d);
+	fflush(stdout);
+
+	asprintf(&result, "%-3.5hd", d);
+	cr_assert_stdout_eq_str(result);
+}
+
+Test(test_printf_precision_int, int_minus_neg_5_width_4242_3_precision_h_d, .init = redirect_std_out)
+{
+	short d;
+	char *result = NULL;
+	d = -4242;
+	ft_printf("%-3.5hd", d);
+	fflush(stdout);
+
+	asprintf(&result, "%-3.5hd", d);
+	cr_assert_stdout_eq_str(result);
+}
+
+Test(test_printf_precision_int, int_minus_5_width_0_3_precision_h_d, .init = redirect_std_out)
+{
+	short d;
+	char *result = NULL;
+	d = 0;
+	ft_printf("%-3.5hd", d);
+	fflush(stdout);
+
+	asprintf(&result, "%-3.5hd", d);
+	cr_assert_stdout_eq_str(result);
+}
+
+Test(test_printf_precision_int, int_minus_5_width_neg_32768_9_precision_h_d, .init = redirect_std_out)
+{
+	short d;
+	char *result = NULL;
+	d = -32768;
+	ft_printf("%-3.9hd", d);
+	fflush(stdout);
+
+	asprintf(&result, "%-3.9hd", d);
+	cr_assert_stdout_eq_str(result);
+}
+
+Test(test_printf_precision_int, int_minus_5_width_4242_12_precision_l_d, .init = redirect_std_out)
+{
+	long d;
+	char *result = NULL;
+	d = 4242;
+	ft_printf("%-3.12ld", d);
+	fflush(stdout);
+
+	asprintf(&result, "%-3.12ld", d);
+	cr_assert_stdout_eq_str(result);
+}
+
+Test(test_printf_precision_int, int_minus_3_width_neg_4242_5_precision_l_d, .init = redirect_std_out)
+{
+	long d;
+	char *result = NULL;
+	d = -4242;
+	ft_printf("%-3.5ld", d);
+	fflush(stdout);
+
+	asprintf(&result, "%-3.5ld", d);
+	cr_assert_stdout_eq_str(result);
+}
+
+Test(test_printf_precision_int, int_minus_3_width_0_3_precision_l_d, .init = redirect_std_out)
+{
+	long d;
+	char *result = NULL;
+	d = 0;
+	ft_printf("%-3.3ld", d);
+	fflush(stdout);
+
+	asprintf(&result, "%-3.3ld", d);
+	cr_assert_stdout_eq_str(result);
+}
+
+Test(test_printf_precision_int, int_minus_3_width_MAX_5_precision_h_d, .init = redirect_std_out)
+{
+	long d;
+	char *result = NULL;
+	d = 9223372036854775807;
+	ft_printf("%-3.5ld", d);
+	fflush(stdout);
+
+	asprintf(&result, "%-3.5ld", d);
+	cr_assert_stdout_eq_str(result);
+}
+
+Test(test_printf_precision_int, int_minus_5_width_MAX_32_precision_h_d, .init = redirect_std_out)
+{
+	long d;
+	char *result = NULL;
+	d = 9223372036854775807;
+	ft_printf("%-5.32ld", d);
+	fflush(stdout);
+
+	asprintf(&result, "%-5.32ld", d);
 	cr_assert_stdout_eq_str(result);
 }

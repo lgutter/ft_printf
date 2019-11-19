@@ -21,4 +21,3 @@ int_precision_tests \
 unsigned_byteint_tests \
 unsigned_int_precision_tests \
 unsigned_int_tests
-

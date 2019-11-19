@@ -20,6 +20,6 @@ ft_formatoctal \
 ft_write_order \
 ft_formatupphex \
 ft_formatlowhex \
-ft_precision_int \
 ft_formatunsigneddecimal \
 ft_formatunsignedint
+ft_precision_int

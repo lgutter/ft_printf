@@ -28,4 +28,6 @@ unsigned_int_tests \
 short_upphex_tests \
 byteint_upphex_tests \
 long_long_upphex_tests \
-long_upphex_tests
+long_upphex_tests \
+format_str_tests
+

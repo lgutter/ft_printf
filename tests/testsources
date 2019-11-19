@@ -17,4 +17,6 @@ long_tests \
 long_long_tests \
 upphex_tests \
 lowhex_tests \
-int_precision_tests
+int_precision_tests \
+unsigned_byteint_tests \
+unsigned_int_precision_tests

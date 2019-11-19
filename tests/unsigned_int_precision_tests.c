@@ -6,7 +6,7 @@
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/18 15:44:54 by lgutter        #+#    #+#                */
-/*   Updated: 2019/11/19 11:04:13 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/19 11:40:19 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -486,3 +486,28 @@ Test(test_printf_precision_unsigned_int, unsigned_int_minus_5_width_MAX_UNSIGNED
 	asprintf(&result, "%-5.32llu", d);
 	cr_assert_stdout_eq_str(result);
 }
+
+Test(test_printf_precision_unsigned_int, unsigned_int_3_width_0_u, .init = redirect_std_out)
+{
+	unsigned int d;
+	char *result = NULL;
+	d = 0;
+	ft_printf("%3u", d);
+	fflush(stdout);
+
+	asprintf(&result, "%3u", d);
+	cr_assert_stdout_eq_str(result);
+}
+
+Test(test_printf_precision_unsigned_int, unsigned_int_minus_3_width_0_u, .init = redirect_std_out)
+{
+	unsigned int d;
+	char *result = NULL;
+	d = 0;
+	ft_printf("%-3u", d);
+	fflush(stdout);
+
+	asprintf(&result, "%-3u", d);
+	cr_assert_stdout_eq_str(result);
+}
+

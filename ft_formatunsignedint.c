@@ -6,7 +6,7 @@
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/19 09:51:50 by lgutter        #+#    #+#                */
-/*   Updated: 2019/11/19 10:02:28 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/19 11:53:24 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ int			ft_formatunsignedlonglong(unsigned long long n, t_info *info)
 
 	info->sign = 1;
 	nb = ft_ulltoa_base_low(n, 10);
-	nb = ft_precision_int(info, nb);
+	if (info->precfound > 0)
+		nb = ft_precision_int(info, nb);
 	if (nb == NULL)
 		return (-1);
 	info->len = ft_strlen(nb);

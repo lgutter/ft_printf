@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/13 14:10:30 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/19 10:32:01 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/19 11:51:28 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ enum					e_flags
 **	A short explanation of every variable in the struct:
 **	flags & lenmod:	Uses the above mentioned enums to store flags / lenmods.
 **	conv:			Contains the char representing the conversion specifier.
+**	precfound:		positive if a precision was found, negative if it was not.
 **	sign:			Used to specify if a number is positive or negative.
 **	arguments:		Va_list with all the arguments that printf received.
 **	width:			Simple value representing the width provided.
@@ -60,6 +61,7 @@ typedef struct			s_info
 	unsigned char		flags;
 	unsigned char		lenmod;
 	unsigned char		conv;
+	char				precfound;
 	int					sign;
 	size_t				len;
 	va_list				arguments;

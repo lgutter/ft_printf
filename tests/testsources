@@ -22,3 +22,7 @@ short_lowhex_tests \
 long_long_lowhex_tests \
 long_lowhex_tests \
 byteint_lowhex_tests
+unsigned_byteint_tests \
+unsigned_int_precision_tests \
+unsigned_int_tests
+

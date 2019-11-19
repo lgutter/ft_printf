@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/13 14:10:30 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/19 11:40:45 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/19 15:35:02 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ enum					e_flags
 **	A short explanation of every variable in the struct:
 **	flags & lenmod:	Uses the above mentioned enums to store flags / lenmods.
 **	conv:			Contains the char representing the conversion specifier.
+**	precfound:		positive if a precision was found, negative if it was not.
 **	sign:			Used to specify if a number is positive or negative.
 **	arguments:		Va_list with all the arguments that printf received.
 **	width:			Simple value representing the width provided.
@@ -60,6 +61,7 @@ typedef struct			s_info
 	unsigned char		flags;
 	unsigned char		lenmod;
 	unsigned char		conv;
+	char				precfound;
 	int					sign;
 	size_t				len;
 	va_list				arguments;
@@ -77,11 +79,14 @@ t_formatter				ft_dispatcher(char conv_flag);
 void					ft_writer_fd\
 						(void *target, const char *string, size_t len);
 char					*ft_precision_int(t_info *info, char *number);
+int						ft_formatunsigneddecimal(t_info *info);
 
 int						ft_formatchar(t_info *info);
 int						ft_formatstring(t_info *info);
 int						ft_formatunknown(t_info *info, char c);
 int						ft_formatdecimal(t_info *info);
+int						ft_formatunsignedlonglong(\
+						unsigned long long n, t_info *info);
 int						ft_formatlonglong(long long n, t_info *info);
 int						ft_formatoctal(t_info *info);
 int						ft_formatpointer(t_info *info);

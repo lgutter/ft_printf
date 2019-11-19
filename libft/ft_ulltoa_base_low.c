@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/14 14:29:16 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/18 16:53:37 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/19 14:10:06 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ char			*ft_ulltoa_base_low(unsigned long long nb, const unsigned base)
 		return (ft_strdup("0"));
 	}
 	nb_len = ft_nbrlenbase_ull(nb, base);
-	str = (char *)ft_strnew(sizeof(char) * nb_len);
+	str = (char *)ft_strnew(sizeof(char) * (nb_len + 1));
 	if (str != NULL)
 	{
 		str = ft_convert(nb, base, str, 0);

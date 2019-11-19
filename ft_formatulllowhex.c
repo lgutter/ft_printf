@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_formatlowhex.c                                  :+:    :+:            */
+/*   ft_formatulllowhex.c                               :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/18 14:50:31 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/18 17:01:44 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/19 15:49:31 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int			ft_formatlowhex(t_info *info)
+int			ft_formatulllowhex(unsigned long long n, t_info *info)
 {
-	unsigned long long	n;
 	char				*nb;
 
-	info->conv = 'x';
-	n = va_arg(info->arguments, unsigned long long);
+	info->sign = 1;
 	info->len = ft_nbrlenbase_ull(n, 16);
 	nb = ft_ulltoa_base_low(n, 16);
+	if (nb == NULL)
+		return (-1);
 	if ((info->flags & e_hash) != 0 && n == 0)
 		info->flags -= e_hash;
 	if ((info->flags & e_hash) != 0)

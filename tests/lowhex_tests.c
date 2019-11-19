@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/18 15:18:37 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/18 19:46:17 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/19 16:28:12 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void init_va_list_lowhex(t_info *info, ...)
 Test(test_format_lowhex, simple_nb, .init = redirect_std_out_format_lowhex)
 {
 	t_info info;
-	int x;
+	unsigned int x;
 	int fd;
 
 	fd = 1;
@@ -53,7 +53,7 @@ Test(test_format_lowhex, simple_nb, .init = redirect_std_out_format_lowhex)
 	info.width = 0;
 	info.target = &fd;
 	info.conv = 'x';
-	ft_formatlowhex(&info);
+	ft_formatulllowhex(x, &info);
 	fflush(stdout);
 
 	cr_assert_stdout_eq_str("7c");
@@ -62,7 +62,7 @@ Test(test_format_lowhex, simple_nb, .init = redirect_std_out_format_lowhex)
 Test(test_format_lowhex, nb_large_width, .init = redirect_std_out_format_lowhex)
 {
 	t_info info;
-	int x;
+	unsigned int x;
 	int fd;
 
 	fd = 1;
@@ -73,7 +73,7 @@ Test(test_format_lowhex, nb_large_width, .init = redirect_std_out_format_lowhex)
 	info.width = 25;
 	info.target = &fd;
 	info.conv = 'x';
-	ft_formatlowhex(&info);
+	ft_formatulllowhex(x, &info);
 	fflush(stdout);
 
 	cr_assert_stdout_eq_str("                       7c");
@@ -82,7 +82,7 @@ Test(test_format_lowhex, nb_large_width, .init = redirect_std_out_format_lowhex)
 Test(test_format_lowhex, nb_zero_width, .init = redirect_std_out_format_lowhex)
 {
 	t_info info;
-	int x;
+	unsigned int x;
 	int fd;
 
 	fd = 1;
@@ -93,7 +93,7 @@ Test(test_format_lowhex, nb_zero_width, .init = redirect_std_out_format_lowhex)
 	info.width = 25;
 	info.target = &fd;
 	info.conv = 'x';
-	ft_formatlowhex(&info);
+	ft_formatulllowhex(x, &info);
 	fflush(stdout);
 
 	cr_assert_stdout_eq_str("000000000000000000000007c");
@@ -102,7 +102,7 @@ Test(test_format_lowhex, nb_zero_width, .init = redirect_std_out_format_lowhex)
 Test(test_format_lowhex, nb_hash_width, .init = redirect_std_out_format_lowhex)
 {
 	t_info info;
-	int x;
+	unsigned int x;
 	int fd;
 
 	fd = 1;
@@ -113,7 +113,7 @@ Test(test_format_lowhex, nb_hash_width, .init = redirect_std_out_format_lowhex)
 	info.width = 25;
 	info.target = &fd;
 	info.conv = 'x';
-	ft_formatlowhex(&info);
+	ft_formatulllowhex(x, &info);
 	fflush(stdout);
 
 	cr_assert_stdout_eq_str("                     0x7c");
@@ -122,7 +122,7 @@ Test(test_format_lowhex, nb_hash_width, .init = redirect_std_out_format_lowhex)
 Test(test_format_lowhex, nb_hash_minus_width, .init = redirect_std_out_format_lowhex)
 {
 	t_info info;
-	int x;
+	unsigned int x;
 	int fd;
 
 	fd = 1;
@@ -133,7 +133,7 @@ Test(test_format_lowhex, nb_hash_minus_width, .init = redirect_std_out_format_lo
 	info.width = 25;
 	info.target = &fd;
 	info.conv = 'x';
-	ft_formatlowhex(&info);
+	ft_formatulllowhex(x, &info);
 	fflush(stdout);
 
 	cr_assert_stdout_eq_str("0x7c                     ");
@@ -142,7 +142,7 @@ Test(test_format_lowhex, nb_hash_minus_width, .init = redirect_std_out_format_lo
 Test(test_format_lowhex, nb_hash_zero_width, .init = redirect_std_out_format_lowhex)
 {
 	t_info info;
-	int x;
+	unsigned int x;
 	int fd;
 
 	fd = 1;
@@ -153,7 +153,7 @@ Test(test_format_lowhex, nb_hash_zero_width, .init = redirect_std_out_format_low
 	info.width = 25;
 	info.target = &fd;
 	info.conv = 'x';
-	ft_formatlowhex(&info);
+	ft_formatulllowhex(x, &info);
 	fflush(stdout);
 
 	cr_assert_stdout_eq_str("0x0000000000000000000007c");
@@ -161,7 +161,7 @@ Test(test_format_lowhex, nb_hash_zero_width, .init = redirect_std_out_format_low
 
 Test(test_printf_format_lowhex, simple_nb, .init = redirect_std_out_format_lowhex)
 {
-	int x;
+	unsigned int x;
 	char *result;
 
 	x = 124;
@@ -175,7 +175,7 @@ Test(test_printf_format_lowhex, simple_nb, .init = redirect_std_out_format_lowhe
 
 Test(test_printf_format_lowhex, nb_small_width, .init = redirect_std_out_format_lowhex)
 {
-	int x;
+	unsigned int x;
 	char *result;
 
 	x = 124;
@@ -189,7 +189,7 @@ Test(test_printf_format_lowhex, nb_small_width, .init = redirect_std_out_format_
 
 Test(test_printf_format_lowhex, nb_minus_zero_width, .init = redirect_std_out_format_lowhex)
 {
-	int x;
+	unsigned int x;
 	char *result;
 
 	x = 124;
@@ -203,7 +203,7 @@ Test(test_printf_format_lowhex, nb_minus_zero_width, .init = redirect_std_out_fo
 
 Test(test_printf_format_lowhex, nb_minus_width, .init = redirect_std_out_format_lowhex)
 {
-	int x;
+	unsigned int x;
 	char *result;
 
 	x = 124;
@@ -217,7 +217,7 @@ Test(test_printf_format_lowhex, nb_minus_width, .init = redirect_std_out_format_
 
 Test(test_printf_format_lowhex, nb_zero_width, .init = redirect_std_out_format_lowhex)
 {
-	int x;
+	unsigned int x;
 	char *result;
 
 	x = 124;
@@ -231,7 +231,7 @@ Test(test_printf_format_lowhex, nb_zero_width, .init = redirect_std_out_format_l
 
 Test(test_printf_format_lowhex, nb_zero_small_width, .init = redirect_std_out_format_lowhex)
 {
-	int x;
+	unsigned int x;
 	char *result;
 
 	x = 124;
@@ -245,7 +245,7 @@ Test(test_printf_format_lowhex, nb_zero_small_width, .init = redirect_std_out_fo
 
 Test(test_printf_format_lowhex, nb_minus_hash_small_width, .init = redirect_std_out_format_lowhex)
 {
-	int x;
+	unsigned int x;
 	char *result;
 
 	x = 124;
@@ -259,7 +259,7 @@ Test(test_printf_format_lowhex, nb_minus_hash_small_width, .init = redirect_std_
 
 Test(test_printf_format_lowhex, zero_zero, .init = redirect_std_out_format_lowhex)
 {
-	int x;
+	unsigned int x;
 	char *result;
 
 	x = 0;
@@ -273,7 +273,7 @@ Test(test_printf_format_lowhex, zero_zero, .init = redirect_std_out_format_lowhe
 
 Test(test_printf_format_lowhex, zero_hash, .init = redirect_std_out_format_lowhex)
 {
-	int x;
+	unsigned int x;
 	char *result;
 
 	x = 0;
@@ -287,7 +287,7 @@ Test(test_printf_format_lowhex, zero_hash, .init = redirect_std_out_format_lowhe
 
 Test(test_printf_format_lowhex, zero_hash_zero_width, .init = redirect_std_out_format_lowhex)
 {
-	int x;
+	unsigned int x;
 	char *result;
 
 	x = 0;
@@ -301,7 +301,7 @@ Test(test_printf_format_lowhex, zero_hash_zero_width, .init = redirect_std_out_f
 
 Test(test_printf_format_lowhex, zero_hash_width, .init = redirect_std_out_format_lowhex)
 {
-	int x;
+	unsigned int x;
 	char *result;
 
 	x = 0;
@@ -315,7 +315,7 @@ Test(test_printf_format_lowhex, zero_hash_width, .init = redirect_std_out_format
 
 Test(test_printf_format_lowhex, zero_hash_minus_width, .init = redirect_std_out_format_lowhex)
 {
-	int x;
+	unsigned int x;
 	char *result;
 
 	x = 0;

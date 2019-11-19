@@ -6,7 +6,7 @@
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/14 16:45:31 by lgutter        #+#    #+#                */
-/*   Updated: 2019/11/11 18:35:58 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/19 16:34:35 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@ int		ft_formatstring(t_info *info)
 
 	info->conv = 's';
 	str = va_arg(info->arguments, char *);
+	if (str == NULL)
+		str = "(null)";
+	str = ft_precision_string(info, str);
+	if (str == NULL)
+		return (-1);
 	if ((info->flags & e_minus) != 0)
 	{
 		info->writer(info->target, str, 0);

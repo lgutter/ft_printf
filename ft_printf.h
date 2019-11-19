@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/13 14:10:30 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/19 15:50:15 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/19 16:56:37 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ void					ft_writer_fd\
 						(void *target, const char *string, size_t len);
 char					*ft_precision_int(t_info *info, char *number);
 int						ft_formatunsigneddecimal(t_info *info);
+char					*ft_precision_string(t_info *info, char *string);
 
 int						ft_formatchar(t_info *info);
 int						ft_formatstring(t_info *info);

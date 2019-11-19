@@ -6,7 +6,7 @@
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/01/10 17:29:34 by lgutter        #+#    #+#                */
-/*   Updated: 2019/10/27 12:51:14 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/16 15:45:59 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ void				*ft_memjoin(const void *str1, size_t size1,
 void				ft_memexpand(void **src, size_t *size1, const void *add,
 									size_t size2);
 void				ft_memdelsize(void *pointer, size_t size);
-size_t				ft_nbrlenbase(long number, int base);
+size_t				ft_nbrlenbase(long long number, int base);
 size_t				ft_lstlen(t_list **start);
 void				ft_lstaddback(t_list **start, t_list *new);
 t_list				*ft_lstaddnext(t_list *current, t_list *new);
@@ -114,7 +114,10 @@ void				ft_strexpand(char **source, const char *addition);
 void				ft_swap(char *a, char *b);
 char				*ft_strrev(char *str, int start);
 char				*ft_itoa_base(signed long long nb, const unsigned int base);
-char				*ft_ulltoa_base(unsigned long long nb, const unsigned base);
+char				*ft_ulltoa_base_upp(\
+									unsigned long long nb, const unsigned base);
+char				*ft_ulltoa_base_low(\
+									unsigned long long nb, const unsigned base);
 size_t				ft_nbrlenbase_ull(unsigned long long number, int base);
 char				*ft_strcharjoin(char *str, char c);
 void				ft_strcharexpand(char **source, const char addition);

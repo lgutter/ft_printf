@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/13 14:10:30 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/13 12:19:43 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/19 17:18:14 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ enum					e_flags
 **	A short explanation of every variable in the struct:
 **	flags & lenmod:	Uses the above mentioned enums to store flags / lenmods.
 **	conv:			Contains the char representing the conversion specifier.
+**	precfound:		positive if a precision was found, negative if it was not.
 **	sign:			Used to specify if a number is positive or negative.
 **	arguments:		Va_list with all the arguments that printf received.
 **	width:			Simple value representing the width provided.
@@ -60,6 +61,7 @@ typedef struct			s_info
 	unsigned char		flags;
 	unsigned char		lenmod;
 	unsigned char		conv;
+	char				precfound;
 	int					sign;
 	size_t				len;
 	va_list				arguments;
@@ -76,14 +78,30 @@ int						ft_init_info(const char *format, t_info *info);
 t_formatter				ft_dispatcher(char conv_flag);
 void					ft_writer_fd\
 						(void *target, const char *string, size_t len);
+char					*ft_precision_int(t_info *info, char *number);
+int						ft_formatunsigneddecimal(t_info *info);
+char					*ft_precision_string(t_info *info, char *string);
 
 int						ft_formatchar(t_info *info);
 int						ft_formatstring(t_info *info);
 int						ft_formatunknown(t_info *info, char c);
+<<<<<<< HEAD
 int						ft_formatint(t_info *info);
 int						ft_formatoctal(t_info *info);
 
 int						ft_handle_negint(int n, t_info *info);
+=======
+int						ft_formatdecimal(t_info *info);
+int						ft_formatunsignedlonglong(\
+						unsigned long long n, t_info *info);
+int						ft_formatlonglong(long long n, t_info *info);
+int						ft_formatoctal(t_info *info);
+int						ft_formatpointer(t_info *info);
+int						ft_format_upphex(t_info *info);
+int						ft_formatullupphex(unsigned long long n, t_info *info);
+int						ft_format_lowhex(t_info *info);
+int						ft_formatulllowhex(unsigned long long n, t_info *info);
+>>>>>>> master
 
 int						ft_find_flags(const char *format, t_info *info, int i);
 int						ft_find_width(const char *format, t_info *info, int i);
@@ -92,5 +110,7 @@ int						ft_find_precision\
 int						ft_find_lenmod(const char *format, t_info *info, int i);
 
 void					ft_check_width(t_info *info, size_t len);
+void					ft_write_flags(t_info *info);
+int						ft_write_order(t_info *info, char *str, char *order);
 
 #endif

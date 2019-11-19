@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_ulltoa_base.c                                   :+:    :+:            */
+/*   ft_ulltoa_base_low.c                               :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/10/21 15:14:42 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/05 17:34:53 by lgutter       ########   odam.nl         */
+/*   Created: 2019/11/14 14:29:16 by ivan-tey       #+#    #+#                */
+/*   Updated: 2019/11/19 14:10:06 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static char		*ft_convert(unsigned long long n, \
 	int			res;
 	char		*bstr;
 
-	bstr = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	bstr = "0123456789abcdefghijklmnopqrstuvqxyz";
 	while (base == 1 && (i <= ft_nbrlenbase_ull(n, base)))
 	{
 		str[i] = '1';
@@ -37,7 +37,7 @@ static char		*ft_convert(unsigned long long n, \
 	return (str);
 }
 
-char			*ft_ulltoa_base(unsigned long long nb, const unsigned base)
+char			*ft_ulltoa_base_low(unsigned long long nb, const unsigned base)
 {
 	int			nb_len;
 	char		*str;
@@ -48,10 +48,10 @@ char			*ft_ulltoa_base(unsigned long long nb, const unsigned base)
 	}
 	if (nb == 0)
 	{
-		return ("0");
+		return (ft_strdup("0"));
 	}
 	nb_len = ft_nbrlenbase_ull(nb, base);
-	str = (char *)ft_strnew(sizeof(char) * nb_len);
+	str = (char *)ft_strnew(sizeof(char) * (nb_len + 1));
 	if (str != NULL)
 	{
 		str = ft_convert(nb, base, str, 0);

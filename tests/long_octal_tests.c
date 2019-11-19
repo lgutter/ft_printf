@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/19 17:44:27 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/19 17:45:10 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/19 17:59:55 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,9 +98,9 @@ Test(test_printf_format_octal, long_hash, .init = redirect_std_out_long_octal)
 	long d;
 	char *result = NULL;
 	d = 124;
-	ft_printf("%15lo", (unsigned long)d);
+	ft_printf("%#15lo", (unsigned long)d);
 	fflush(stdout);
 
-	asprintf(&result, "%15lo", (unsigned long)d);
+	asprintf(&result, "%#15lo", (unsigned long)d);
 	cr_assert_stdout_eq_str(result);
 }

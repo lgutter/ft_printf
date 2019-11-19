@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/19 17:46:25 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/19 17:48:31 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/19 17:59:26 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,9 +98,9 @@ Test(test_printf_format_octal, short_hash, .init = redirect_std_out_short_octal)
 	long d;
 	char *result = NULL;
 	d = 124;
-	ft_printf("%15ho", (unsigned short)d);
+	ft_printf("%#15ho", (unsigned short)d);
 	fflush(stdout);
 
-	asprintf(&result, "%15ho", (unsigned short)d);
+	asprintf(&result, "%#15ho", (unsigned short)d);
 	cr_assert_stdout_eq_str(result);
 }

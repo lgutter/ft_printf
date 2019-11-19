@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/13 12:02:41 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/19 17:29:38 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/19 18:03:33 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,18 @@ int			ft_formatulloctal(unsigned long long n, t_info *info)
 	nb = ft_itoa_base(n, 8);
 	if (nb == NULL)
 		return (-1);
+	if ((info->flags & e_hash) != 0 && n == 0)
+		info->flags -= e_hash;
+	if ((info->flags & e_hash) != 0)
+		info->len += 1;
 	if ((info->flags & e_minus) != 0)
+		ft_write_order(info, nb, "frw");
+	else
 	{
-		info->writer(info->target, nb, 0);
-		ft_check_width(info, info->len);
-		return (0);
+		if ((info->flags & e_zero) != 0)
+			ft_write_order(info, nb, "fwr");
+		else
+			ft_write_order(info, nb, "wfr");
 	}
-	ft_check_width(info, info->len);
-	info->writer(info->target, nb, 0);
 	return (0);
 }

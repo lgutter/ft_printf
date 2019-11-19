@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/01/13 20:40:25 by lgutter       #+#    #+#                 */
-/*   Updated: 2019/01/13 21:34:19 by lgutter       ########   odam.nl         */
+/*   Created: 2019/01/13 20:40:25 by lgutter        #+#    #+#                */
+/*   Updated: 2019/11/19 14:14:50 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_strnew(size_t size)
 	char *string;
 
 	size++;
-	string = (char *)malloc(sizeof(char) * (size));
+	string = (char *)malloc(sizeof(char) * (size + 1));
 	if (!string)
 		return (NULL);
 	if (size > 0)

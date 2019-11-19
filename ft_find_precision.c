@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/01 15:31:26 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/18 15:54:58 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/19 11:52:08 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int		ft_find_precision(const char *format, t_info *info, int i)
 	nb = 0;
 	if (format[i] == '.')
 	{
+		info->precfound = 1;
 		i++;
 		nb = ft_atoi(&format[i]);
 		info->precision = nb;
@@ -30,6 +31,10 @@ int		ft_find_precision(const char *format, t_info *info, int i)
 		{
 			i += ft_nbrlenbase(nb, 10);
 		}
+	}
+	else
+	{
+		info->precfound = -1;
 	}
 	return (i);
 }

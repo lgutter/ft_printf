@@ -6,7 +6,7 @@
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/19 12:51:45 by lgutter        #+#    #+#                */
-/*   Updated: 2019/11/19 16:42:28 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/20 15:21:28 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,20 +31,6 @@ static void		simplewriter(void *target, const char *str, size_t len)
 	else
 	{
 		write(fd, str, ft_strlen(str));
-	}
-}
-static void		stringwriter(void *target, const char *str, size_t len)
-{
-	char *res;
-
-	res = (char *)target;
-	if (len > 0)
-	{
-		ft_memcpy(res, str, len);
-	}
-	else
-	{
-		res = ft_strcpy(res, str);
 	}
 }
 
@@ -307,42 +293,41 @@ Test(test_format_str_invalid, test_string_hh, .init = redirect_std_out) {
 Test(test_format_str_invalid, test_string_writer, .init = redirect_std_out) {
     t_info info;
 	char *c;
-	char *res = malloc(5);
+	int fd;
 
+	fd = STDOUT_FILENO;
 	c = "halo";
-	res[5] = '\0';
 	init_va_list(&info, c);
-	info.writer = &stringwriter;
+	info.writer = &simplewriter;
 	info.flags = 0;
 	info.lenmod = e_hh;
 	info.width = 0;
-	info.target = res;
+	info.target = &fd;
 	info.precfound = -1;
 	ft_formatstring(&info);
     fflush(stdout);
 
-    cr_assert_str_eq(res, "halo");
+    cr_assert_stdout_eq_str("halo");
 }
 
 Test(test_format_str_invalid, test_string_NULL, .init = redirect_std_out) {
     t_info info;
 	char *c;
-	char *res = malloc(2);
+	int fd;
 
+	fd = STDOUT_FILENO;
 	c = NULL;
-	res[0] = '\0';
-	res[1] = '\0';
 	init_va_list(&info, c);
-	info.writer = &stringwriter;
+	info.writer = &simplewriter;
 	info.flags = 0;
 	info.lenmod = e_hh;
 	info.width = 0;
-	info.target = res;
+	info.target = &fd;
 	info.precfound = -1;
 	ft_formatstring(&info);
     fflush(stdout);
 
-    cr_assert_str_eq(res, "(null)");
+    cr_assert_stdout_eq_str("(null)");
 }
 
 Test(test_format_str_precision, test_string_5_precision, .init = redirect_std_out) {

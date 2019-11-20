@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/13 12:28:04 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/13 12:34:05 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/19 18:29:24 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ Test(test_format_octal, int_simple_nb, .init = redirect_std_out_format_octal)
 	info.flags = 0;
 	info.width = 0;
 	info.target = &fd;
-	ft_formatoctal(&info);
+	ft_formatulloctal(o, &info);
 	fflush(stdout);
 
 	cr_assert_stdout_eq_str("30");
@@ -71,7 +71,7 @@ Test(test_format_octal, int_width_nb, .init = redirect_std_out_format_octal)
 	info.flags = 0;
 	info.width = 10;
 	info.target = &fd;
-	ft_formatoctal(&info);
+	ft_formatulloctal(o, &info);
 	fflush(stdout);
 
 	cr_assert_stdout_eq_str("        30");
@@ -90,7 +90,7 @@ Test(test_format_octal, int_zero_width_nb, .init = redirect_std_out_format_octal
 	info.flags = e_zero;
 	info.width = 10;
 	info.target = &fd;
-	ft_formatoctal(&info);
+	ft_formatulloctal(o, &info);
 	fflush(stdout);
 
 	cr_assert_stdout_eq_str("0000000030");
@@ -109,8 +109,27 @@ Test(test_format_octal, int_minus_width_nb, .init = redirect_std_out_format_octa
 	info.flags = e_minus;
 	info.width = 10;
 	info.target = &fd;
-	ft_formatoctal(&info);
+	ft_formatulloctal(o, &info);
 	fflush(stdout);
 
 	cr_assert_stdout_eq_str("30        ");
+}
+
+Test(test_format_octal, int_zero, .init = redirect_std_out_format_octal)
+{
+	t_info info;
+	int o;
+	int fd;
+
+	fd = 1;
+	o = 0;
+	init_va_list_octal(&info, o);
+	info.writer = &simplewriter;
+	info.flags = e_hash;
+	info.width = 0;
+	info.target = &fd;
+	ft_formatulloctal(o, &info);
+	fflush(stdout);
+
+	cr_assert_stdout_eq_str("0");
 }

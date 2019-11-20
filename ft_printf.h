@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/13 14:10:30 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/19 17:11:55 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/19 17:29:52 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,8 @@ int						ft_formatdecimal(t_info *info);
 int						ft_formatunsignedlonglong(\
 						unsigned long long n, t_info *info);
 int						ft_formatlonglong(long long n, t_info *info);
-int						ft_formatoctal(t_info *info);
+int						ft_format_octal(t_info *info);
+int						ft_formatulloctal(unsigned long long n, t_info *info);
 int						ft_formatpointer(t_info *info);
 int						ft_format_upphex(t_info *info);
 int						ft_formatullupphex(unsigned long long n, t_info *info);

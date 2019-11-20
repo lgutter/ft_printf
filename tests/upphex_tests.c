@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/18 18:04:23 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/19 16:49:28 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/20 16:08:01 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <criterion/redirect.h>
 #include "ft_printf.h"
 
-void redirect_std_out_format_upphex(void)
+static void redirect_std_out(void)
 {
 	cr_redirect_stdout();
 }
@@ -35,12 +35,24 @@ static void simplewriter(void *target, const char *str, size_t len)
 	}
 }
 
-void init_va_list_upphex(t_info *info, ...)
+static void init_va_list(t_info *info, ...)
 {
 	va_start(info->arguments, info);
 }
 
-Test(test_format_upphex, simple_nb, .init = redirect_std_out_format_upphex)
+static void	init_struct(t_info *info)
+{
+	info->flags = 0;
+	info->lenmod = 0;
+	info->conv = 'X';
+	info->precfound = -1;
+	info->sign = 0;
+	info->len = 0;
+	info->width = 0;
+	info->precision = 0;
+}
+
+Test(test_format_upphex, simple_nb, .init = redirect_std_out)
 {
 	t_info info;
 	int X;
@@ -48,7 +60,8 @@ Test(test_format_upphex, simple_nb, .init = redirect_std_out_format_upphex)
 
 	fd = 1;
 	X = 124;
-	init_va_list_upphex(&info, X);
+	init_struct(&info);
+	init_va_list(&info, X);
 	info.writer = &simplewriter;
 	info.flags = 0;
 	info.width = 0;
@@ -60,7 +73,7 @@ Test(test_format_upphex, simple_nb, .init = redirect_std_out_format_upphex)
 	cr_assert_stdout_eq_str("7C");
 }
 
-Test(test_format_upphex, nb_large_width, .init = redirect_std_out_format_upphex)
+Test(test_format_upphex, nb_large_width, .init = redirect_std_out)
 {
 	t_info info;
 	int X;
@@ -68,7 +81,8 @@ Test(test_format_upphex, nb_large_width, .init = redirect_std_out_format_upphex)
 
 	fd = 1;
 	X = 124;
-	init_va_list_upphex(&info, X);
+	init_struct(&info);
+	init_va_list(&info, X);
 	info.writer = &simplewriter;
 	info.flags = 0;
 	info.width = 25;
@@ -80,7 +94,7 @@ Test(test_format_upphex, nb_large_width, .init = redirect_std_out_format_upphex)
 	cr_assert_stdout_eq_str("                       7C");
 }
 
-Test(test_format_upphex, nb_zero_width, .init = redirect_std_out_format_upphex)
+Test(test_format_upphex, nb_zero_width, .init = redirect_std_out)
 {
 	t_info info;
 	int X;
@@ -88,7 +102,8 @@ Test(test_format_upphex, nb_zero_width, .init = redirect_std_out_format_upphex)
 
 	fd = 1;
 	X = 124;
-	init_va_list_upphex(&info, X);
+	init_struct(&info);
+	init_va_list(&info, X);
 	info.writer = &simplewriter;
 	info.flags = e_zero;
 	info.width = 25;
@@ -100,7 +115,7 @@ Test(test_format_upphex, nb_zero_width, .init = redirect_std_out_format_upphex)
 	cr_assert_stdout_eq_str("000000000000000000000007C");
 }
 
-Test(test_format_upphex, nb_hash_width, .init = redirect_std_out_format_upphex)
+Test(test_format_upphex, nb_hash_width, .init = redirect_std_out)
 {
 	t_info info;
 	int X;
@@ -108,7 +123,8 @@ Test(test_format_upphex, nb_hash_width, .init = redirect_std_out_format_upphex)
 
 	fd = 1;
 	X = 124;
-	init_va_list_upphex(&info, X);
+	init_struct(&info);
+	init_va_list(&info, X);
 	info.writer = &simplewriter;
 	info.flags = e_hash;
 	info.width = 25;
@@ -120,7 +136,7 @@ Test(test_format_upphex, nb_hash_width, .init = redirect_std_out_format_upphex)
 	cr_assert_stdout_eq_str("                     0X7C");
 }
 
-Test(test_format_upphex, nb_hash_minus_width, .init = redirect_std_out_format_upphex)
+Test(test_format_upphex, nb_hash_minus_width, .init = redirect_std_out)
 {
 	t_info info;
 	int X;
@@ -128,7 +144,8 @@ Test(test_format_upphex, nb_hash_minus_width, .init = redirect_std_out_format_up
 
 	fd = 1;
 	X = 124;
-	init_va_list_upphex(&info, X);
+	init_struct(&info);
+	init_va_list(&info, X);
 	info.writer = &simplewriter;
 	info.flags = e_hash + e_minus;
 	info.width = 25;
@@ -140,7 +157,7 @@ Test(test_format_upphex, nb_hash_minus_width, .init = redirect_std_out_format_up
 	cr_assert_stdout_eq_str("0X7C                     ");
 }
 
-Test(test_format_upphex, nb_hash_zero_width, .init = redirect_std_out_format_upphex)
+Test(test_format_upphex, nb_hash_zero_width, .init = redirect_std_out)
 {
 	t_info info;
 	int X;
@@ -148,7 +165,8 @@ Test(test_format_upphex, nb_hash_zero_width, .init = redirect_std_out_format_upp
 
 	fd = 1;
 	X = 124;
-	init_va_list_upphex(&info, X);
+	init_struct(&info);
+	init_va_list(&info, X);
 	info.writer = &simplewriter;
 	info.flags = e_hash + e_zero;
 	info.width = 25;
@@ -160,7 +178,7 @@ Test(test_format_upphex, nb_hash_zero_width, .init = redirect_std_out_format_upp
 	cr_assert_stdout_eq_str("0X0000000000000000000007C");
 }
 
-Test(test_printf_format_upphex, simple_nb, .init = redirect_std_out_format_upphex)
+Test(test_printf_format_upphex, simple_nb, .init = redirect_std_out)
 {
 	int X;
 	char *result;
@@ -174,7 +192,7 @@ Test(test_printf_format_upphex, simple_nb, .init = redirect_std_out_format_upphe
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_upphex, nb_small_width, .init = redirect_std_out_format_upphex)
+Test(test_printf_format_upphex, nb_small_width, .init = redirect_std_out)
 {
 	int X;
 	char *result;
@@ -188,7 +206,7 @@ Test(test_printf_format_upphex, nb_small_width, .init = redirect_std_out_format_
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_upphex, nb_minus_zero_width, .init = redirect_std_out_format_upphex)
+Test(test_printf_format_upphex, nb_minus_zero_width, .init = redirect_std_out)
 {
 	int X;
 	char *result;
@@ -202,7 +220,7 @@ Test(test_printf_format_upphex, nb_minus_zero_width, .init = redirect_std_out_fo
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_upphex, nb_minus_width, .init = redirect_std_out_format_upphex)
+Test(test_printf_format_upphex, nb_minus_width, .init = redirect_std_out)
 {
 	int X;
 	char *result;
@@ -216,7 +234,7 @@ Test(test_printf_format_upphex, nb_minus_width, .init = redirect_std_out_format_
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_upphex, nb_zero_width, .init = redirect_std_out_format_upphex)
+Test(test_printf_format_upphex, nb_zero_width, .init = redirect_std_out)
 {
 	int X;
 	char *result;
@@ -230,7 +248,7 @@ Test(test_printf_format_upphex, nb_zero_width, .init = redirect_std_out_format_u
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_upphex, nb_zero_small_width, .init = redirect_std_out_format_upphex)
+Test(test_printf_format_upphex, nb_zero_small_width, .init = redirect_std_out)
 {
 	int X;
 	char *result;
@@ -244,7 +262,7 @@ Test(test_printf_format_upphex, nb_zero_small_width, .init = redirect_std_out_fo
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_upphex, nb_minus_hash_small_width, .init = redirect_std_out_format_upphex)
+Test(test_printf_format_upphex, nb_minus_hash_small_width, .init = redirect_std_out)
 {
 	int X;
 	char *result;
@@ -258,7 +276,7 @@ Test(test_printf_format_upphex, nb_minus_hash_small_width, .init = redirect_std_
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_upphex, zero_zero, .init = redirect_std_out_format_upphex)
+Test(test_printf_format_upphex, zero_zero, .init = redirect_std_out)
 {
 	int X;
 	char *result;
@@ -272,7 +290,7 @@ Test(test_printf_format_upphex, zero_zero, .init = redirect_std_out_format_upphe
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_upphex, zero_hash, .init = redirect_std_out_format_upphex)
+Test(test_printf_format_upphex, zero_hash, .init = redirect_std_out)
 {
 	unsigned int X;
 	char *result;
@@ -286,7 +304,7 @@ Test(test_printf_format_upphex, zero_hash, .init = redirect_std_out_format_upphe
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_upphex, zero_hash_zero_width, .init = redirect_std_out_format_upphex)
+Test(test_printf_format_upphex, zero_hash_zero_width, .init = redirect_std_out)
 {
 	int X;
 	char *result;
@@ -300,7 +318,7 @@ Test(test_printf_format_upphex, zero_hash_zero_width, .init = redirect_std_out_f
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_upphex, zero_hash_width, .init = redirect_std_out_format_upphex)
+Test(test_printf_format_upphex, zero_hash_width, .init = redirect_std_out)
 {
 	int X;
 	char *result;
@@ -314,7 +332,7 @@ Test(test_printf_format_upphex, zero_hash_width, .init = redirect_std_out_format
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_upphex, zero_hash_minus_width, .init = redirect_std_out_format_upphex)
+Test(test_printf_format_upphex, zero_hash_minus_width, .init = redirect_std_out)
 {
 	int X;
 	char *result;

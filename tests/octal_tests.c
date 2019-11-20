@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/13 12:28:04 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/20 12:41:57 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/20 16:01:05 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <criterion/redirect.h>
 #include "ft_printf.h"
 
-void redirect_std_out_format_octal(void)
+static void redirect_std_out(void)
 {
 	cr_redirect_stdout();
 }
@@ -34,12 +34,24 @@ static void simplewriter(void *target, const char *str, unsigned long len)
 	}
 }
 
-void init_va_list_octal(t_info *info, ...)
+static void init_va_list(t_info *info, ...)
 {
 	va_start(info->arguments, info);
 }
 
-Test(test_format_octal, int_simple_nb, .init = redirect_std_out_format_octal)
+static void	init_struct(t_info *info)
+{
+	info->flags = 0;
+	info->lenmod = 0;
+	info->conv = 'o';
+	info->precfound = -1;
+	info->sign = 0;
+	info->len = 0;
+	info->width = 0;
+	info->precision = 0;
+}
+
+Test(test_format_octal, int_simple_nb, .init = redirect_std_out)
 {
 	t_info info;
 	unsigned long long	o;
@@ -47,7 +59,8 @@ Test(test_format_octal, int_simple_nb, .init = redirect_std_out_format_octal)
 
 	fd = 1;
 	o = 24;
-	init_va_list_octal(&info, o);
+	init_struct(&info);
+	init_va_list(&info, o);
 	info.writer = &simplewriter;
 	info.flags = 0;
 	info.width = 0;
@@ -58,7 +71,7 @@ Test(test_format_octal, int_simple_nb, .init = redirect_std_out_format_octal)
 	cr_assert_stdout_eq_str("30");
 }
 
-Test(test_format_octal, int_width_nb, .init = redirect_std_out_format_octal)
+Test(test_format_octal, int_width_nb, .init = redirect_std_out)
 {
 	t_info info;
 	unsigned long long	o;
@@ -66,7 +79,8 @@ Test(test_format_octal, int_width_nb, .init = redirect_std_out_format_octal)
 
 	fd = 1;
 	o = 24;
-	init_va_list_octal(&info, o);
+	init_struct(&info);
+	init_va_list(&info, o);
 	info.writer = &simplewriter;
 	info.flags = 0;
 	info.width = 10;
@@ -77,7 +91,7 @@ Test(test_format_octal, int_width_nb, .init = redirect_std_out_format_octal)
 	cr_assert_stdout_eq_str("        30");
 }
 
-Test(test_format_octal, int_zero_width_nb, .init = redirect_std_out_format_octal)
+Test(test_format_octal, int_zero_width_nb, .init = redirect_std_out)
 {
 	t_info info;
 	unsigned long long	o;
@@ -85,7 +99,8 @@ Test(test_format_octal, int_zero_width_nb, .init = redirect_std_out_format_octal
 
 	fd = 1;
 	o = 24;
-	init_va_list_octal(&info, o);
+	init_struct(&info);
+	init_va_list(&info, o);
 	info.writer = &simplewriter;
 	info.flags = e_zero;
 	info.width = 10;
@@ -96,7 +111,7 @@ Test(test_format_octal, int_zero_width_nb, .init = redirect_std_out_format_octal
 	cr_assert_stdout_eq_str("0000000030");
 }
 
-Test(test_format_octal, int_minus_width_nb, .init = redirect_std_out_format_octal)
+Test(test_format_octal, int_minus_width_nb, .init = redirect_std_out)
 {
 	t_info info;
 	unsigned long long	o;
@@ -104,7 +119,8 @@ Test(test_format_octal, int_minus_width_nb, .init = redirect_std_out_format_octa
 
 	fd = 1;
 	o = 24;
-	init_va_list_octal(&info, o);
+	init_struct(&info);
+	init_va_list(&info, o);
 	info.writer = &simplewriter;
 	info.flags = e_minus;
 	info.width = 10;
@@ -115,7 +131,7 @@ Test(test_format_octal, int_minus_width_nb, .init = redirect_std_out_format_octa
 	cr_assert_stdout_eq_str("30        ");
 }
 
-Test(test_format_octal, int_zero, .init = redirect_std_out_format_octal)
+Test(test_format_octal, int_zero, .init = redirect_std_out)
 {
 	t_info info;
 	unsigned long long	o;
@@ -123,7 +139,8 @@ Test(test_format_octal, int_zero, .init = redirect_std_out_format_octal)
 
 	fd = 1;
 	o = 0;
-	init_va_list_octal(&info, o);
+	init_struct(&info);
+	init_va_list(&info, o);
 	info.writer = &simplewriter;
 	info.flags = e_hash;
 	info.width = 0;

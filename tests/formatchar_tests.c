@@ -6,7 +6,7 @@
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/08 13:23:04 by lgutter        #+#    #+#                */
-/*   Updated: 2019/11/11 18:45:18 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/20 15:37:25 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <criterion/redirect.h>
 #include "ft_printf.h"
 
-static void redirect_std_out_format_char(void)
+static void redirect_std_out(void)
 {
     cr_redirect_stdout();
 }
@@ -32,13 +32,26 @@ static void init_va_list(t_info *info, ...)
 	va_start(info->arguments, info);
 }
 
-Test(test_format_char, test_simple_a, .init = redirect_std_out_format_char) {
+static void	init_struct(t_info *info)
+{
+	info->flags = 0;
+	info->lenmod = 0;
+	info->conv = 'c';
+	info->precfound = -1;
+	info->sign = 0;
+	info->len = 0;
+	info->width = 0;
+	info->precision = 0;
+}
+
+Test(test_format_char, test_simple_a, .init = redirect_std_out) {
     t_info info;
 	char c;
 	int fd;
 
 	fd = STDOUT_FILENO;
 	c = 'a';
+	init_struct(&info);
 	init_va_list(&info, c);
 	info.writer = &simplewriter;
 	info.flags = 0;
@@ -50,13 +63,14 @@ Test(test_format_char, test_simple_a, .init = redirect_std_out_format_char) {
     cr_assert_stdout_eq_str("a");
 }
 
-Test(test_format_char, test_b_width_1, .init = redirect_std_out_format_char) {
+Test(test_format_char, test_b_width_1, .init = redirect_std_out) {
     t_info info;
 	char c;
 	int fd;
 
 	fd = STDOUT_FILENO;
 	c = 'b';
+	init_struct(&info);
 	init_va_list(&info, c);
 	info.writer = &simplewriter;
 	info.flags = 0;
@@ -68,13 +82,14 @@ Test(test_format_char, test_b_width_1, .init = redirect_std_out_format_char) {
     cr_assert_stdout_eq_str("b");
 }
 
-Test(test_format_char, test_42_width_5, .init = redirect_std_out_format_char) {
+Test(test_format_char, test_42_width_5, .init = redirect_std_out) {
     t_info info;
 	char c;
 	int fd;
 
 	fd = STDOUT_FILENO;
 	c = '*';
+	init_struct(&info);
 	init_va_list(&info, c);
 	info.writer = &simplewriter;
 	info.flags = 0;
@@ -86,13 +101,14 @@ Test(test_format_char, test_42_width_5, .init = redirect_std_out_format_char) {
     cr_assert_stdout_eq_str("    *");
 }
 
-Test(test_format_char, test_semicolon_width_minus_3, .init = redirect_std_out_format_char) {
+Test(test_format_char, test_semicolon_width_minus_3, .init = redirect_std_out) {
     t_info info;
 	char c;
 	int fd;
 
 	fd = STDOUT_FILENO;
 	c = ';';
+	init_struct(&info);
 	init_va_list(&info, c);
 	info.writer = &simplewriter;
 	info.flags = e_minus;
@@ -104,13 +120,14 @@ Test(test_format_char, test_semicolon_width_minus_3, .init = redirect_std_out_fo
     cr_assert_stdout_eq_str(";  ");
 }
 
-Test(test_format_char_undefined, test_a_width_4_zero, .init = redirect_std_out_format_char) {
+Test(test_format_char_undefined, test_a_width_4_zero, .init = redirect_std_out) {
     t_info info;
 	char c;
 	int fd;
 
 	fd = STDOUT_FILENO;
 	c = 'a';
+	init_struct(&info);
 	init_va_list(&info, c);
 	info.writer = &simplewriter;
 	info.flags = e_zero;
@@ -122,13 +139,14 @@ Test(test_format_char_undefined, test_a_width_4_zero, .init = redirect_std_out_f
     cr_assert_stdout_eq_str("000a");
 }
 
-Test(test_format_char_undefined, test_a_width_7_zero_minus, .init = redirect_std_out_format_char) {
+Test(test_format_char_undefined, test_a_width_7_zero_minus, .init = redirect_std_out) {
     t_info info;
 	char c;
 	int fd;
 
 	fd = STDOUT_FILENO;
 	c = 'a';
+	init_struct(&info);
 	init_va_list(&info, c);
 	info.writer = &simplewriter;
 	info.flags = e_zero;
@@ -141,13 +159,14 @@ Test(test_format_char_undefined, test_a_width_7_zero_minus, .init = redirect_std
     cr_assert_stdout_eq_str("a000000");
 }
 
-Test(test_format_char_invalid, test_a_width_3_plus, .init = redirect_std_out_format_char) {
+Test(test_format_char_invalid, test_a_width_3_plus, .init = redirect_std_out) {
     t_info info;
 	char c;
 	int fd;
 
 	fd = STDOUT_FILENO;
 	c = 'a';
+	init_struct(&info);
 	init_va_list(&info, c);
 	info.writer = &simplewriter;
 	info.flags = e_plus;
@@ -159,13 +178,14 @@ Test(test_format_char_invalid, test_a_width_3_plus, .init = redirect_std_out_for
     cr_assert_stdout_eq_str("  a");
 }
 
-Test(test_format_char_invalid, test_a_width_3_plus_minus, .init = redirect_std_out_format_char) {
+Test(test_format_char_invalid, test_a_width_3_plus_minus, .init = redirect_std_out) {
     t_info info;
 	char c;
 	int fd;
 
 	fd = STDOUT_FILENO;
 	c = 'a';
+	init_struct(&info);
 	init_va_list(&info, c);
 	info.writer = &simplewriter;
 	info.flags = e_plus;
@@ -178,13 +198,14 @@ Test(test_format_char_invalid, test_a_width_3_plus_minus, .init = redirect_std_o
     cr_assert_stdout_eq_str("a  ");
 }
 
-Test(test_format_char_invalid, test_a_width_2_space, .init = redirect_std_out_format_char) {
+Test(test_format_char_invalid, test_a_width_2_space, .init = redirect_std_out) {
     t_info info;
 	char c;
 	int fd;
 
 	fd = STDOUT_FILENO;
 	c = 'a';
+	init_struct(&info);
 	init_va_list(&info, c);
 	info.writer = &simplewriter;
 	info.flags = e_space;
@@ -196,13 +217,14 @@ Test(test_format_char_invalid, test_a_width_2_space, .init = redirect_std_out_fo
     cr_assert_stdout_eq_str(" a");
 }
 
-Test(test_format_char_invalid, test_a_hash, .init = redirect_std_out_format_char) {
+Test(test_format_char_invalid, test_a_hash, .init = redirect_std_out) {
     t_info info;
 	char c;
 	int fd;
 
 	fd = STDOUT_FILENO;
 	c = 'a';
+	init_struct(&info);
 	init_va_list(&info, c);
 	info.writer = &simplewriter;
 	info.flags = e_hash;
@@ -214,13 +236,14 @@ Test(test_format_char_invalid, test_a_hash, .init = redirect_std_out_format_char
     cr_assert_stdout_eq_str("a");
 }
 
-Test(test_format_char_invalid, test_a_ll, .init = redirect_std_out_format_char) {
+Test(test_format_char_invalid, test_a_ll, .init = redirect_std_out) {
     t_info info;
 	char c;
 	int fd;
 
 	fd = STDOUT_FILENO;
 	c = 'a';
+	init_struct(&info);
 	init_va_list(&info, c);
 	info.writer = &simplewriter;
 	info.flags = 0;
@@ -233,13 +256,14 @@ Test(test_format_char_invalid, test_a_ll, .init = redirect_std_out_format_char) 
     cr_assert_stdout_eq_str("a");
 }
 
-Test(test_format_char_invalid, test_a_hh, .init = redirect_std_out_format_char) {
+Test(test_format_char_invalid, test_a_hh, .init = redirect_std_out) {
     t_info info;
 	char c;
 	int fd;
 
 	fd = STDOUT_FILENO;
 	c = 'a';
+	init_struct(&info);
 	init_va_list(&info, c);
 	info.writer = &simplewriter;
 	info.flags = 0;

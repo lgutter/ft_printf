@@ -14,12 +14,12 @@
 #include <criterion/redirect.h>
 #include "ft_printf.h"
 
-static void redirect_std_out_short_lowhex(void)
+static void redirect_std_out(void)
 {
 	cr_redirect_stdout();
 }
 
-Test(test_printf_format_int, short_large_hex, .init = redirect_std_out_short_lowhex)
+Test(test_printf_format_int, short_large_hex, .init = redirect_std_out)
 {
 	unsigned short d;
 	char *result = NULL;
@@ -31,7 +31,7 @@ Test(test_printf_format_int, short_large_hex, .init = redirect_std_out_short_low
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_int, short_medium, .init = redirect_std_out_short_lowhex)
+Test(test_printf_format_int, short_medium, .init = redirect_std_out)
 {
 	int d;
 	char *result = NULL;
@@ -43,7 +43,7 @@ Test(test_printf_format_int, short_medium, .init = redirect_std_out_short_lowhex
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_int, short_fortytwo, .init = redirect_std_out_short_lowhex)
+Test(test_printf_format_int, short_fortytwo, .init = redirect_std_out)
 {
 	int d;
 	char *result = NULL;
@@ -55,7 +55,7 @@ Test(test_printf_format_int, short_fortytwo, .init = redirect_std_out_short_lowh
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_int, short_space, .init = redirect_std_out_short_lowhex)
+Test(test_printf_format_int, short_space, .init = redirect_std_out)
 {
 	int d;
 	char *result = NULL;
@@ -68,7 +68,7 @@ Test(test_printf_format_int, short_space, .init = redirect_std_out_short_lowhex)
 }
 
 
-Test(test_printf_format_int, short_width, .init = redirect_std_out_short_lowhex)
+Test(test_printf_format_int, short_width, .init = redirect_std_out)
 {
 	short d;
 	char *result = NULL;
@@ -80,7 +80,7 @@ Test(test_printf_format_int, short_width, .init = redirect_std_out_short_lowhex)
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_int, short_large_nb_width, .init = redirect_std_out_short_lowhex)
+Test(test_printf_format_int, short_large_nb_width, .init = redirect_std_out)
 {
 	long d;
 	char *result = NULL;
@@ -92,7 +92,7 @@ Test(test_printf_format_int, short_large_nb_width, .init = redirect_std_out_shor
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_int, short_hash, .init = redirect_std_out_short_lowhex)
+Test(test_printf_format_int, short_hash, .init = redirect_std_out)
 {
 	long d;
 	char *result = NULL;

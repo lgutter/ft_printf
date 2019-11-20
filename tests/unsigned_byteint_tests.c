@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/11 12:31:48 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/19 10:52:19 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/20 16:06:23 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 #include <criterion/redirect.h>
 #include "ft_printf.h"
 
-static void redirect_std_out_byteint(void)
+static void redirect_std_out(void)
 {
 	cr_redirect_stdout();
 }
 
-Test(test_printf_format_unsigned_byte_int, unsigned_byte_int_zero_negative_nb_u, .init = redirect_std_out_byteint)
+Test(test_printf_format_unsigned_byte_int, unsigned_byte_int_zero_negative_nb_u, .init = redirect_std_out)
 {
 	unsigned int d;
 	char *result = NULL;
@@ -31,7 +31,7 @@ Test(test_printf_format_unsigned_byte_int, unsigned_byte_int_zero_negative_nb_u,
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_unsigned_byte_int, unsigned_byte_int_outside_char_range_u, .init = redirect_std_out_byteint)
+Test(test_printf_format_unsigned_byte_int, unsigned_byte_int_outside_char_range_u, .init = redirect_std_out)
 {
 	unsigned char d;
 	char *result = NULL;
@@ -43,7 +43,7 @@ Test(test_printf_format_unsigned_byte_int, unsigned_byte_int_outside_char_range_
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_unsigned_byte_int, unsigned_byte_int_zero_negative_nb_i, .init = redirect_std_out_byteint)
+Test(test_printf_format_unsigned_byte_int, unsigned_byte_int_zero_negative_nb_i, .init = redirect_std_out)
 {
 	unsigned int d;
 	char *result = NULL;
@@ -55,7 +55,7 @@ Test(test_printf_format_unsigned_byte_int, unsigned_byte_int_zero_negative_nb_i,
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_unsigned_byte_int, unsigned_byte_int_space_negative_nb_i, .init = redirect_std_out_byteint)
+Test(test_printf_format_unsigned_byte_int, unsigned_byte_int_space_negative_nb_i, .init = redirect_std_out)
 {
 	unsigned int d;
 	char *result = NULL;
@@ -67,7 +67,7 @@ Test(test_printf_format_unsigned_byte_int, unsigned_byte_int_space_negative_nb_i
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_unsigned_byte_int, unsigned_byte_int_space_negative_nb_u, .init = redirect_std_out_byteint)
+Test(test_printf_format_unsigned_byte_int, unsigned_byte_int_space_negative_nb_u, .init = redirect_std_out)
 {
 	unsigned int d;
 	char *result = NULL;
@@ -79,7 +79,7 @@ Test(test_printf_format_unsigned_byte_int, unsigned_byte_int_space_negative_nb_u
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_unsigned_byte_int, unsigned_byte_int_minus_negative_nb_u, .init = redirect_std_out_byteint)
+Test(test_printf_format_unsigned_byte_int, unsigned_byte_int_minus_negative_nb_u, .init = redirect_std_out)
 {
 	unsigned int d;
 	char *result = NULL;
@@ -91,7 +91,7 @@ Test(test_printf_format_unsigned_byte_int, unsigned_byte_int_minus_negative_nb_u
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_unsigned_byte_int, unsigned_byte_int_zero_minus_nb_u, .init = redirect_std_out_byteint)
+Test(test_printf_format_unsigned_byte_int, unsigned_byte_int_zero_minus_nb_u, .init = redirect_std_out)
 {
 	unsigned int d;
 	char *result = NULL;
@@ -103,7 +103,7 @@ Test(test_printf_format_unsigned_byte_int, unsigned_byte_int_zero_minus_nb_u, .i
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_unsigned_byte_int, unsigned_byte_int_zero_minus_nb_i, .init = redirect_std_out_byteint)
+Test(test_printf_format_unsigned_byte_int, unsigned_byte_int_zero_minus_nb_i, .init = redirect_std_out)
 {
 	unsigned int d;
 	char *result = NULL;
@@ -115,7 +115,7 @@ Test(test_printf_format_unsigned_byte_int, unsigned_byte_int_zero_minus_nb_i, .i
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_unsigned_byte_int, unsigned_byte_int_space_nb_i, .init = redirect_std_out_byteint)
+Test(test_printf_format_unsigned_byte_int, unsigned_byte_int_space_nb_i, .init = redirect_std_out)
 {
 	unsigned int d;
 	char *result = NULL;
@@ -128,7 +128,7 @@ Test(test_printf_format_unsigned_byte_int, unsigned_byte_int_space_nb_i, .init =
 }
 
 
-Test(test_printf_format_unsigned_byte_int, unsigned_byte_int_nb_i_larger_width, .init = redirect_std_out_byteint)
+Test(test_printf_format_unsigned_byte_int, unsigned_byte_int_nb_i_larger_width, .init = redirect_std_out)
 {
 	unsigned char d;
 	char *result = NULL;
@@ -140,7 +140,7 @@ Test(test_printf_format_unsigned_byte_int, unsigned_byte_int_nb_i_larger_width, 
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_unsigned_byte_int, unsigned_byte_plus_large_nb_i, .init = redirect_std_out_byteint)
+Test(test_printf_format_unsigned_byte_int, unsigned_byte_plus_large_nb_i, .init = redirect_std_out)
 {
 	unsigned long d;
 	char *result = NULL;
@@ -152,7 +152,7 @@ Test(test_printf_format_unsigned_byte_int, unsigned_byte_plus_large_nb_i, .init 
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_unsigned_byte_int, unsigned_byte_int_large_neg_nb_i, .init = redirect_std_out_byteint)
+Test(test_printf_format_unsigned_byte_int, unsigned_byte_int_large_neg_nb_i, .init = redirect_std_out)
 {
 	unsigned long d;
 	char *result = NULL;

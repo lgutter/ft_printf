@@ -6,7 +6,7 @@
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/14 16:45:31 by lgutter        #+#    #+#                */
-/*   Updated: 2019/11/19 16:34:35 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/20 16:49:12 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int		ft_formatstring(t_info *info)
 {
 	char *str;
 
+	str = NULL;
 	info->conv = 's';
 	str = va_arg(info->arguments, char *);
 	if (str == NULL)

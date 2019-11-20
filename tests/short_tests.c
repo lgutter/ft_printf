@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/11 12:31:48 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/18 19:46:38 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/20 16:04:47 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 #include <criterion/redirect.h>
 #include "ft_printf.h"
 
-static void redirect_std_out_short(void)
+static void redirect_std_out(void)
 {
 	cr_redirect_stdout();
 }
 
-Test(test_printf_format_int, short_zero_negative_nb_d, .init = redirect_std_out_short)
+Test(test_printf_format_int, short_zero_negative_nb_d, .init = redirect_std_out)
 {
 	int d;
 	char *result = NULL;
@@ -31,7 +31,7 @@ Test(test_printf_format_int, short_zero_negative_nb_d, .init = redirect_std_out_
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_int, short_outside_short_range_d, .init = redirect_std_out_short)
+Test(test_printf_format_int, short_outside_short_range_d, .init = redirect_std_out)
 {
 	unsigned short d;
 	char *result = NULL;
@@ -43,7 +43,7 @@ Test(test_printf_format_int, short_outside_short_range_d, .init = redirect_std_o
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_int, short_zero_negative_nb_i, .init = redirect_std_out_short)
+Test(test_printf_format_int, short_zero_negative_nb_i, .init = redirect_std_out)
 {
 	int d;
 	char *result = NULL;
@@ -55,7 +55,7 @@ Test(test_printf_format_int, short_zero_negative_nb_i, .init = redirect_std_out_
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_int, short_space_negative_nb_i, .init = redirect_std_out_short)
+Test(test_printf_format_int, short_space_negative_nb_i, .init = redirect_std_out)
 {
 	int d;
 	char *result = NULL;
@@ -67,7 +67,7 @@ Test(test_printf_format_int, short_space_negative_nb_i, .init = redirect_std_out
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_int, short_space_negative_nb_d, .init = redirect_std_out_short)
+Test(test_printf_format_int, short_space_negative_nb_d, .init = redirect_std_out)
 {
 	int d;
 	char *result = NULL;
@@ -79,7 +79,7 @@ Test(test_printf_format_int, short_space_negative_nb_d, .init = redirect_std_out
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_int, short_minus_negative_nb_d, .init = redirect_std_out_short)
+Test(test_printf_format_int, short_minus_negative_nb_d, .init = redirect_std_out)
 {
 	int d;
 	char *result = NULL;
@@ -91,7 +91,7 @@ Test(test_printf_format_int, short_minus_negative_nb_d, .init = redirect_std_out
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_int, short_zero_minus_nb_d, .init = redirect_std_out_short)
+Test(test_printf_format_int, short_zero_minus_nb_d, .init = redirect_std_out)
 {
 	int d;
 	char *result = NULL;
@@ -103,7 +103,7 @@ Test(test_printf_format_int, short_zero_minus_nb_d, .init = redirect_std_out_sho
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_int, short_zero_minus_nb_i, .init = redirect_std_out_short)
+Test(test_printf_format_int, short_zero_minus_nb_i, .init = redirect_std_out)
 {
 	int d;
 	char *result = NULL;
@@ -115,7 +115,7 @@ Test(test_printf_format_int, short_zero_minus_nb_i, .init = redirect_std_out_sho
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_int, short_space_nb_i, .init = redirect_std_out_short)
+Test(test_printf_format_int, short_space_nb_i, .init = redirect_std_out)
 {
 	int d;
 	char *result = NULL;
@@ -128,7 +128,7 @@ Test(test_printf_format_int, short_space_nb_i, .init = redirect_std_out_short)
 }
 
 
-Test(test_printf_format_int, short_space_nb_i_larger_width, .init = redirect_std_out_short)
+Test(test_printf_format_int, short_space_nb_i_larger_width, .init = redirect_std_out)
 {
 	short d;
 	char *result = NULL;
@@ -140,7 +140,7 @@ Test(test_printf_format_int, short_space_nb_i_larger_width, .init = redirect_std
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_int, short_plus_large_nb_i, .init = redirect_std_out_short)
+Test(test_printf_format_int, short_plus_large_nb_i, .init = redirect_std_out)
 {
 	long d;
 	char *result = NULL;
@@ -152,7 +152,7 @@ Test(test_printf_format_int, short_plus_large_nb_i, .init = redirect_std_out_sho
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_int, short_plus_large_neg_nb_i, .init = redirect_std_out_short)
+Test(test_printf_format_int, short_plus_large_neg_nb_i, .init = redirect_std_out)
 {
 	long d;
 	char *result = NULL;

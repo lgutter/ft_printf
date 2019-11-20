@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/14 14:29:16 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/19 14:10:06 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/20 17:15:04 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static char		*ft_convert(unsigned long long n, \
 	int			res;
 	char		*bstr;
 
+	res = 0;
 	bstr = "0123456789abcdefghijklmnopqrstuvqxyz";
 	while (base == 1 && (i <= ft_nbrlenbase_ull(n, base)))
 	{
@@ -42,6 +43,7 @@ char			*ft_ulltoa_base_low(unsigned long long nb, const unsigned base)
 	int			nb_len;
 	char		*str;
 
+	nb_len = 0;
 	if (base <= 0)
 	{
 		return (NULL);

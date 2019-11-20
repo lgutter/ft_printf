@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/19 16:10:34 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/19 16:12:25 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/20 15:56:22 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 #include <criterion/redirect.h>
 #include "ft_printf.h"
 
-static void redirect_std_out_long_long_upphex(void)
+static void redirect_std_out(void)
 {
 	cr_redirect_stdout();
 }
 
-Test(test_printf_format_upphex, long_long_large_upphex, .init = redirect_std_out_long_long_upphex)
+Test(test_printf_format_upphex, long_long_large_upphex, .init = redirect_std_out)
 {
 	unsigned short d;
 	char *result = NULL;
@@ -31,7 +31,7 @@ Test(test_printf_format_upphex, long_long_large_upphex, .init = redirect_std_out
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_upphex, long_long_medium_upphex, .init = redirect_std_out_long_long_upphex)
+Test(test_printf_format_upphex, long_long_medium_upphex, .init = redirect_std_out)
 {
 	int d;
 	char *result = NULL;
@@ -43,7 +43,7 @@ Test(test_printf_format_upphex, long_long_medium_upphex, .init = redirect_std_ou
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_upphex, long_long_fortytwo_upphex, .init = redirect_std_out_long_long_upphex)
+Test(test_printf_format_upphex, long_long_fortytwo_upphex, .init = redirect_std_out)
 {
 	int d;
 	char *result = NULL;
@@ -55,7 +55,7 @@ Test(test_printf_format_upphex, long_long_fortytwo_upphex, .init = redirect_std_
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_upphex, long_long_space_upphex, .init = redirect_std_out_long_long_upphex)
+Test(test_printf_format_upphex, long_long_space_upphex, .init = redirect_std_out)
 {
 	int d;
 	char *result = NULL;
@@ -68,7 +68,7 @@ Test(test_printf_format_upphex, long_long_space_upphex, .init = redirect_std_out
 }
 
 
-Test(test_printf_format_upphex, long_long_width_upphex, .init = redirect_std_out_long_long_upphex)
+Test(test_printf_format_upphex, long_long_width_upphex, .init = redirect_std_out)
 {
 	long long d;
 	char *result = NULL;
@@ -80,7 +80,7 @@ Test(test_printf_format_upphex, long_long_width_upphex, .init = redirect_std_out
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_upphex, long_long_large_nb_width_upphex, .init = redirect_std_out_long_long_upphex)
+Test(test_printf_format_upphex, long_long_large_nb_width_upphex, .init = redirect_std_out)
 {
 	long d;
 	char *result = NULL;
@@ -92,7 +92,7 @@ Test(test_printf_format_upphex, long_long_large_nb_width_upphex, .init = redirec
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_upphex, long_long_hash_upphex, .init = redirect_std_out_long_long_upphex)
+Test(test_printf_format_upphex, long_long_hash_upphex, .init = redirect_std_out)
 {
 	long d;
 	char *result = NULL;

@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/19 17:39:37 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/19 18:00:24 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/20 15:54:20 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 #include <criterion/redirect.h>
 #include "ft_printf.h"
 
-static void redirect_std_out_long_long_octal(void)
+static void redirect_std_out(void)
 {
 	cr_redirect_stdout();
 }
 
-Test(test_printf_format_lenmondoctal, long_long_large_octal, .init = redirect_std_out_long_long_octal)
+Test(test_printf_format_lenmondoctal, long_long_large_octal, .init = redirect_std_out)
 {
 	unsigned short d;
 	char *result = NULL;
@@ -31,7 +31,7 @@ Test(test_printf_format_lenmondoctal, long_long_large_octal, .init = redirect_st
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_lenmondoctal, long_long_medium, .init = redirect_std_out_long_long_octal)
+Test(test_printf_format_lenmondoctal, long_long_medium, .init = redirect_std_out)
 {
 	int d;
 	char *result = NULL;
@@ -43,7 +43,7 @@ Test(test_printf_format_lenmondoctal, long_long_medium, .init = redirect_std_out
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_lenmondoctal, long_long_fortytwo, .init = redirect_std_out_long_long_octal)
+Test(test_printf_format_lenmondoctal, long_long_fortytwo, .init = redirect_std_out)
 {
 	int d;
 	char *result = NULL;
@@ -55,7 +55,7 @@ Test(test_printf_format_lenmondoctal, long_long_fortytwo, .init = redirect_std_o
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_lenmondoctal, long_long_space, .init = redirect_std_out_long_long_octal)
+Test(test_printf_format_lenmondoctal, long_long_space, .init = redirect_std_out)
 {
 	int d;
 	char *result = NULL;
@@ -68,7 +68,7 @@ Test(test_printf_format_lenmondoctal, long_long_space, .init = redirect_std_out_
 }
 
 
-Test(test_printf_format_lenmondoctal, long_long_width, .init = redirect_std_out_long_long_octal)
+Test(test_printf_format_lenmondoctal, long_long_width, .init = redirect_std_out)
 {
 	long long d;
 	char *result = NULL;
@@ -80,7 +80,7 @@ Test(test_printf_format_lenmondoctal, long_long_width, .init = redirect_std_out_
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_lenmondoctal, long_long_large_nb_width, .init = redirect_std_out_long_long_octal)
+Test(test_printf_format_lenmondoctal, long_long_large_nb_width, .init = redirect_std_out)
 {
 	long d;
 	char *result = NULL;
@@ -92,7 +92,7 @@ Test(test_printf_format_lenmondoctal, long_long_large_nb_width, .init = redirect
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_lenmondoctal, long_long_hash, .init = redirect_std_out_long_long_octal)
+Test(test_printf_format_lenmondoctal, long_long_hash, .init = redirect_std_out)
 {
 	long d;
 	char *result = NULL;

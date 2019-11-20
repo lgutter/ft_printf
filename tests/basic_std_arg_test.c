@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/13 14:28:17 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/12 14:40:40 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/20 15:38:48 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <criterion/redirect.h>
 #include "ft_printf.h"
 
-void redirect_std_out(void)
+static void redirect_std_out(void)
 {
     cr_redirect_stdout();
 }

@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/19 12:09:56 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/19 17:37:53 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/20 15:52:07 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 #include <criterion/redirect.h>
 #include "ft_printf.h"
 
-static void redirect_std_out_byteint_lowhex(void)
+static void redirect_std_out(void)
 {
 	cr_redirect_stdout();
 }
 
-Test(test_printf_formatlowhex, byteint_large_lowhex, .init = redirect_std_out_byteint_lowhex)
+Test(test_printf_formatlowhex, byteint_large_lowhex, .init = redirect_std_out)
 {
 	unsigned short d;
 	char *result = NULL;
@@ -31,7 +31,7 @@ Test(test_printf_formatlowhex, byteint_large_lowhex, .init = redirect_std_out_by
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_formatlowhex, byteint_medium_lowhex, .init = redirect_std_out_byteint_lowhex)
+Test(test_printf_formatlowhex, byteint_medium_lowhex, .init = redirect_std_out)
 {
 	int d;
 	char *result = NULL;
@@ -43,7 +43,7 @@ Test(test_printf_formatlowhex, byteint_medium_lowhex, .init = redirect_std_out_b
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_formatlowhex, byteint_fortytwo_lowhex, .init = redirect_std_out_byteint_lowhex)
+Test(test_printf_formatlowhex, byteint_fortytwo_lowhex, .init = redirect_std_out)
 {
 	int d;
 	char *result = NULL;
@@ -55,7 +55,7 @@ Test(test_printf_formatlowhex, byteint_fortytwo_lowhex, .init = redirect_std_out
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_formatlowhex, byteint_space_lowhex, .init = redirect_std_out_byteint_lowhex)
+Test(test_printf_formatlowhex, byteint_space_lowhex, .init = redirect_std_out)
 {
 	int d;
 	char *result = NULL;
@@ -68,7 +68,7 @@ Test(test_printf_formatlowhex, byteint_space_lowhex, .init = redirect_std_out_by
 }
 
 
-Test(test_printf_formatlowhex, byteint_width_lowhex, .init = redirect_std_out_byteint_lowhex)
+Test(test_printf_formatlowhex, byteint_width_lowhex, .init = redirect_std_out)
 {
 	long long d;
 	char *result = NULL;
@@ -80,7 +80,7 @@ Test(test_printf_formatlowhex, byteint_width_lowhex, .init = redirect_std_out_by
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_formatlowhex, byteint_large_nb_width_lowhex, .init = redirect_std_out_byteint_lowhex)
+Test(test_printf_formatlowhex, byteint_large_nb_width_lowhex, .init = redirect_std_out)
 {
 	long d;
 	char *result = NULL;
@@ -92,7 +92,7 @@ Test(test_printf_formatlowhex, byteint_large_nb_width_lowhex, .init = redirect_s
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_formatlowhex, byteint_hash_lowhex, .init = redirect_std_out_byteint_lowhex)
+Test(test_printf_formatlowhex, byteint_hash_lowhex, .init = redirect_std_out)
 {
 	long d;
 	char *result = NULL;

@@ -6,7 +6,7 @@
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/19 12:51:45 by lgutter        #+#    #+#                */
-/*   Updated: 2019/11/20 15:21:28 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/20 15:33:59 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,18 @@ static void init_va_list(t_info *info, ...)
 	va_start(info->arguments, info);
 }
 
+static void	init_struct(t_info *info)
+{
+	info->flags = 0;
+	info->lenmod = 0;
+	info->conv = 's';
+	info->precfound = -1;
+	info->sign = 0;
+	info->len = 0;
+	info->width = 0;
+	info->precision = 0;
+}
+
 Test(test_format_str, test_simple_a, .init = redirect_std_out) {
     t_info info;
 	char *c;
@@ -46,6 +58,7 @@ Test(test_format_str, test_simple_a, .init = redirect_std_out) {
 
 	fd = STDOUT_FILENO;
 	c = "a";
+	init_struct(&info);
 	init_va_list(&info, c);
 	info.writer = &simplewriter;
 	info.flags = 0;
@@ -65,6 +78,7 @@ Test(test_format_str, test_b_width_1, .init = redirect_std_out) {
 
 	fd = STDOUT_FILENO;
 	c = "b";
+	init_struct(&info);
 	init_va_list(&info, c);
 	info.writer = &simplewriter;
 	info.flags = 0;
@@ -84,6 +98,7 @@ Test(test_format_str, test_42_width_5, .init = redirect_std_out) {
 
 	fd = STDOUT_FILENO;
 	c = "*";
+	init_struct(&info);
 	init_va_list(&info, c);
 	info.writer = &simplewriter;
 	info.flags = 0;
@@ -103,6 +118,7 @@ Test(test_format_str, test_semicolon_p_width_minus_3, .init = redirect_std_out) 
 
 	fd = STDOUT_FILENO;
 	c = ";p";
+	init_struct(&info);
 	init_va_list(&info, c);
 	info.writer = &simplewriter;
 	info.flags = e_minus;
@@ -122,6 +138,7 @@ Test(test_format_str, test_semicolon_p_width_8, .init = redirect_std_out) {
 
 	fd = STDOUT_FILENO;
 	c = ";p";
+	init_struct(&info);
 	init_va_list(&info, c);
 	info.writer = &simplewriter;
 	info.flags = e_minus;
@@ -141,6 +158,7 @@ Test(test_format_str_undefined, test_ab_width_4_zero, .init = redirect_std_out) 
 
 	fd = STDOUT_FILENO;
 	c = "ab";
+	init_struct(&info);
 	init_va_list(&info, c);
 	info.writer = &simplewriter;
 	info.flags = e_zero;
@@ -160,6 +178,7 @@ Test(test_format_str_undefined, test_a_width_7_minus, .init = redirect_std_out) 
 
 	fd = STDOUT_FILENO;
 	c = "hello";
+	init_struct(&info);
 	init_va_list(&info, c);
 	info.writer = &simplewriter;
 	info.flags = e_minus;
@@ -180,6 +199,7 @@ Test(test_format_str_invalid, test_c_width_3_plus, .init = redirect_std_out) {
 
 	fd = STDOUT_FILENO;
 	c = "c";
+	init_struct(&info);
 	init_va_list(&info, c);
 	info.writer = &simplewriter;
 	info.flags = e_plus;
@@ -199,6 +219,7 @@ Test(test_format_str_invalid, test_a_width_3_plus_minus, .init = redirect_std_ou
 
 	fd = STDOUT_FILENO;
 	c = "a";
+	init_struct(&info);
 	init_va_list(&info, c);
 	info.writer = &simplewriter;
 	info.flags = e_plus;
@@ -219,6 +240,7 @@ Test(test_format_str_invalid, test_a_width_2_space, .init = redirect_std_out) {
 
 	fd = STDOUT_FILENO;
 	c = "a";
+	init_struct(&info);
 	init_va_list(&info, c);
 	info.writer = &simplewriter;
 	info.flags = e_space;
@@ -238,6 +260,7 @@ Test(test_format_str_invalid, test_string_hash, .init = redirect_std_out) {
 
 	fd = STDOUT_FILENO;
 	c = "testerdetest";
+	init_struct(&info);
 	init_va_list(&info, c);
 	info.writer = &simplewriter;
 	info.flags = e_hash;
@@ -257,6 +280,7 @@ Test(test_format_str_invalid, test_string_ll, .init = redirect_std_out) {
 
 	fd = STDOUT_FILENO;
 	c = "hallo";
+	init_struct(&info);
 	init_va_list(&info, c);
 	info.writer = &simplewriter;
 	info.flags = 0;
@@ -277,6 +301,7 @@ Test(test_format_str_invalid, test_string_hh, .init = redirect_std_out) {
 
 	fd = STDOUT_FILENO;
 	c = "hey";
+	init_struct(&info);
 	init_va_list(&info, c);
 	info.writer = &simplewriter;
 	info.flags = 0;
@@ -297,6 +322,7 @@ Test(test_format_str_invalid, test_string_writer, .init = redirect_std_out) {
 
 	fd = STDOUT_FILENO;
 	c = "halo";
+	init_struct(&info);
 	init_va_list(&info, c);
 	info.writer = &simplewriter;
 	info.flags = 0;
@@ -317,6 +343,7 @@ Test(test_format_str_invalid, test_string_NULL, .init = redirect_std_out) {
 
 	fd = STDOUT_FILENO;
 	c = NULL;
+	init_struct(&info);
 	init_va_list(&info, c);
 	info.writer = &simplewriter;
 	info.flags = 0;

@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/14 17:00:19 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/19 17:35:42 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/20 16:02:48 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 #include <criterion/redirect.h>
 #include "ft_printf.h"
 
-void redirect_std_out_format_pointer(void)
+static void redirect_std_out(void)
 {
 	cr_redirect_stdout();
 }
 
-void init_va_list_pointer(t_info *info, ...)
+static void init_va_list(t_info *info, ...)
 {
 	va_start(info->arguments, info);
 }
@@ -39,7 +39,19 @@ static void simplewriter(void *target, const char *str, size_t len)
 	}
 }
 
-Test(test_printf_format_pointer, pointer_simple, .init = redirect_std_out_format_pointer)
+static void	init_struct(t_info *info)
+{
+	info->flags = 0;
+	info->lenmod = 0;
+	info->conv = 'p';
+	info->precfound = -1;
+	info->sign = 0;
+	info->len = 0;
+	info->width = 0;
+	info->precision = 0;
+}
+
+Test(test_printf_format_pointer, pointer_simple, .init = redirect_std_out)
 {
 	int a;
 	int *p;
@@ -54,7 +66,7 @@ Test(test_printf_format_pointer, pointer_simple, .init = redirect_std_out_format
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_pointer, pointer_width_simple, .init = redirect_std_out_format_pointer)
+Test(test_printf_format_pointer, pointer_width_simple, .init = redirect_std_out)
 {
 	int a;
 	int *p;
@@ -69,7 +81,7 @@ Test(test_printf_format_pointer, pointer_width_simple, .init = redirect_std_out_
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_pointer, pointer_width_small, .init = redirect_std_out_format_pointer)
+Test(test_printf_format_pointer, pointer_width_small, .init = redirect_std_out)
 {
 	int a;
 	int *p;
@@ -84,7 +96,7 @@ Test(test_printf_format_pointer, pointer_width_small, .init = redirect_std_out_f
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_pointer, pointer_width_large, .init = redirect_std_out_format_pointer)
+Test(test_printf_format_pointer, pointer_width_large, .init = redirect_std_out)
 {
 	int a;
 	int *p;
@@ -99,7 +111,7 @@ Test(test_printf_format_pointer, pointer_width_large, .init = redirect_std_out_f
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_pointer, pointer_minus_width, .init = redirect_std_out_format_pointer)
+Test(test_printf_format_pointer, pointer_minus_width, .init = redirect_std_out)
 {
 	int a;
 	int *p;
@@ -114,7 +126,7 @@ Test(test_printf_format_pointer, pointer_minus_width, .init = redirect_std_out_f
 	cr_assert_stdout_eq_str(result);
 }
 
-Test(test_printf_format_pointer, pointer_zero_width, .init = redirect_std_out_format_pointer)
+Test(test_printf_format_pointer, pointer_zero_width, .init = redirect_std_out)
 {
 	int *p;
 
@@ -125,7 +137,7 @@ Test(test_printf_format_pointer, pointer_zero_width, .init = redirect_std_out_fo
 	cr_assert_stdout_eq_str("0xabfc421ffa2b3342");
 }
 
-Test(test_printf_format_pointer, pointer_zero, .init = redirect_std_out_format_pointer)
+Test(test_printf_format_pointer, pointer_zero, .init = redirect_std_out)
 {
 	int *p;
 
@@ -136,7 +148,7 @@ Test(test_printf_format_pointer, pointer_zero, .init = redirect_std_out_format_p
 	cr_assert_stdout_eq_str("0x0000000abfc421ffa2b3342");
 }
 
-Test(test_printf_format_pointer, pointer_zero_smaller_width, .init = redirect_std_out_format_pointer)
+Test(test_printf_format_pointer, pointer_zero_smaller_width, .init = redirect_std_out)
 {
 	t_info info;
 	int fd;
@@ -144,7 +156,8 @@ Test(test_printf_format_pointer, pointer_zero_smaller_width, .init = redirect_st
 
 	p = (int *)0xabfc421ffa2b3342;
 	fd = 1;
-	init_va_list_pointer(&info, p);
+	init_struct(&info);
+	init_va_list(&info, p);
 	info.writer = &simplewriter;
 	info.flags = e_zero;
 	info.width = 20;
@@ -156,7 +169,7 @@ Test(test_printf_format_pointer, pointer_zero_smaller_width, .init = redirect_st
 	cr_assert_stdout_eq_str("0x00abfc421ffa2b3342");
 }
 
-Test(test_printf_format_pointer, pointer_space_width, .init = redirect_std_out_format_pointer)
+Test(test_printf_format_pointer, pointer_space_width, .init = redirect_std_out)
 {
 	t_info info;
 	int fd;
@@ -164,7 +177,8 @@ Test(test_printf_format_pointer, pointer_space_width, .init = redirect_std_out_f
 
 	p = (int *)0xabfc421ffa2b3342;
 	fd = 1;
-	init_va_list_pointer(&info, p);
+	init_struct(&info);
+	init_va_list(&info, p);
 	info.writer = &simplewriter;
 	info.flags = e_space;
 	info.width = 20;
@@ -176,7 +190,7 @@ Test(test_printf_format_pointer, pointer_space_width, .init = redirect_std_out_f
 	cr_assert_stdout_eq_str("  0xabfc421ffa2b3342");
 }
 
-Test(test_printf_format_pointer, pointer_space_minus_width, .init = redirect_std_out_format_pointer)
+Test(test_printf_format_pointer, pointer_space_minus_width, .init = redirect_std_out)
 {
 	t_info info;
 	int fd;
@@ -184,7 +198,8 @@ Test(test_printf_format_pointer, pointer_space_minus_width, .init = redirect_std
 
 	p = (int *)0xabfc421ffa2b3342;
 	fd = 1;
-	init_va_list_pointer(&info, p);
+	init_struct(&info);
+	init_va_list(&info, p);
 	info.writer = &simplewriter;
 	info.flags = e_space;
 	info.flags |= e_minus;
@@ -197,7 +212,7 @@ Test(test_printf_format_pointer, pointer_space_minus_width, .init = redirect_std
 	cr_assert_stdout_eq_str("0xabfc421ffa2b3342  ");
 }
 
-Test(test_printf_format_pointer, pointer_minus_large_width, .init = redirect_std_out_format_pointer)
+Test(test_printf_format_pointer, pointer_minus_large_width, .init = redirect_std_out)
 {
 	t_info info;
 	int fd;
@@ -205,7 +220,8 @@ Test(test_printf_format_pointer, pointer_minus_large_width, .init = redirect_std
 
 	p = (int *)0xabfc421ffa2b3342;
 	fd = 1;
-	init_va_list_pointer(&info, p);
+	init_struct(&info);
+	init_va_list(&info, p);
 	info.writer = &simplewriter;
 	info.flags = e_minus;
 	info.width = 20;
@@ -217,7 +233,7 @@ Test(test_printf_format_pointer, pointer_minus_large_width, .init = redirect_std
 	cr_assert_stdout_eq_str("0xabfc421ffa2b3342  ");
 }
 
-Test(test_printf_format_pointer, pointer_minus_large_width_precision_0, .init = redirect_std_out_format_pointer)
+Test(test_printf_format_pointer, pointer_minus_large_width_precision_0, .init = redirect_std_out)
 {
 	t_info info;
 	int fd;
@@ -225,7 +241,8 @@ Test(test_printf_format_pointer, pointer_minus_large_width_precision_0, .init = 
 
 	p = (int *)0xabfc421ffa2b3342;
 	fd = 1;
-	init_va_list_pointer(&info, p);
+	init_struct(&info);
+	init_va_list(&info, p);
 	info.writer = &simplewriter;
 	info.flags = e_minus;
 	info.width = 20;
@@ -239,7 +256,7 @@ Test(test_printf_format_pointer, pointer_minus_large_width_precision_0, .init = 
 	cr_assert_stdout_eq_str("0xabfc421ffa2b3342  ");
 }
 
-Test(test_printf_format_pointer, pointer_minus_large_width_precision_18, .init = redirect_std_out_format_pointer)
+Test(test_printf_format_pointer, pointer_minus_large_width_precision_18, .init = redirect_std_out)
 {
 	t_info info;
 	int fd;
@@ -247,7 +264,8 @@ Test(test_printf_format_pointer, pointer_minus_large_width_precision_18, .init =
 
 	p = (int *)0xabfc421ffa2b3342;
 	fd = 1;
-	init_va_list_pointer(&info, p);
+	init_struct(&info);
+	init_va_list(&info, p);
 	info.writer = &simplewriter;
 	info.flags = e_minus;
 	info.width = 30;

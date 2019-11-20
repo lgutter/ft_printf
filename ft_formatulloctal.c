@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/13 12:02:41 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/19 18:03:33 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/20 12:47:44 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ int			ft_formatulloctal(unsigned long long n, t_info *info)
 	char	*nb;
 
 	info->sign = 1;
-	info->len = ft_nbrlenbase(n, 8);
-	nb = ft_itoa_base(n, 8);
+	info->len = ft_nbrlenbase_ull(n, 8);
+	nb = ft_ulltoa_base_low(n, 8);
 	if (nb == NULL)
 		return (-1);
 	if ((info->flags & e_hash) != 0 && n == 0)

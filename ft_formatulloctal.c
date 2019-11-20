@@ -6,11 +6,22 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/13 12:02:41 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/20 15:39:35 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/20 18:01:33 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+static void	zero_exception(t_info *info, unsigned long long n)
+{
+	if ((n == 0 && (info->precfound < 0 || info->precision != 0))
+		|| (info->len < info->width && (info->flags & e_zero) != 0))
+	{
+		info->flags -= e_hash;
+	}
+	else
+		info->len += 1;
+}
 
 int			ft_formatulloctal(unsigned long long n, t_info *info)
 {
@@ -23,10 +34,8 @@ int			ft_formatulloctal(unsigned long long n, t_info *info)
 	if (nb == NULL)
 		return (-1);
 	info->len = ft_strlen(nb);
-	if ((info->flags & e_hash) != 0 && n == 0)
-		info->flags -= e_hash;
 	if ((info->flags & e_hash) != 0)
-		info->len += 1;
+		zero_exception(info, n);
 	if ((info->flags & e_minus) != 0)
 		ft_write_order(info, nb, "frw");
 	else

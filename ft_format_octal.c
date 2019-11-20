@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/19 17:24:10 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/19 17:28:41 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/20 12:52:10 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,6 @@ int			ft_format_octal(t_info *info)
 		n = va_arg(info->arguments, unsigned long long);
 		return (ft_formatulloctal(n, info));
 	}
-	n = (unsigned long long)va_arg(info->arguments, int);
+	n = (unsigned int)va_arg(info->arguments, int);
 	return (ft_formatulloctal(n, info));
 }

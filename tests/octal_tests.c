@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/13 12:28:04 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/19 18:29:24 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/20 12:41:57 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void init_va_list_octal(t_info *info, ...)
 Test(test_format_octal, int_simple_nb, .init = redirect_std_out_format_octal)
 {
 	t_info info;
-	int o;
+	unsigned long long	o;
 	int fd;
 
 	fd = 1;
@@ -61,7 +61,7 @@ Test(test_format_octal, int_simple_nb, .init = redirect_std_out_format_octal)
 Test(test_format_octal, int_width_nb, .init = redirect_std_out_format_octal)
 {
 	t_info info;
-	int o;
+	unsigned long long	o;
 	int fd;
 
 	fd = 1;
@@ -80,7 +80,7 @@ Test(test_format_octal, int_width_nb, .init = redirect_std_out_format_octal)
 Test(test_format_octal, int_zero_width_nb, .init = redirect_std_out_format_octal)
 {
 	t_info info;
-	int o;
+	unsigned long long	o;
 	int fd;
 
 	fd = 1;
@@ -99,7 +99,7 @@ Test(test_format_octal, int_zero_width_nb, .init = redirect_std_out_format_octal
 Test(test_format_octal, int_minus_width_nb, .init = redirect_std_out_format_octal)
 {
 	t_info info;
-	int o;
+	unsigned long long	o;
 	int fd;
 
 	fd = 1;
@@ -118,7 +118,7 @@ Test(test_format_octal, int_minus_width_nb, .init = redirect_std_out_format_octa
 Test(test_format_octal, int_zero, .init = redirect_std_out_format_octal)
 {
 	t_info info;
-	int o;
+	unsigned long long	o;
 	int fd;
 
 	fd = 1;

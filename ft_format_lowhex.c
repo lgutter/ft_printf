@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/19 10:45:07 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/19 16:29:28 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/20 12:36:06 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,6 @@ int			ft_format_lowhex(t_info *info)
 		n = va_arg(info->arguments, unsigned long long);
 		return (ft_formatulllowhex(n, info));
 	}
-	n = (unsigned long long)va_arg(info->arguments, int);
+	n = (unsigned int)va_arg(info->arguments, int);
 	return (ft_formatulllowhex(n, info));
 }

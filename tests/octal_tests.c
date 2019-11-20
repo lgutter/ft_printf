@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/13 12:28:04 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/20 16:01:05 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/20 17:17:52 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,12 @@ Test(test_format_octal, int_simple_nb, .init = redirect_std_out)
 	info.flags = 0;
 	info.width = 0;
 	info.target = &fd;
+	info.precision = 0;
+	info.lenmod = 0;
+	info.conv = 0;
+	info.sign = 0;
+	info.precfound = 0;
+	info.len = 0;
 	ft_formatulloctal(o, &info);
 	fflush(stdout);
 
@@ -85,6 +91,12 @@ Test(test_format_octal, int_width_nb, .init = redirect_std_out)
 	info.flags = 0;
 	info.width = 10;
 	info.target = &fd;
+	info.precision = 0;
+	info.lenmod = 0;
+	info.conv = 0;
+	info.sign = 0;
+	info.precfound = 0;
+	info.len = 0;
 	ft_formatulloctal(o, &info);
 	fflush(stdout);
 
@@ -105,6 +117,12 @@ Test(test_format_octal, int_zero_width_nb, .init = redirect_std_out)
 	info.flags = e_zero;
 	info.width = 10;
 	info.target = &fd;
+	info.precision = 0;
+	info.lenmod = 0;
+	info.conv = 0;
+	info.sign = 0;
+	info.precfound = 0;
+	info.len = 0;
 	ft_formatulloctal(o, &info);
 	fflush(stdout);
 
@@ -125,6 +143,12 @@ Test(test_format_octal, int_minus_width_nb, .init = redirect_std_out)
 	info.flags = e_minus;
 	info.width = 10;
 	info.target = &fd;
+	info.precision = 0;
+	info.lenmod = 0;
+	info.conv = 0;
+	info.sign = 0;
+	info.precfound = 0;
+	info.len = 0;
 	ft_formatulloctal(o, &info);
 	fflush(stdout);
 
@@ -145,6 +169,12 @@ Test(test_format_octal, int_zero, .init = redirect_std_out)
 	info.flags = e_hash;
 	info.width = 0;
 	info.target = &fd;
+	info.precision = 0;
+	info.lenmod = 0;
+	info.conv = 0;
+	info.sign = 0;
+	info.precfound = 0;
+	info.len = 0;
 	ft_formatulloctal(o, &info);
 	fflush(stdout);
 

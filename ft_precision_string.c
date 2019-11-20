@@ -6,7 +6,7 @@
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/19 16:02:07 by lgutter        #+#    #+#                */
-/*   Updated: 2019/11/19 16:34:29 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/20 12:34:23 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char		*ft_precision_string(t_info *info, char *string)
 		len = ft_strlen(string);
 		if (len > info->precision)
 		{
-			new = (char *)ft_memdup(string, info->precision);
+			new = (char *)ft_memdup(string, info->precision + 1);
 			new[info->precision] = '\0';
 		}
 		else

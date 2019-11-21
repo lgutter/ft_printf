@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/21 13:08:28 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/21 22:25:37 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/21 22:28:35 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ int			ft_formatlongdfloats(t_info *info, float f)
 	prec = 0;
 	nb = ft_itoa_base(n, 10);
 	info->writer(info->target, nb, 0);
-	if (info->precfound == 1 && info->precision == 0)
-		return (0);
 	info->writer(info->target, ".", 1);
 	if (n < 0)
 	{

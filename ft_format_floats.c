@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/21 12:52:44 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/21 17:23:48 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/21 22:28:22 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int			ft_format_floats(t_info *info)
 	float	f;
 
 	info->conv = 'f';
+	if (info->precfound < 0)
+		info->precision = 6;
 	if ((info->lenmod & e_L) != 0)
 	{
 		f = (long double)va_arg(info->arguments, double);

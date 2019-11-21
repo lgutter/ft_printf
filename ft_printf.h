@@ -6,14 +6,14 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/13 14:10:30 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/19 17:29:52 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/21 13:29:27 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include "libft.h"
+# include "libft/libft.h"
 # include <stdarg.h>
 
 typedef void			(*t_writer)\
@@ -96,6 +96,9 @@ int						ft_format_upphex(t_info *info);
 int						ft_formatullupphex(unsigned long long n, t_info *info);
 int						ft_format_lowhex(t_info *info);
 int						ft_formatulllowhex(unsigned long long n, t_info *info);
+
+int						ft_format_floats(t_info *info);
+int						ft_formatlongdfloats(t_info *info, float f);
 
 int						ft_find_flags(const char *format, t_info *info, int i);
 int						ft_find_width(const char *format, t_info *info, int i);

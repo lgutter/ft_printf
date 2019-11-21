@@ -26,4 +26,6 @@ ft_formatunsigneddecimal \
 ft_formatunsignedint \
 ft_formatullupphex \
 ft_format_upphex \
-ft_precision_string
+ft_precision_string \
+ft_format_floats \
+ft_formatlongdfloats

@@ -6,7 +6,7 @@
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/18 14:06:17 by lgutter        #+#    #+#                */
-/*   Updated: 2019/11/20 17:29:10 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/25 17:42:41 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ char		*ft_precision_int(t_info *info, char *number)
 	}
 	else if (number[0] == '0' && info->precision == 0)
 	{
+		free(number);
 		return (ft_strdup(""));
 	}
 	if (len < info->precision)

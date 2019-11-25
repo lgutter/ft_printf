@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/19 15:24:27 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/20 13:33:00 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/25 16:02:46 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ int			ft_formatullupphex(unsigned long long n, t_info *info)
 		else
 			ft_write_order(info, nb, "wfr");
 	}
+	free(nb);
 	return (0);
 }

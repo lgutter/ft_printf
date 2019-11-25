@@ -6,7 +6,7 @@
 #    By: lgutter <lgutter@student.codam.nl>           +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/09/11 13:40:17 by lgutter        #+#    #+#                 #
-#    Updated: 2019/11/12 18:37:09 by lgutter       ########   odam.nl          #
+#    Updated: 2019/11/25 17:45:32 by lgutter       ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,10 @@ LIBRARY_PATH := :$(PWD):$(LIBRARY_PATH)
 CPATH := :$(PWD):$(PWD)/libft:$(PWD)/tests:$(CPATH)
 HEADER := ft_printf.h
 
-CFLAGS := -coverage -Wall -Wextra -Werror -Wunreachable-code -g
+CFLAGS = -Wall -Wextra -Werror -Wunreachable-code -g
+ifdef COV
+	CFLAGS += -coverage
+endif
 
 NAME := libftprintf.a
 
@@ -87,7 +90,7 @@ fclean: oclean
 	@rm -rf $(NAME) $(TEST)
 	@echo "$(C_FCLEAN)$(NAME) & $(TEST) removed$(C_RESET)"
 	@echo "$(C_LINES)- - - - - - - - - -$(C_RESET)"
-	@make fclean -C libft/
+	@$(MAKE) fclean -C libft/
 
 re: fclean all
 

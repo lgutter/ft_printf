@@ -6,34 +6,26 @@
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/19 16:02:07 by lgutter        #+#    #+#                */
-/*   Updated: 2019/11/20 12:34:23 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/25 16:01:59 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char		*ft_precision_string(t_info *info, char *string)
+size_t	ft_precision_string(t_info *info, char **string)
 {
-	size_t	len;
-	char	*new;
-
-	new = NULL;
 	if (info->precfound < 0)
 	{
-		return (string);
+		return (ft_strlen(*string));
 	}
-	if (string != NULL)
+	else if (info->precision < 1)
 	{
-		len = ft_strlen(string);
-		if (len > info->precision)
-		{
-			new = (char *)ft_memdup(string, info->precision + 1);
-			new[info->precision] = '\0';
-		}
-		else
-		{
-			return (string);
-		}
+		*string = "";
+		return (0);
 	}
-	return (new);
+	else if (ft_strlen(*string) > info->precision)
+	{
+		return (info->precision);
+	}
+	return (ft_strlen(*string));
 }

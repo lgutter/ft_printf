@@ -6,7 +6,7 @@
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/13 14:35:42 by lgutter        #+#    #+#                */
-/*   Updated: 2019/11/19 12:47:15 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/25 16:16:34 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	ft_format_neglonglong(long long n, t_info *info)
 	info->sign = -1;
 	if ((info->flags & e_zero) != 0)
 	{
-		info->writer(info->target, "-", 1);
+		info->writer(info->target, &info->totallen, "-", 1);
 		info->len = 1;
 		n = n * -1;
 	}
@@ -35,6 +35,7 @@ static int	ft_format_neglonglong(long long n, t_info *info)
 		ft_write_order(info, nb, "rw");
 	else
 		ft_write_order(info, nb, "wr");
+	free(nb);
 	return (0);
 }
 
@@ -62,5 +63,6 @@ int			ft_formatlonglong(long long n, t_info *info)
 		else
 			ft_write_order(info, nb, "wfr");
 	}
+	free(nb);
 	return (0);
 }

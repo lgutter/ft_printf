@@ -6,11 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/13 14:10:30 by ivan-tey       #+#    #+#                */
-<<<<<<< HEAD
-/*   Updated: 2019/11/21 17:25:02 by ivan-tey      ########   odam.nl         */
-=======
-/*   Updated: 2019/11/25 20:10:07 by ivan-tey      ########   odam.nl         */
->>>>>>> master
+/*   Updated: 2019/11/25 20:37:54 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +101,7 @@ int						ft_format_lowhex(t_info *info);
 int						ft_formatulllowhex(unsigned long long n, t_info *info);
 
 int						ft_format_floats(t_info *info);
-int						ft_formatlongdfloats(t_info *info, float f);
+int						ft_formatlongdfloats(t_info *info, long double f);
 
 int						ft_find_flags(const char *format, t_info *info, int i);
 int						ft_find_width(const char *format, t_info *info, int i);

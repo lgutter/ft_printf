@@ -6,7 +6,7 @@
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/14 16:25:46 by lgutter        #+#    #+#                */
-/*   Updated: 2019/11/21 17:24:57 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/25 20:34:28 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_formatter	ft_dispatcher(char conv_flag)
 {
-	const t_formatter formatter[255] = {
+	static const t_formatter formatter[255] = {
 		['c'] = &ft_formatchar,
 		['s'] = &ft_formatstring,
 		['d'] = &ft_formatdecimal,

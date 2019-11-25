@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/18 18:04:23 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/20 16:08:01 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/25 16:25:09 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void redirect_std_out(void)
 	cr_redirect_stdout();
 }
 
-static void simplewriter(void *target, const char *str, size_t len)
+static void simplewriter(void *target, unsigned long long *totallen, const char *str, size_t len)
 {
 	int fd;
 
@@ -33,6 +33,8 @@ static void simplewriter(void *target, const char *str, size_t len)
 	{
 		write(fd, str, ft_strlen(str));
 	}
+		if (*totallen == 42)
+		dprintf(2,"");
 }
 
 static void init_va_list(t_info *info, ...)
@@ -50,6 +52,7 @@ static void	init_struct(t_info *info)
 	info->len = 0;
 	info->width = 0;
 	info->precision = 0;
+	info->totallen = 0;
 }
 
 Test(test_format_upphex, simple_nb, .init = redirect_std_out)

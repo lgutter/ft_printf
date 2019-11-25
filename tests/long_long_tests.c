@@ -19,7 +19,7 @@ static void redirect_std_out(void)
 	cr_redirect_stdout();
 }
 
-static void simplewriter(void *target, const char *str, size_t len)
+static void simplewriter(void *target, unsigned long long *totallen, const char *str, size_t len)
 {
 	int fd;
 
@@ -32,6 +32,8 @@ static void simplewriter(void *target, const char *str, size_t len)
 	{
 		write(fd, str, ft_strlen(str));
 	}
+		if (*totallen == 42)
+		dprintf(2,"");
 }
 
 static void	init_struct(t_info *info)
@@ -44,6 +46,7 @@ static void	init_struct(t_info *info)
 	info->len = 0;
 	info->width = 0;
 	info->precision = 0;
+	info->totallen = 0;
 }
 
 Test(test_format_long_long, long_long_simple_nb, .init = redirect_std_out)

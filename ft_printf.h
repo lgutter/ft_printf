@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/13 14:10:30 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/21 13:29:27 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/25 20:10:07 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@
 # include <stdarg.h>
 
 typedef void			(*t_writer)\
-						(void *target, const char *string, size_t len);
+						(void *target, unsigned long long *totallen, \
+						const char *string, size_t len);
 
 /*
 **	enumerations for the flags and modifiers stored in lenmod and flags.
@@ -69,6 +70,7 @@ typedef struct			s_info
 	size_t				precision;
 	t_writer			writer;
 	void				*target;
+	unsigned long long	totallen;
 }						t_info;
 
 typedef int				(*t_formatter)(t_info *info);
@@ -77,10 +79,11 @@ int						ft_process_conversion(const char *format, t_info *info);
 int						ft_init_info(const char *format, t_info *info);
 t_formatter				ft_dispatcher(char conv_flag);
 void					ft_writer_fd\
-						(void *target, const char *string, size_t len);
+						(void *target, unsigned long long *totallen, \
+						const char *string, size_t len);
 char					*ft_precision_int(t_info *info, char *number);
 int						ft_formatunsigneddecimal(t_info *info);
-char					*ft_precision_string(t_info *info, char *string);
+size_t					ft_precision_string(t_info *info, char **string);
 
 int						ft_formatchar(t_info *info);
 int						ft_formatstring(t_info *info);

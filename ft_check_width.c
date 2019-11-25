@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/06 18:36:06 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/12 10:51:14 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/25 16:16:34 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ void			ft_check_width(t_info *info, size_t src_len)
 		while (len > 0)
 		{
 			if ((info->flags & e_zero) != 0)
-				info->writer(info->target, "0", 1);
+				info->writer(info->target, &info->totallen, "0", 1);
 			else
-				info->writer(info->target, " ", 1);
+				info->writer(info->target, &info->totallen, " ", 1);
 			len--;
 		}
 	}

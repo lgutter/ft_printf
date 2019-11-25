@@ -6,7 +6,7 @@
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/19 09:51:50 by lgutter        #+#    #+#                */
-/*   Updated: 2019/11/19 11:53:24 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/25 16:03:55 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,6 @@ int			ft_formatunsignedlonglong(unsigned long long n, t_info *info)
 		else
 			ft_write_order(info, nb, "wfr");
 	}
+	free(nb);
 	return (0);
 }

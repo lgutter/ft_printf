@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/25 15:44:36 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/18 16:03:43 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/25 16:57:34 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,17 @@ static char		*ft_convert(signed long long n,\
 	char		*bstr;
 
 	bstr = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	while (base == 1 && (i <= ft_nbrlenbase(n, base)))
+	while (base == 1 && ((ssize_t)(i * -1) >= n))
 	{
 		str[i] = '1';
 		i++;
-		if (i == ft_nbrlenbase(n, base) - 1)
+		if ((ssize_t)(i * -1) == n)
 			return (str);
 	}
-	if (n > 0)
+	if (n != 0)
 	{
 		res = n % base;
+		res = res < 0 ? res * -1 : res;
 		str[i] = bstr[res];
 		i++;
 		ft_convert(n / base, base, str, i);
@@ -48,9 +49,7 @@ char			*ft_itoa_base(signed long long nb, const unsigned int base)
 		return (NULL);
 	}
 	if (nb == 0)
-	{
 		return (ft_strdup("0"));
-	}
 	nb_len = ft_nbrlenbase(nb, base);
 	str = (char *)ft_strnew(sizeof(char) * nb_len + 1);
 	if (str != NULL)
@@ -58,8 +57,9 @@ char			*ft_itoa_base(signed long long nb, const unsigned int base)
 		if (nb < 0)
 		{
 			str[0] = '-';
-			nb = nb * -1;
 		}
+		else
+			nb = nb * -1;
 		str = ft_convert(nb, base, str, (str[0] == '-' ? 1 : 0));
 		str[nb_len] = '\0';
 		str = ft_strrev(str, (str[0] == '-' ? 1 : 0));

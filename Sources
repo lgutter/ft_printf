@@ -28,4 +28,4 @@ ft_formatullupphex \
 ft_format_upphex \
 ft_precision_string \
 ft_format_floats \
-ft_formatlongdfloats
+ft_float_precision

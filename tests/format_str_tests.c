@@ -6,7 +6,7 @@
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/19 12:51:45 by lgutter        #+#    #+#                */
-/*   Updated: 2019/11/25 16:24:52 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/27 18:12:02 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -417,5 +417,15 @@ Test(test_format_str_precision, test_string_zero_prefix_precision_small_width_NU
 	fflush(stdout);
 
 	asprintf(&result, "%3.03s", str);
+	cr_assert_stdout_eq_str(result);
+}
+
+Test(test_format_str_precision, test_string_zero_prefix_precision_asterisk_negative, .init = redirect_std_out) {
+	char *str = "42";
+	char *result = NULL;
+	ft_printf("%3.*s", -5, str);
+	fflush(stdout);
+
+	asprintf(&result, "%3.*s", -5, str);
 	cr_assert_stdout_eq_str(result);
 }

@@ -6,7 +6,7 @@
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/27 17:35:37 by lgutter        #+#    #+#                */
-/*   Updated: 2019/11/27 13:56:14 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/27 17:55:55 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 int		ft_formatunknown(t_info *info, char c)
 {
 	info->len = 1;
+	if (c == '\0')
+		return (0);
 	if ((info->flags & e_minus) != 0)
 	{
 		info->writer(info->target, &info->totallen, &c, 1);

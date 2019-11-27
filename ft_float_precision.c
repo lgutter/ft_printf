@@ -6,7 +6,7 @@
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/26 15:43:10 by lgutter        #+#    #+#                */
-/*   Updated: 2019/11/26 17:47:08 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/27 10:49:27 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,13 @@ static char	*ft_round_float(char *nb, size_t i, size_t prec)
 				i--;
 			i--;
 		}
-		if (i == 0 && nb[i] == '0')
-			return (ft_add_one(nb));
+		if (i == 0)
+		{
+			if (nb[i] == '9')
+				nb[i] = '0';
+			if (nb[i] == '0')
+				return (ft_add_one(nb));
+		}
 		nb[i]++;
 	}
 	return (nb);
@@ -85,7 +90,7 @@ char		*ft_float_precision(t_info *info, char *nb)
 	i = ft_strlen(nb);
 	if (i <= prec)
 		return (ft_padzeros(nb, prec));
-	ft_round_float(nb, i, prec);
+	nb = ft_round_float(nb, i, prec);
 	nb[prec + (info->precision != 0 || (info->flags & e_hash) == 1)] = '\0';
 	return (nb);
 }

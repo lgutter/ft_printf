@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_format_floats.c                                 :+:    :+:            */
+/*   ft_format_unsigned_float.c                         :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/21 12:52:44 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/27 15:05:58 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/27 15:06:19 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int		ft_floaty_things(t_info *info, long double f,\
-								long long n, char *nb)
+static int	ft_floaty_things(t_info *info, long double f,\
+								unsigned long long n, char *nb)
 {
 	size_t	prec;
 	char	*temp;
@@ -42,65 +42,15 @@ static int		ft_floaty_things(t_info *info, long double f,\
 	return (0);
 }
 
-static int		ft_formatlongdfloats(t_info *info, long double f)
+int			ft_unsignedfloat(t_info *info, long double f)
 {
-	long long	n;
-	char		*nb;
+	unsigned long long	n;
+	char				*nb;
 
-	n = (long long)f;
-	nb = ft_itoa_base(n, 10);
+	n = (unsigned long long)f;
+	nb = ft_ulltoa_base_low(n, 10);
 	info->len = ft_strlen(nb);
 	if (info->precfound < 0)
 		info->precision = 6;
 	return (ft_floaty_things(info, f, n, nb));
-}
-
-static int		ft_exceptions(t_info *info, long double f)
-{
-	char *err;
-
-	err = NULL;
-	if (f != f)
-	{
-		info->sign = 0;
-		err = "nan";
-		info->flags &= e_minus;
-	}
-	else if (f < __LDBL_MAX__ * -1 || f > __LDBL_MAX__)
-	{
-		if ((info->flags & e_zero) != 0)
-			info->flags -= e_zero;
-		err = "inf";
-	}
-	info->len = ft_strlen(err) + ft_correctlen(info);
-	if ((info->flags & e_minus) != 0)
-		return (ft_write_order(info, err, "frw"));
-	return (ft_write_order(info, err, "wfr"));
-}
-
-int				ft_format_floats(t_info *info)
-{
-	long double	f;
-
-	info->conv = 'f';
-	if (info->precfound < 0)
-		info->precision = 6;
-	if ((info->lenmod & e_L) != 0)
-		f = (long double)va_arg(info->arguments, long double);
-	else
-		f = (long double)va_arg(info->arguments, double);
-	if (ft_check_sign(f) == 1)
-	{
-		f = f * -1;
-		info->sign = -1;
-	}
-	else
-		info->sign = 1;
-	if (f != f || f > __LDBL_MAX__ || f < __LDBL_MAX__ * -1)
-	{
-		return (ft_exceptions(info, f));
-	}
-	if (f > (long double)__LONG_LONG_MAX__)
-		return (ft_unsignedfloat(info, f));
-	return (ft_formatlongdfloats(info, f));
 }

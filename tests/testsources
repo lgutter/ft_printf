@@ -35,4 +35,5 @@ long_octal_tests \
 short_octal_tests \
 octal_precision_tests \
 upphex_precision_tests \
-lowhex_precison_tests
+lowhex_precison_tests \
+float_tests

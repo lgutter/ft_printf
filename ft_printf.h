@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/13 14:10:30 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/26 15:44:36 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/27 15:06:27 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,12 @@ typedef struct			s_info
 	unsigned long long	totallen;
 }						t_info;
 
+typedef union			u_floatunion
+{
+	long double	flnb;
+	short		shnb[5];
+}						t_floatunion;
+
 typedef int				(*t_formatter)(t_info *info);
 int						ft_printf(const char *restrict format, ...);
 int						ft_process_conversion(const char *format, t_info *info);
@@ -100,6 +106,7 @@ int						ft_format_upphex(t_info *info);
 int						ft_formatullupphex(unsigned long long n, t_info *info);
 int						ft_format_lowhex(t_info *info);
 int						ft_formatulllowhex(unsigned long long n, t_info *info);
+int						ft_unsignedfloat(t_info *info, long double f);
 
 int						ft_format_floats(t_info *info);
 
@@ -112,5 +119,7 @@ int						ft_find_lenmod(const char *format, t_info *info, int i);
 void					ft_check_width(t_info *info, size_t len);
 void					ft_write_flags(t_info *info);
 int						ft_write_order(t_info *info, char *str, char *order);
+size_t					ft_correctlen(t_info *info);
+int						ft_check_sign(long double f);
 
 #endif

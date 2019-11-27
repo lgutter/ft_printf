@@ -6,7 +6,7 @@
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/27 09:29:24 by lgutter        #+#    #+#                */
-/*   Updated: 2019/11/27 15:25:51 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/27 17:29:40 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -851,5 +851,53 @@ Test(test_printf_float, unsigned_int_long_double, .init = redirect_std_out)
 	fflush(stdout);
 
 	asprintf(&result, "%Lf", f);
+	cr_assert_stdout_eq_str(result);
+}
+
+Test(test_printf_float, unsigned_int_zero_width32_long_double, .init = redirect_std_out)
+{
+	long double f;
+	char *result = NULL;
+	f = 15745635345667846524.13454999L;
+	ft_printf("%032Lf", f);
+	fflush(stdout);
+
+	asprintf(&result, "%032Lf", f);
+	cr_assert_stdout_eq_str(result);
+}
+
+Test(test_printf_float, unsigned_int_minus_width42_10prec_long_double, .init = redirect_std_out)
+{
+	long double f;
+	char *result = NULL;
+	f = 15745635345667846524.13454999L;
+	ft_printf("%-42.10Lf", f);
+	fflush(stdout);
+
+	asprintf(&result, "%-42.10Lf", f);
+	cr_assert_stdout_eq_str(result);
+}
+
+Test(test_printf_float, float_minus_width42_long_double, .init = redirect_std_out)
+{
+	long double f;
+	char *result = NULL;
+	f = 42.4242429L;
+	ft_printf("%-42Lf", f);
+	fflush(stdout);
+
+	asprintf(&result, "%-42Lf", f);
+	cr_assert_stdout_eq_str(result);
+}
+
+Test(test_printf_float, inf_minus_width42_long_double, .init = redirect_std_out)
+{
+	long double f;
+	char *result = NULL;
+	f = INFINITY;
+	ft_printf("%-42Lf", f);
+	fflush(stdout);
+
+	asprintf(&result, "%-42Lf", f);
 	cr_assert_stdout_eq_str(result);
 }

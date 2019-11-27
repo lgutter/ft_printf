@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/13 14:28:17 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/20 15:38:48 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/27 13:54:16 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,19 @@ Test(redirect, test_unknown, .init = redirect_std_out) {
     ft_printf("ha% b!", "llo");
     fflush(stdout);
 
-    cr_assert_stdout_eq_str("ha b!");
+    cr_assert_stdout_eq_str("hab!");
 }
 
 Test(redirect, test_endofstring, .init = redirect_std_out) {
-    ft_printf("ha% ", "llo");
+    ft_printf("ha%15k", "llo");
     fflush(stdout);
 
-    cr_assert_stdout_eq_str("ha ");
+    cr_assert_stdout_eq_str("ha              k");
+}
+
+Test(redirect, test_unknownminuswidth, .init = redirect_std_out) {
+    ft_printf("ha%-15k", "llo");
+    fflush(stdout);
+
+    cr_assert_stdout_eq_str("hak               ");
 }

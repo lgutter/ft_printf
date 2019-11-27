@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/21 12:52:44 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/27 15:06:19 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/27 17:19:17 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	ft_floaty_things(t_info *info, long double f,\
 	{
 		f = (f - n) * 10;
 		n = (long long)f;
-		temp = ft_itoa_base(n < 0 ? n * -1 : n, 10);
+		temp = ft_ulltoa_base_low(n, 10);
 		ft_strexpand(&nb, temp);
 		free(temp);
 		prec++;

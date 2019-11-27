@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/07 11:32:15 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/16 18:43:07 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/27 18:08:46 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,5 +141,29 @@ Test(test_width, double_minus_twelve_int, .init = redirect_stdout)
 	fflush(stdout);
 
 	asprintf(&result, "%--12i", d);
+	cr_assert_stdout_eq_str(result);
+}
+
+Test(test_width, asterisk_negative_width_int, .init = redirect_stdout)
+{
+	int d;
+	char *result = NULL;
+	d = 42;
+	ft_printf("%*i", -5, d);
+	fflush(stdout);
+
+	asprintf(&result, "%*i", -5, d);
+	cr_assert_stdout_eq_str(result);
+}
+
+Test(test_width, minus_asterisk_negative_width_int, .init = redirect_stdout)
+{
+	int d;
+	char *result = NULL;
+	d = 42;
+	ft_printf("%-*i", -5, d);
+	fflush(stdout);
+
+	asprintf(&result, "%-*i", -5, d);
 	cr_assert_stdout_eq_str(result);
 }

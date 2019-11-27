@@ -6,7 +6,7 @@
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/26 15:43:10 by lgutter        #+#    #+#                */
-/*   Updated: 2019/11/27 10:49:27 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/27 17:44:04 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static char	*ft_padzeros(char *nb, size_t prec)
 	new = (char *)malloc(sizeof(char) * (prec + 1));
 	if (new != NULL)
 	{
-		while (nb[i])
+		while (ft_isdigit(nb[i]) == 1 || nb[i] == '.')
 		{
 			new[i] = nb[i];
 			i++;
@@ -46,6 +46,7 @@ static char	*ft_padzeros(char *nb, size_t prec)
 		}
 		free(nb);
 	}
+	new[i] = '\0';
 	return (new);
 }
 

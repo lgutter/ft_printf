@@ -32,7 +32,7 @@ static void simplewriter(void *target, unsigned long long *totallen, const char 
 	{
 		write(fd, str, ft_strlen(str));
 	}
-		if (*totallen == 42)
+	if (*totallen == 42)
 		dprintf(2,"");
 }
 

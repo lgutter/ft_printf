@@ -6,7 +6,7 @@
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/19 09:54:43 by lgutter        #+#    #+#                */
-/*   Updated: 2019/11/19 09:57:38 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/27 11:18:35 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int		ft_formatunsigneddecimal(t_info *info)
 	unsigned long long	n;
 
 	info->conv = 'd';
+	if (info->precfound == 1 && (info->flags & e_zero) != 0)
+		info->flags -= e_zero;
 	if ((info->lenmod & e_hh) != 0)
 	{
 		n = (unsigned char)va_arg(info->arguments, unsigned int);

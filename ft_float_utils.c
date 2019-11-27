@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_dispatcher.c                                    :+:    :+:            */
+/*   ft_float_utils.c                                   :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/10/14 16:25:46 by lgutter        #+#    #+#                */
-/*   Updated: 2019/11/25 20:34:28 by ivan-tey      ########   odam.nl         */
+/*   Created: 2019/11/27 12:36:45 by lgutter        #+#    #+#                */
+/*   Updated: 2019/11/27 12:57:16 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-t_formatter	ft_dispatcher(char conv_flag)
+size_t	ft_correctlen(t_info *info)
 {
-	static const t_formatter formatter[255] = {
-		['c'] = &ft_formatchar,
-		['s'] = &ft_formatstring,
-		['d'] = &ft_formatdecimal,
-		['i'] = &ft_formatdecimal,
-		['o'] = &ft_format_octal,
-		['p'] = &ft_formatpointer,
-		['X'] = &ft_format_upphex,
-		['x'] = &ft_format_lowhex,
-		['u'] = &ft_formatunsigneddecimal,
-		['f'] = &ft_format_floats,
-	};
+	if (((info->flags & e_plus) != 0 && info->sign == 1) ||
+		((info->flags & e_space) != 0 && info->sign == 1) ||
+		(info->sign == -1))
+	{
+		return (1);
+	}
+	return (0);
+}
 
-	return (formatter[(unsigned int)conv_flag]);
+int		ft_check_sign(long double f)
+{
+	t_floatunion	nb;
+
+	nb.flnb = f;
+	if ((nb.shnb[4] >> 15) == -1)
+		return (1);
+	return (0);
 }

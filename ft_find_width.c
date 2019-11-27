@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/01 13:57:09 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/16 18:41:14 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/27 18:07:54 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@ int			ft_find_width(const char *format, t_info *info, int i)
 	if (format[i] == '*')
 	{
 		nb = va_arg(info->arguments, int);
+		if (nb < 0)
+		{
+			info->flags |= e_minus;
+			nb *= -1;
+		}
 		i++;
 	}
 	else

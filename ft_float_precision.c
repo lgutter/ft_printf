@@ -6,7 +6,7 @@
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/26 15:43:10 by lgutter        #+#    #+#                */
-/*   Updated: 2019/11/27 17:44:04 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/28 15:35:28 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,20 @@ static char	*ft_round_float(char *nb, size_t i, size_t prec)
 	return (nb);
 }
 
+static int	ft_ugh(char *nb)
+{
+	int		i;
+
+	i = 0;
+	while (nb[i] != '\0')
+	{
+		if (nb[i] >= '1' && nb[i] <= '9')
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 char		*ft_float_precision(t_info *info, char *nb)
 {
 	size_t	i;
@@ -91,6 +105,13 @@ char		*ft_float_precision(t_info *info, char *nb)
 	i = ft_strlen(nb);
 	if (i <= prec)
 		return (ft_padzeros(nb, prec));
+	if (nb[0] % 2 == 0 && info->precision == 0 && nb[1] == '.' &&\
+		nb[2] == '5' && ft_ugh(&nb[3]) == 0)
+	{
+		nb[0] = nb[0];
+		nb[prec + (info->precision != 0 || (info->flags & e_hash) == 1)] = '\0';
+		return (nb);
+	}
 	nb = ft_round_float(nb, i, prec);
 	nb[prec + (info->precision != 0 || (info->flags & e_hash) == 1)] = '\0';
 	return (nb);

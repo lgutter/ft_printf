@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_formatunsignedint.c                             :+:    :+:            */
+/*   ft_formatunsignedlonglong.c                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/19 09:51:50 by lgutter        #+#    #+#                */
-/*   Updated: 2019/11/25 16:03:55 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/28 16:18:48 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ int			ft_formatunsignedlonglong(unsigned long long n, t_info *info)
 	if (nb == NULL)
 		return (-1);
 	info->len = ft_strlen(nb);
-	if ((info->flags & e_plus) != 0 || (info->flags & e_space) != 0)
-		info->len++;
 	if ((info->flags & e_minus) != 0)
 		ft_write_order(info, nb, "frw");
 	else

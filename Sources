@@ -23,7 +23,7 @@ ft_formatulllowhex \
 ft_format_lowhex \
 ft_precision_int \
 ft_formatunsigneddecimal \
-ft_formatunsignedint \
+ft_formatunsignedlonglong \
 ft_formatullupphex \
 ft_format_upphex \
 ft_precision_string \

@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/13 14:10:30 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/29 12:53:16 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/29 13:07:40 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ typedef void			(*t_writer)\
 /*
 **	enumerations for the flags and modifiers stored in lenmod and flags.
 **	these are written down here as bitshifts, but in essence the exact number
-**	linked to an enum is not relevant, just that we can uniquely store and 
+**	linked to an enum is not relevant, just that we can uniquely store and
 **	fetch any option (flag or modifier)
 */
 enum					e_lenmod
@@ -77,7 +77,7 @@ typedef struct			s_info
 }						t_info;
 
 /*
-**	Used to check the sign bit of a float 
+**	Used to check the sign bit of a float
 **	flnb:			long double representation of a float.
 **	shnb:			float devided in five pieces of two bytes.
 */
@@ -96,8 +96,8 @@ int						ft_init_info(const char *format, t_info *info);
 t_formatter				ft_dispatcher(char conv_flag);
 
 /*
-**	Find functions for finding and storing all flags, width, 
-**	precision and lenghtmodifiers 
+**	Find functions for finding and storing all flags, width,
+**	precision and lenghtmodifiers
 */
 
 int						ft_find_flags(const char *format, t_info *info, int i);
@@ -107,7 +107,7 @@ int						ft_find_precision\
 						(const char *format, t_info *info, int i);
 
 /*
-**	Format functions for handling the converison of 
+**	Format functions for handling the converison of
 **	csp + diouxX + f and unknown conversion specifiers
 */
 
@@ -134,13 +134,13 @@ int						ft_format_lowhex(t_info *info);
 int						ft_formatulllowhex(unsigned long long n, t_info *info);
 
 int						ft_format_floats(t_info *info);
-int						ft_unsignedfloat(t_info *info, long double f);
+int						ft_formatunsignedfloat(t_info *info, long double f);
 char					*ft_float_precision(t_info *info, char *nb);
 int						ft_check_sign(long double f);
 size_t					ft_correctlen(t_info *info);
 
 /*
-**	Write functions for outputing the conversions and 
+**	Write functions for outputing the conversions and
 **	adding the correct width and flags
 */
 

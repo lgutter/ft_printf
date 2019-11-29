@@ -6,7 +6,7 @@
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/14 16:45:31 by lgutter        #+#    #+#                */
-/*   Updated: 2019/11/25 16:16:34 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/29 12:59:23 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ int		ft_formatstring(t_info *info)
 	if ((info->flags & e_minus) != 0)
 	{
 		info->writer(info->target, &info->totallen, str, info->len);
-		ft_check_width(info, info->len);
+		ft_write_width(info, info->len);
 		return (0);
 	}
-	ft_check_width(info, info->len);
+	ft_write_width(info, info->len);
 	info->writer(info->target, &info->totallen, str, info->len);
 	return (0);
 }

@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_format_unsigned_float.c                         :+:    :+:            */
+/*   ft_formatunsignedfloat.c                           :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/21 12:52:44 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/27 17:19:17 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/29 12:13:07 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 static int	ft_floaty_things(t_info *info, long double f,\
-								unsigned long long n, char *nb)
+							unsigned long long n, char *nb)
 {
 	size_t	prec;
 	char	*temp;
@@ -42,7 +42,7 @@ static int	ft_floaty_things(t_info *info, long double f,\
 	return (0);
 }
 
-int			ft_unsignedfloat(t_info *info, long double f)
+int			ft_formatunsignedfloat(t_info *info, long double f)
 {
 	unsigned long long	n;
 	char				*nb;

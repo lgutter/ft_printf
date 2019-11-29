@@ -6,32 +6,32 @@
 #    By: lgutter <lgutter@student.codam.nl>           +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/09/11 13:40:17 by lgutter        #+#    #+#                 #
-#    Updated: 2019/11/25 17:45:32 by lgutter       ########   odam.nl          #
+#    Updated: 2019/11/29 13:02:07 by lgutter       ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
-include Sources
-include libft/Sources
-include libft/CovSources
-include tests/testsources
+include Source_files/printfsources
+include libft/libftsources
+include libft/covsources
+include Test_files/testsources
 
 JUNK := **/*~ **/\#*\# **/.DS_Store
 COVJUNK := **/*.gcov **/*.gcda *.gcov *.gcda
 
-CSOURCES := $(SOURCES:%= %.c)
-OBJECTS := $(SOURCES:%= %.o)
-GCNOFILES += $(SOURCES:%= *.gcno)
+CSOURCES := $(PRINTFSOURCES:%= Source_files/%.c)
+OBJECTS := $(PRINTFSOURCES:%= Source_files/%.o)
+GCNOFILES += $(PRINTFSOURCES:%= *.gcno)
 LFTOBJECTS := $(LFTSOURCES:%= libft/%.o)
 COVOBJECTS := $(COVSOURCES:%= libft/%.o)
 GCNOFILES += $(COVSOURCES:%= libft/*.gcno)
 COVSOURCES := $(COVSOURCES:%= libft/%.c)
-TESTOBJECTS := $(TESTNAMES:%= tests/%.o)
+TESTOBJECTS := $(TESTSOURCES:%= Test_files/%.o)
 COVJUNK += $(LFTSOURCES:%= libft/%.gcno)
-COVJUNK += $(TESTNAMES:%= tests/%.gcno)
+COVJUNK += $(TESTSOURCES:%= Test_files/%.gcno)
 
 LIBRARIES := -lftprintf -lcriterion
 LIBRARY_PATH := :$(PWD):$(LIBRARY_PATH)
-CPATH := :$(PWD):$(PWD)/libft:$(PWD)/tests:$(CPATH)
+CPATH := :$(PWD):$(PWD)/libft:$(CPATH)
 HEADER := ft_printf.h
 
 CFLAGS = -Wall -Wextra -Werror -Wunreachable-code -g

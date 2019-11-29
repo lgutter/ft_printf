@@ -1,31 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_formatunknown.c                                 :+:    :+:            */
+/*   ft_formatlonglongunsigned.c                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/10/27 17:35:37 by lgutter        #+#    #+#                */
-/*   Updated: 2019/11/27 17:55:55 by lgutter       ########   odam.nl         */
+/*   Created: 2019/11/19 09:51:50 by lgutter        #+#    #+#                */
+/*   Updated: 2019/11/29 13:01:35 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_formatunknown(t_info *info, char c)
+int			ft_formatlonglongunsigned(unsigned long long n, t_info *info)
 {
-	info->len = 1;
-	if (c == '\0')
-		return (0);
+	char	*nb;
+
+	info->sign = 1;
+	nb = ft_ulltoa_base_low(n, 10);
+	if (info->precfound > 0)
+		nb = ft_precision_int(info, nb);
+	if (nb == NULL)
+		return (-1);
+	info->len = ft_strlen(nb);
+	if ((info->flags & e_plus) != 0 || (info->flags & e_space) != 0)
+		info->len++;
 	if ((info->flags & e_minus) != 0)
-	{
-		info->writer(info->target, &info->totallen, &c, 1);
-		ft_check_width(info, 1);
-	}
+		ft_write_order(info, nb, "frw");
 	else
 	{
-		ft_check_width(info, 1);
-		info->writer(info->target, &info->totallen, &c, 1);
+		if ((info->flags & e_zero) != 0)
+			ft_write_order(info, nb, "fwr");
+		else
+			ft_write_order(info, nb, "wfr");
 	}
+	free(nb);
 	return (0);
 }

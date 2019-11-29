@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_check_width.c                                   :+:    :+:            */
+/*   ft_write_width.c                                   :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/06 18:36:06 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/25 16:16:34 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/29 12:12:12 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void			ft_check_width(t_info *info, size_t src_len)
+void			ft_write_width(t_info *info, size_t src_len)
 {
 	size_t		len;
 

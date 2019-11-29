@@ -138,3 +138,15 @@ Test(test_printf_format_unsigned_int, unsigned_int_plus_large_neg_nb_u, .init = 
 	asprintf(&result, "+%5lu", d);
 	cr_assert_stdout_eq_str(result);
 }
+
+Test(test_printf_format_unsigned_int, unsigned_int_plus_large_width_neg_nb_u, .init = redirect_std_out)
+{
+	unsigned long d;
+	char *result = NULL;
+	d = -2123456987;
+	ft_printf("%+ 32lu", d);
+	fflush(stdout);
+
+	asprintf(&result, "           +%lu", d);
+	cr_assert_stdout_eq_str(result);
+}

@@ -6,7 +6,7 @@
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/13 13:52:57 by lgutter        #+#    #+#                */
-/*   Updated: 2019/11/27 11:03:59 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/29 09:27:24 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ static void	ft_float_flags(t_info *info)
 
 void		ft_write_flags(t_info *info)
 {
-	if ((info->conv == 'd' || info->conv == 'i') && info->sign >= 0)
+	if ((info->conv == 'd' || info->conv == 'i' || info->conv == 'u')
+		&& info->sign >= 0)
 	{
 		if (info->flags & e_plus)
 			info->writer(info->target, &info->totallen, "+", 1);

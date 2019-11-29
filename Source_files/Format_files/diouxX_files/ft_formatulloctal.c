@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/13 12:02:41 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/25 16:04:19 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/29 14:50:30 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,20 +31,22 @@ int			ft_formatulloctal(unsigned long long n, t_info *info)
 	nb = ft_ulltoa_base_low(n, 8);
 	if (info->precfound > 0)
 		nb = ft_precision_int(info, nb);
-	if (nb == NULL)
-		return (-1);
-	info->len = ft_strlen(nb);
-	if ((info->flags & e_hash) != 0)
-		zero_exception(info, n);
-	if ((info->flags & e_minus) != 0)
-		ft_write_order(info, nb, "frw");
-	else
+	if (nb != NULL)
 	{
-		if ((info->flags & e_zero) != 0)
-			ft_write_order(info, nb, "fwr");
+		info->len = ft_strlen(nb);
+		if ((info->flags & e_hash) != 0)
+			zero_exception(info, n);
+		if ((info->flags & e_minus) != 0)
+			ft_write_order(info, nb, "frw");
 		else
-			ft_write_order(info, nb, "wfr");
+		{
+			if ((info->flags & e_zero) != 0)
+				ft_write_order(info, nb, "fwr");
+			else
+				ft_write_order(info, nb, "wfr");
+		}
+		free(nb);
+		return (0);
 	}
-	free(nb);
-	return (0);
+	return (-1);
 }

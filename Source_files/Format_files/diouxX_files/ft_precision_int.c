@@ -6,7 +6,7 @@
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/18 14:06:17 by lgutter        #+#    #+#                */
-/*   Updated: 2019/11/25 18:03:53 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/29 14:48:05 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,25 +40,26 @@ char		*ft_precision_int(t_info *info, char *number)
 	size_t	len;
 	size_t	neg;
 
-	if (number == NULL)
-		return (NULL);
-	len = ft_strlen(number);
-	neg = 0;
-	if (number[0] == '-')
+	if (number != NULL)
 	{
-		len--;
-		neg = 1;
-	}
-	else if (number[0] == '0' && info->precision == 0)
-	{
-		free(number);
-		return (ft_strdup(""));
-	}
-	if (len < info->precision)
-	{
-		if (info->conv == 'o' && (info->flags & e_hash) != 0)
-			info->flags -= e_hash;
-		return (final_str(number, len, neg, info->precision));
+		len = ft_strlen(number);
+		neg = 0;
+		if (number[0] == '-')
+		{
+			len--;
+			neg = 1;
+		}
+		else if (number[0] == '0' && info->precision == 0)
+		{
+			free(number);
+			return (ft_strdup(""));
+		}
+		if (len < info->precision)
+		{
+			if (info->conv == 'o' && (info->flags & e_hash) != 0)
+				info->flags -= e_hash;
+			return (final_str(number, len, neg, info->precision));
+		}
 	}
 	return (number);
 }

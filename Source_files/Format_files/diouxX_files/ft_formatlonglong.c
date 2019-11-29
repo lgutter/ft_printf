@@ -6,7 +6,7 @@
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/13 14:35:42 by lgutter        #+#    #+#                */
-/*   Updated: 2019/11/25 16:16:34 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/29 15:00:35 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,17 @@ static int	ft_format_neglonglong(long long n, t_info *info)
 	nb = ft_itoa_base(n, 10);
 	if (info->precfound > 0)
 		nb = ft_precision_int(info, nb);
-	if (nb == NULL)
-		return (-1);
-	info->len += ft_strlen(nb);
-	if ((info->flags & e_minus) != 0)
-		ft_write_order(info, nb, "rw");
-	else
-		ft_write_order(info, nb, "wr");
-	free(nb);
-	return (0);
+	if (nb != NULL)
+	{
+		info->len += ft_strlen(nb);
+		if ((info->flags & e_minus) != 0)
+			ft_write_order(info, nb, "rw");
+		else
+			ft_write_order(info, nb, "wr");
+		free(nb);
+		return (0);
+	}
+	return (-1);
 }
 
 int			ft_formatlonglong(long long n, t_info *info)
@@ -49,20 +51,21 @@ int			ft_formatlonglong(long long n, t_info *info)
 	nb = ft_itoa_base(n, 10);
 	if (info->precfound > 0)
 		nb = ft_precision_int(info, nb);
-	if (nb == NULL)
-		return (-1);
-	info->len = ft_strlen(nb);
-	if ((info->flags & e_plus) != 0 || (info->flags & e_space) != 0)
-		info->len++;
-	if ((info->flags & e_minus) != 0)
-		ft_write_order(info, nb, "frw");
-	else
+	if (nb != NULL)
 	{
-		if ((info->flags & e_zero) != 0)
-			ft_write_order(info, nb, "fwr");
+		info->len = ft_strlen(nb) + \
+			((info->flags & e_plus) != 0 || (info->flags & e_space) != 0);
+		if ((info->flags & e_minus) != 0)
+			ft_write_order(info, nb, "frw");
 		else
-			ft_write_order(info, nb, "wfr");
+		{
+			if ((info->flags & e_zero) != 0)
+				ft_write_order(info, nb, "fwr");
+			else
+				ft_write_order(info, nb, "wfr");
+		}
+		free(nb);
+		return (0);
 	}
-	free(nb);
-	return (0);
+	return (-1);
 }

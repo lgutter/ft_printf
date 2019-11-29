@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/13 14:28:17 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/27 13:56:20 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/29 11:38:38 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,13 @@ Test(redirect, test_char, .init = redirect_std_out) {
     fflush(stdout);
 
     cr_assert_stdout_eq_str("hallo!");
+}
+
+Test(redirect, test_empty_conversion, .init = redirect_std_out) {
+    ft_printf("ha%", 'l');
+    fflush(stdout);
+
+    cr_assert_stdout_eq_str("ha");
 }
 
 Test(redirect, test_char_space, .init = redirect_std_out) {

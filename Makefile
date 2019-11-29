@@ -6,7 +6,7 @@
 #    By: lgutter <lgutter@student.codam.nl>           +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/09/11 13:40:17 by lgutter        #+#    #+#                 #
-#    Updated: 2019/11/29 15:52:34 by lgutter       ########   odam.nl          #
+#    Updated: 2019/11/29 15:57:08 by lgutter       ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,7 +53,7 @@ clean:
 	@rm -rf $(JUNK) $(OBJECTS)
 	@echo "$(C_CLEAN)Junk & Object files removed$(C_RESET)"
 
-fclean:
+fclean: clean
 	@rm -rf $(NAME)
 	@echo "$(C_FCLEAN)$(NAME) removed$(C_RESET)"
 	@echo "$(C_LINES)- - - - - - - - - -$(C_RESET)"

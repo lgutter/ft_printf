@@ -6,7 +6,7 @@
 #    By: lgutter <lgutter@student.codam.nl>           +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/09/11 13:40:17 by lgutter        #+#    #+#                 #
-#    Updated: 2019/11/29 15:50:01 by lgutter       ########   odam.nl          #
+#    Updated: 2019/11/29 15:52:34 by lgutter       ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,13 +15,10 @@ include libft/libftsources
 include libft/covsources
 
 JUNK := **/*~ **/\#*\# **/.DS_Store
-COVJUNK := **/*.gcov **/*.gcda *.gcov *.gcda
 
-CSOURCES := $(PRINTFSOURCES:%= Source_files/%.c)
 OBJECTS := $(PRINTFSOURCES:%= Source_files/%.o)
-LFTOBJECTS := $(LFTSOURCES:%= libft/%.o)
-COVOBJECTS := $(COVSOURCES:%= libft/%.o)
-COVSOURCES := $(COVSOURCES:%= libft/%.c)
+LFTOBJECTS = $(LFTSOURCES:%= libft/%.o)
+LFTOBJECTS += $(COVSOURCES:%= libft/%.o)
 
 LIBRARIES := -lftprintf -lcriterion
 LIBRARY_PATH := :$(PWD):$(LIBRARY_PATH)
@@ -41,7 +38,7 @@ C_LINES = \033[38;5;250m
 
 all: $(NAME)
 
-$(NAME): $(LFTOBJECTS) $(COVOBJECTS) $(OBJECTS) $(HEADER)
+$(NAME): $(LFTOBJECTS) $(OBJECTS) $(HEADER)
 	@echo "$(C_LINES)- - - - - - - - - -$(C_RESET)"
 	@ar rc $@ $^
 	@ranlib $@
@@ -53,10 +50,10 @@ $(NAME): $(LFTOBJECTS) $(COVOBJECTS) $(OBJECTS) $(HEADER)
 	@echo "$(C_OBJECTS)$@ compiled$(C_RESET)"
 
 clean:
-	@rm -rf $(JUNK) $(OBJECTS) $(TESTOBJECTS) $(COVOBJECTS)
+	@rm -rf $(JUNK) $(OBJECTS)
 	@echo "$(C_CLEAN)Junk & Object files removed$(C_RESET)"
 
-fclean: oclean
+fclean:
 	@rm -rf $(NAME)
 	@echo "$(C_FCLEAN)$(NAME) removed$(C_RESET)"
 	@echo "$(C_LINES)- - - - - - - - - -$(C_RESET)"

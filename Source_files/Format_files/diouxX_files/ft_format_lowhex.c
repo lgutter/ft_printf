@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/19 10:45:07 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/27 11:19:30 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/29 15:25:51 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,18 @@ int			ft_format_lowhex(t_info *info)
 	if ((info->lenmod & e_hh) != 0)
 	{
 		n = (unsigned char)va_arg(info->arguments, int);
-		return (ft_formatulllowhex(n, info));
 	}
-	if ((info->lenmod & e_h) != 0)
+	else if ((info->lenmod & e_h) != 0)
 	{
 		n = (unsigned short)va_arg(info->arguments, int);
-		return (ft_formatulllowhex(n, info));
 	}
-	if ((info->lenmod & e_ll) != 0 || (info->lenmod & e_l) != 0)
+	else if ((info->lenmod & e_ll) != 0 || (info->lenmod & e_l) != 0)
 	{
 		n = va_arg(info->arguments, unsigned long long);
-		return (ft_formatulllowhex(n, info));
 	}
-	n = (unsigned int)va_arg(info->arguments, int);
+	else
+	{
+		n = (unsigned int)va_arg(info->arguments, int);
+	}
 	return (ft_formatulllowhex(n, info));
 }

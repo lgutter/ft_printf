@@ -6,7 +6,7 @@
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/27 09:29:24 by lgutter        #+#    #+#                */
-/*   Updated: 2019/11/27 17:29:40 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/29 10:43:58 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -794,6 +794,78 @@ Test(test_printf_float, simple_overflow_round, .init = redirect_std_out)
 	cr_assert_stdout_eq_str(result);
 }
 
+Test(test_printf_float, simple_overflow_round_past_decimal_point_1, .init = redirect_std_out)
+{
+	double f;
+	char *result = NULL;
+	f = 1.5;
+	ft_printf("%f", f);
+	fflush(stdout);
+
+	asprintf(&result, "%f", f);
+	cr_assert_stdout_eq_str(result);
+}
+
+Test(test_printf_float, simple_overflow_round_past_decimal_point_2, .init = redirect_std_out)
+{
+	double f;
+	char *result = NULL;
+	f = 2.5;
+	ft_printf("%.0f", f);
+	fflush(stdout);
+
+	asprintf(&result, "%.0f", f);
+	cr_assert_stdout_eq_str(result);
+}
+
+Test(test_printf_float, harder_overflow_round_past_decimal_point_1, .init = redirect_std_out)
+{
+	double f;
+	char *result = NULL;
+	f = 45.5;
+	ft_printf("%.0f", f);
+	fflush(stdout);
+
+	asprintf(&result, "%.0f", f);
+	cr_assert_stdout_eq_str(result);
+}
+
+Test(test_printf_float, harder_overflow_round_past_decimal_point_2, .init = redirect_std_out)
+{
+	double f;
+	char *result = NULL;
+	f = 49.5;
+	ft_printf("%.0f", f);
+	fflush(stdout);
+
+	asprintf(&result, "%.0f", f);
+	cr_assert_stdout_eq_str(result);
+}
+
+Test(test_printf_float, harder_overflow_round_past_decimal_point_3, .init = redirect_std_out)
+{
+	double f;
+	char *result = NULL;
+	f = 39.5;
+	ft_printf("%.0f", f);
+	fflush(stdout);
+
+	asprintf(&result, "%.0f", f);
+	cr_assert_stdout_eq_str(result);
+}
+
+Test(test_printf_float, harder_overflow_round_past_decimal_point_4, .init = redirect_std_out)
+{
+	double f;
+	char *result = NULL;
+	f = 35.5;
+	ft_printf("%.0f", f);
+	fflush(stdout);
+
+	asprintf(&result, "%.0f", f);
+	cr_assert_stdout_eq_str(result);
+}
+
 Test(test_printf_float, harder_overflow_round, .init = redirect_std_out)
 {
 	double f;
@@ -899,5 +971,89 @@ Test(test_printf_float, inf_minus_width42_long_double, .init = redirect_std_out)
 	fflush(stdout);
 
 	asprintf(&result, "%-42Lf", f);
+	cr_assert_stdout_eq_str(result);
+}
+
+Test(test_printf_float, zero_width42_prec_0, .init = redirect_std_out)
+{
+	double f;
+	char *result = NULL;
+	f = 0;
+	ft_printf("%42.0f", f);
+	fflush(stdout);
+
+	asprintf(&result, "%42.0f", f);
+	cr_assert_stdout_eq_str(result);
+}
+
+Test(test_printf_float, zero_hash_prec_0, .init = redirect_std_out)
+{
+	double f;
+	char *result = NULL;
+	f = 0.0;
+	ft_printf("%#.0f", f);
+	fflush(stdout);
+
+	asprintf(&result, "%#.0f", f);
+	cr_assert_stdout_eq_str(result);
+}
+
+Test(test_printf_float, neg_zero_hash_prec_0, .init = redirect_std_out)
+{
+	double f;
+	char *result = NULL;
+	f = -0.0;
+	ft_printf("%#.0f", f);
+	fflush(stdout);
+
+	asprintf(&result, "%#.0f", f);
+	cr_assert_stdout_eq_str(result);
+}
+
+Test(test_printf_float, zero_zero_hash_prec_0, .init = redirect_std_out)
+{
+	double f;
+	char *result = NULL;
+	f = 0.0;
+	ft_printf("%0#.0f", f);
+	fflush(stdout);
+
+	asprintf(&result, "%#.0f", f);
+	cr_assert_stdout_eq_str(result);
+}
+
+Test(test_printf_float, neg_zero_zero_hash_width_prec_0, .init = redirect_std_out)
+{
+	double f;
+	char *result = NULL;
+	f = -0.0;
+	ft_printf("%0#4.0f", f);
+	fflush(stdout);
+
+	asprintf(&result, "%0#4.0f", f);
+	cr_assert_stdout_eq_str(result);
+}
+
+Test(test_printf_float, neg_zero_plus_zero_hash_width_prec_0, .init = redirect_std_out)
+{
+	double f;
+	char *result = NULL;
+	f = -0.0;
+	ft_printf("%+0#4.0f", f);
+	fflush(stdout);
+
+	asprintf(&result, "%+0#4.0f", f);
+	cr_assert_stdout_eq_str(result);
+}
+
+Test(test_printf_float, neg_zero_plus_zero_hash_width_prec_args, .init = redirect_std_out)
+{
+	double f;
+	char *result = NULL;
+	f = -0.0;
+	ft_printf("%+0#*.*f", 4, 0, f);
+	fflush(stdout);
+
+	asprintf(&result, "%+0#*.*f", 4, 0, f);
 	cr_assert_stdout_eq_str(result);
 }

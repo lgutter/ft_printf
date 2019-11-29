@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/13 14:10:30 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/29 12:27:23 by ivan-tey      ########   odam.nl         */
+/*   Updated: 2019/11/29 12:53:16 by ivan-tey      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ typedef void			(*t_writer)\
 /*
 **	enumerations for the flags and modifiers stored in lenmod and flags.
 **	these are written down here as bitshifts, but in essence the exact number
-**	linked to an enum is not relevant, just that we can uniquely store and fetch
-**	any option (flag or modifier)
+**	linked to an enum is not relevant, just that we can uniquely store and 
+**	fetch any option (flag or modifier)
 */
 enum					e_lenmod
 {
@@ -56,7 +56,10 @@ enum					e_flags
 **	precision:		Simple value representing the precision provided.
 **	writer:			A function pointer to the writer function.
 **	target:			Where to write to. * to FILE *, filedescriptor, or char *.
+**	totallen:		Adds up the total amount of characters printed as a
+**					return value.
 */
+
 typedef struct			s_info
 {
 	unsigned char		flags;
@@ -73,10 +76,16 @@ typedef struct			s_info
 	unsigned long long	totallen;
 }						t_info;
 
+/*
+**	Used to check the sign bit of a float 
+**	flnb:			long double representation of a float.
+**	shnb:			float devided in five pieces of two bytes.
+*/
+
 typedef union			u_floatunion
 {
-	long double	flnb;
-	short		shnb[5];
+	long double			flnb;
+	short				shnb[5];
 }						t_floatunion;
 
 typedef int				(*t_formatter)(t_info *info);
@@ -86,11 +95,21 @@ int						ft_process_conversion(const char *format, t_info *info);
 int						ft_init_info(const char *format, t_info *info);
 t_formatter				ft_dispatcher(char conv_flag);
 
+/*
+**	Find functions for finding and storing all flags, width, 
+**	precision and lenghtmodifiers 
+*/
+
 int						ft_find_flags(const char *format, t_info *info, int i);
 int						ft_find_width(const char *format, t_info *info, int i);
 int						ft_find_lenmod(const char *format, t_info *info, int i);
 int						ft_find_precision\
 						(const char *format, t_info *info, int i);
+
+/*
+**	Format functions for handling the converison of 
+**	csp + diouxX + f and unknown conversion specifiers
+*/
 
 int						ft_formatunknown(t_info *info, char c);
 
@@ -98,7 +117,6 @@ int						ft_formatchar(t_info *info);
 int						ft_formatstring(t_info *info);
 int						ft_formatpointer(t_info *info);
 size_t					ft_precision_string(t_info *info, char **string);
-
 
 int						ft_formatunsigneddecimal(t_info *info);
 int						ft_formatdecimal(t_info *info);
@@ -121,9 +139,13 @@ char					*ft_float_precision(t_info *info, char *nb);
 int						ft_check_sign(long double f);
 size_t					ft_correctlen(t_info *info);
 
+/*
+**	Write functions for outputing the conversions and 
+**	adding the correct width and flags
+*/
+
 void					ft_write_width(t_info *info, size_t len);
 void					ft_write_flags(t_info *info);
-
 int						ft_write_order(t_info *info, char *str, char *order);
 void					ft_writer_fd\
 						(void *target, unsigned long long *totallen, \

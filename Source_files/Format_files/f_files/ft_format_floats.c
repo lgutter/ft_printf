@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/21 12:52:44 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/29 09:55:23 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/29 13:06:43 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,6 @@ int				ft_format_floats(t_info *info)
 		return (ft_exceptions(info, f));
 	}
 	if (f > (long double)__LONG_LONG_MAX__)
-		return (ft_unsignedfloat(info, f));
+		return (ft_formatunsignedfloat(info, f));
 	return (ft_formatlongdfloats(info, f));
 }

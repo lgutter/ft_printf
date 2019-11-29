@@ -6,13 +6,13 @@
 #    By: lgutter <lgutter@student.codam.nl>           +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/01/16 14:00:27 by lgutter        #+#    #+#                 #
-#    Updated: 2019/11/04 16:22:28 by lgutter       ########   odam.nl          #
+#    Updated: 2019/11/29 12:56:31 by lgutter       ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME := libft.a
-include ./Sources
-include ./CovSources
+include ./libftsources
+include ./covsources
 
 CC := gcc
 CFLAGS := -Wall -Wextra -Werror -g -coverage

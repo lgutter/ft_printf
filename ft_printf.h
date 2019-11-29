@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/13 14:10:30 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/29 13:07:40 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/29 15:27:50 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ int						ft_formatstring(t_info *info);
 int						ft_formatpointer(t_info *info);
 size_t					ft_precision_string(t_info *info, char **string);
 
-int						ft_formatunsigneddecimal(t_info *info);
+int						ft_format_unsigneddecimal(t_info *info);
 int						ft_formatdecimal(t_info *info);
 int						ft_formatlonglong(long long n, t_info *info);
 int						ft_formatlonglongunsigned(\

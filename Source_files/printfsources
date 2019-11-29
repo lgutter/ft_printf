@@ -15,7 +15,7 @@ Format_files/diouxX_files/ft_formatlonglongunsigned \
 Format_files/diouxX_files/ft_formatulllowhex \
 Format_files/diouxX_files/ft_formatulloctal \
 Format_files/diouxX_files/ft_formatullupphex \
-Format_files/diouxX_files/ft_formatunsigneddecimal \
+Format_files/diouxX_files/ft_format_unsigneddecimal \
 Format_files/diouxX_files/ft_precision_int \
 Format_files/f_files/ft_format_float_utils \
 Format_files/f_files/ft_format_floats \

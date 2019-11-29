@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_formatunsigneddecimal.c                         :+:    :+:            */
+/*   ft_format_unsigneddecimal.c                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/19 09:54:43 by lgutter        #+#    #+#                */
-/*   Updated: 2019/11/29 13:01:04 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/29 15:28:10 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_formatunsigneddecimal(t_info *info)
+int		ft_format_unsigneddecimal(t_info *info)
 {
 	unsigned long long	n;
 

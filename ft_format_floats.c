@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/21 12:52:44 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/27 15:05:58 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/11/29 09:55:23 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int		ft_floaty_things(t_info *info, long double f,\
 	prec = 0;
 	temp = NULL;
 	ft_strexpand(&nb, ".");
-	while (f > 0 && (prec < (info->precision + 5)))
+	while (f > 0 && (prec < 500 || prec < info->precision))
 	{
 		f = (f - n) * 10;
 		n = (long long)f;

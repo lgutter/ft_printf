@@ -6,7 +6,7 @@
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/27 09:29:24 by lgutter        #+#    #+#                */
-/*   Updated: 2019/11/29 10:43:58 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/12/04 12:36:19 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -866,6 +866,18 @@ Test(test_printf_float, harder_overflow_round_past_decimal_point_4, .init = redi
 	cr_assert_stdout_eq_str(result);
 }
 
+Test(test_printf_float, harder_overflow_round_past_decimal_point_5, .init = redirect_std_out)
+{
+	double f;
+	char *result = NULL;
+	f = 9.6;
+	ft_printf("%.0f", f);
+	fflush(stdout);
+
+	asprintf(&result, "%.0f", f);
+	cr_assert_stdout_eq_str(result);
+}
+
 Test(test_printf_float, harder_overflow_round, .init = redirect_std_out)
 {
 	double f;
@@ -991,6 +1003,30 @@ Test(test_printf_float, zero_hash_prec_0, .init = redirect_std_out)
 	double f;
 	char *result = NULL;
 	f = 0.0;
+	ft_printf("%#.0f", f);
+	fflush(stdout);
+
+	asprintf(&result, "%#.0f", f);
+	cr_assert_stdout_eq_str(result);
+}
+
+Test(test_printf_float, hash_prec_0_round_up, .init = redirect_std_out)
+{
+	double f;
+	char *result = NULL;
+	f = 0.9;
+	ft_printf("%#.0f", f);
+	fflush(stdout);
+
+	asprintf(&result, "%#.0f", f);
+	cr_assert_stdout_eq_str(result);
+}
+
+Test(test_printf_float, hash_round_past_decimal_point_1, .init = redirect_std_out)
+{
+	double f;
+	char *result = NULL;
+	f = 9.6;
 	ft_printf("%#.0f", f);
 	fflush(stdout);
 

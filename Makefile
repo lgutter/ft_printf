@@ -6,7 +6,7 @@
 #    By: lgutter <lgutter@student.codam.nl>           +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/09/11 13:40:17 by lgutter        #+#    #+#                 #
-#    Updated: 2019/11/29 13:02:07 by lgutter       ########   odam.nl          #
+#    Updated: 2019/12/04 12:18:15 by lgutter       ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,8 +30,8 @@ COVJUNK += $(LFTSOURCES:%= libft/%.gcno)
 COVJUNK += $(TESTSOURCES:%= Test_files/%.gcno)
 
 LIBRARIES := -lftprintf -lcriterion
-LIBRARY_PATH := :$(PWD):$(LIBRARY_PATH)
-CPATH := :$(PWD):$(PWD)/libft:$(CPATH)
+export LIBRARY_PATH += :$(PWD)
+export CPATH += :$(PWD)/libft:
 HEADER := ft_printf.h
 
 CFLAGS = -Wall -Wextra -Werror -Wunreachable-code -g

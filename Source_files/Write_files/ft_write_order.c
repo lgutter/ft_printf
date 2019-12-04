@@ -6,7 +6,7 @@
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/16 15:54:51 by lgutter        #+#    #+#                */
-/*   Updated: 2019/11/29 12:59:23 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/12/04 16:03:37 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,20 @@ int	ft_write_order(t_info *info, char *str, char *order)
 		{
 			ft_write_flags(info);
 		}
-		else if (*order == 'w')
+		else if (*order == 'w' && (info->flags & e_middle) == 0)
 		{
 			ft_write_width(info, info->len);
 		}
 		else if (*order == 'r')
 		{
-			info->writer(info->target, &info->totallen, str, 0);
+			if ((info->flags & e_middle) != 0)
+			{
+				ft_write_middle_width(info, str);
+			}
+			else
+			{
+				info->writer(info->target, &info->totallen, str, 0);
+			}
 		}
 		order++;
 	}

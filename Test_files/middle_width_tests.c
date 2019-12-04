@@ -6,7 +6,7 @@
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/04 13:09:09 by lgutter        #+#    #+#                */
-/*   Updated: 2019/12/04 15:45:55 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/12/04 16:36:14 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,8 +157,26 @@ Test(test_middle_width, test_zero_flag, .init = redirect_std_out)
 Test(test_middle_width, test_precision, .init = redirect_std_out)
 {
 	float f = 4.4242;
-	ft_printf("%0^-9.4f", f);
+	ft_printf("%^-9.4f", f);
 	fflush(stdout);
 
 	cr_assert_stdout_eq_str(" 4.4242  ");
+}
+
+Test(test_middle_width, test_hash_hex, .init = redirect_std_out)
+{
+	int d = 4243;
+	ft_printf("%#0^-9.4x", d);
+	fflush(stdout);
+
+	cr_assert_stdout_eq_str(" 0x1093  ");
+}
+
+Test(test_middle_width, test_hash_octal, .init = redirect_std_out)
+{
+	int d = 4243;
+	ft_printf("%#0^-9.4o", d);
+	fflush(stdout);
+
+	cr_assert_stdout_eq_str(" 010223  ");
 }

@@ -6,7 +6,7 @@
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/04 14:24:14 by lgutter        #+#    #+#                */
-/*   Updated: 2019/12/04 16:16:12 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/12/04 16:34:23 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ static void		write_middle_order(t_info *info, size_t len, char *str, char *o)
 		}
 		else if (*o == 'r')
 		{
+			ft_write_flags(info);
 			info->writer(info->target, &info->totallen, str, 0);
 		}
 		o++;

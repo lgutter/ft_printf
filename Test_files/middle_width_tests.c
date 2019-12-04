@@ -6,7 +6,7 @@
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/04 13:09:09 by lgutter        #+#    #+#                */
-/*   Updated: 2019/12/04 16:36:14 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/12/04 16:44:40 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,7 +148,7 @@ Test(test_middle_width, int_uneven_width_uneven_len_minus, .init = redirect_std_
 Test(test_middle_width, test_zero_flag, .init = redirect_std_out)
 {
 	int d = 42420;
-	ft_printf("%0^-9d", d);
+	ft_printf("%0^9d", d);
 	fflush(stdout);
 
 	cr_assert_stdout_eq_str("  42420  ");

@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/01 12:25:51 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/12/04 15:52:47 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/12/04 16:44:25 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ int		ft_find_flags(const char *format, t_info *info, int i)
 			return (i);
 		if ((info->flags & e_space) != 0 && (info->flags & e_plus) != 0)
 			info->flags -= e_space;
-		if ((info->flags & e_zero) != 0 && (info->flags & e_minus) != 0)
+		if ((info->flags & e_zero) != 0 && ((info->flags & e_minus) != 0 ||
+			(info->flags & e_middle) != 0))
 			info->flags -= e_zero;
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: lgutter <lgutter@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/12/04 14:24:14 by lgutter        #+#    #+#                */
-/*   Updated: 2019/12/04 16:34:23 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/12/04 16:43:07 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,7 @@ static void		print_padding(t_info *info, size_t len)
 {
 	while (len > 0)
 	{
-		if ((info->flags & e_zero) != 0)
-			info->writer(info->target, &info->totallen, "0", 1);
-		else
-			info->writer(info->target, &info->totallen, " ", 1);
+		info->writer(info->target, &info->totallen, " ", 1);
 		len--;
 	}
 }

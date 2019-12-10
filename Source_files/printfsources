@@ -26,6 +26,7 @@ Write_files/ft_write_flags \
 Write_files/ft_write_order \
 Write_files/ft_write_width \
 Write_files/ft_writer_fd \
+Write_files/ft_write_middle_width\
 ft_dispatcher \
 ft_init_info \
 ft_printf \

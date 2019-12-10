@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/13 14:10:30 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/11/29 15:27:50 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/12/04 15:35:48 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ enum					e_flags
 	e_zero = 1 << 1,
 	e_space = 1 << 2,
 	e_minus = 1 << 3,
-	e_plus = 1 << 4
+	e_plus = 1 << 4,
+	e_middle = 1 << 5
 };
 
 /*
@@ -144,6 +145,7 @@ size_t					ft_correctlen(t_info *info);
 **	adding the correct width and flags
 */
 
+void					ft_write_middle_width(t_info *info, char *str);
 void					ft_write_width(t_info *info, size_t len);
 void					ft_write_flags(t_info *info);
 int						ft_write_order(t_info *info, char *str, char *order);

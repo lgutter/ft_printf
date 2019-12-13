@@ -37,4 +37,5 @@ unsigned_int_precision_tests\
 unsigned_int_tests\
 upphex_precision_tests\
 upphex_tests\
-middle_width_tests
+middle_width_tests\
+ft_dprintf_tests

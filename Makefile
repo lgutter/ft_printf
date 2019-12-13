@@ -6,7 +6,7 @@
 #    By: lgutter <lgutter@student.codam.nl>           +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/09/11 13:40:17 by lgutter        #+#    #+#                 #
-#    Updated: 2019/12/04 12:18:15 by lgutter       ########   odam.nl          #
+#    Updated: 2019/12/13 17:13:52 by ivan-tey      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,7 @@ $(NAME): $(LFTOBJECTS) $(COVOBJECTS) $(OBJECTS) $(HEADER)
 	@echo "$(C_LINES)- - - - - - - - - -$(C_RESET)"
 	@ar rc $@ $^
 	@ranlib $@
-	@echo "$(C_LIB)Libftprintf.a has been compiled$(C_RESET)\n"
+	@echo "$(C_LIB)Libftprintf.a has been compiled$(C_RESET)"
 
 
 %.o: %.c

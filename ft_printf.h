@@ -6,7 +6,7 @@
 /*   By: ivan-tey <ivan-tey@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/09/13 14:10:30 by ivan-tey       #+#    #+#                */
-/*   Updated: 2019/12/04 15:35:48 by lgutter       ########   odam.nl         */
+/*   Updated: 2019/12/13 11:13:31 by lgutter       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ typedef union			u_floatunion
 typedef int				(*t_formatter)(t_info *info);
 
 int						ft_printf(const char *restrict format, ...);
+int						ft_dprintf(int fd, const char *restrict format, ...);
 int						ft_process_conversion(const char *format, t_info *info);
 int						ft_init_info(const char *format, t_info *info);
 t_formatter				ft_dispatcher(char conv_flag);

@@ -30,4 +30,5 @@ Write_files/ft_write_middle_width\
 ft_dispatcher \
 ft_init_info \
 ft_printf \
+ft_dprintf \
 ft_process_conversion
